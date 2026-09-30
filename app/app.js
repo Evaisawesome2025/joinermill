@@ -3,7 +3,7 @@
   "use strict";
 
   // Public address of the existing ask ingress. Not a secret. Not shown on the page.
-  var WORKER_URL = window.EVAOS_WORKER_URL || "https://evaos-v05-ask.chlorinated-icebreaker.workers.dev";
+  var WORKER_URL = window.EVAOS_WORKER_URL || "https://evaos-v05-ask.joinermill-ask.workers.dev";
   var OUTBOX_URL = "/app/outbox/threads.json";
   var TOKEN_KEY = "evaos_v06_owner_bearer";
   var PENDING_KEY = "evaos_v06_pending";
