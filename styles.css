@@ -247,6 +247,43 @@ h1::after {
   font-size: 1.125rem;
 }
 
+.enter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  margin-top: 1.35rem;
+  padding: 0.7rem 1.25rem;
+  background: var(--ink);
+  font-weight: 600;
+  font-size: 1.0625rem;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+
+a.enter,
+a.enter:visited {
+  color: var(--paper);
+}
+
+a.enter:hover,
+a.enter:focus-visible {
+  background: var(--brass);
+  color: var(--paper);
+}
+
+@media (prefers-color-scheme: dark) {
+  a.enter:hover,
+  a.enter:focus-visible {
+    color: #241c16;
+  }
+}
+
+.enter-note {
+  margin: 0.55rem 0 0;
+  font-size: 0.95rem;
+}
+
 section {
   scroll-margin-top: 5.5rem;
 }
@@ -432,7 +469,7 @@ address {
     align-items: start;
   }
 
-  .lede {
+  .hero-aside .lede {
     margin: 0;
   }
 }
