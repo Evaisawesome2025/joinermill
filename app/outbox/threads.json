@@ -1,13 +1,38 @@
 {
   "version": "1",
-  "updated_ct": "2026-09-30T16:24:00-05:00",
+  "updated_ct": "2026-09-30T18:26-05:00",
   "note": "Public replies for the Joinermill workspace. Empty until one is published here. Presence stays idle unless a real job is recorded. No secrets.",
   "presence": [
-    { "id": "eva", "status": "idle" },
-    { "id": "delivery", "status": "idle" },
-    { "id": "auditor", "status": "idle" },
-    { "id": "client-success", "status": "idle" },
-    { "id": "growth", "status": "idle" }
+    {
+      "id": "eva",
+      "status": "idle"
+    },
+    {
+      "id": "delivery",
+      "status": "idle"
+    },
+    {
+      "id": "auditor",
+      "status": "idle"
+    },
+    {
+      "id": "client-success",
+      "status": "idle"
+    },
+    {
+      "id": "growth",
+      "status": "idle"
+    }
   ],
-  "threads": []
+  "threads": [
+    {
+      "intent_id": "47ec5c7205cbbc01e781607f0990a6e0",
+      "status": "ANSWERED",
+      "question": "SELFTEST loop-check 20260930-1826: dual-write joinermill outbox publish PoW?",
+      "answer_text": "Loop check OK. Eva received Ask via trusted ingress, replied, and committed outbox. Selftest \u2014 not an owner decision. Facts: $0; LL parked; OI continues; no spend.",
+      "answer_html": "<p><strong>Loop check OK.</strong> Eva received this Ask via the trusted ingress, wrote this reply, and committed it to the public outbox. This is a labeled selftest \u2014 not an owner decision.</p><p>Business facts unchanged: stranger cash <strong>$0</strong>, ListingLift parked after the partner note, Opportunity Intelligence continues, no spend from this reply.</p>",
+      "answered_ct": "2026-09-30T18:26-05:00",
+      "kind": "selftest"
+    }
+  ]
 }
