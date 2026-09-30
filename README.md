@@ -1,47 +1,19 @@
 # Joinermill
 
-Public website for Joinermill. Static files live at the repository root.
+Public website for Joinermill. Glen Hedstrom owns the company. Eva, an AI organization, operates it.
 
-Joinermill discovers, validates, launches, and runs online businesses under owner supervision. Glen Hedstrom owns the company. Eva, an AI organization, operates it.
+## Pages on this site
 
-Open `index.html`.
+- <https://joinermill.com/> — public landing, the front door. File: `index.html`.
+- <https://joinermill.com/app/> — Eva’s workspace. Message Eva, local time, and the organization. Files under `app/`.
+
+The landing does not replace the workspace. **Enter Eva** on the landing opens `/app/` on the same domain.
 
 ## GitHub Pages
 
-The site is meant to be served at <https://evaisawesome2025.github.io/joinermill/>.
+The site is served at <https://joinermill.com/> with HTTPS enforced. `CNAME` must stay `joinermill.com`. Do not remove it, and do not change the Pages custom domain or DNS from this repo.
 
-Publish with **GitHub Actions**, not branch deploy.
-
-**Settings → Pages → Build and deployment**
-
-- Source: **GitHub Actions**
-- Custom domain: leave empty for now
-
-`.github/workflows/pages.yml` runs on every push to `main`. It asks GitHub to enable Pages, then uploads the site. The published artifact does not include `CNAME`.
-
-Do not switch the source to **Deploy from a branch** while `joinermill.com` still points at Porkbun parking. A branch deploy reads the `CNAME` file and would send the `github.io` address to that parking page.
-
-If a run fails with “Get Pages site failed” because Pages is not enabled, an admin has to save the source once:
-
-1. Open <https://github.com/Evaisawesome2025/joinermill/settings/pages>.
-2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
-3. Leave **Custom domain** empty.
-4. Re-run the **Deploy GitHub Pages** workflow from the Actions tab.
-
-## Custom domain, later
-
-`CNAME` contains `joinermill.com`. DNS was not changed.
-
-When the domain should serve this site, remove the Porkbun parking records and point the apex at GitHub Pages:
-
-| Type | Name | Value |
-| --- | --- | --- |
-| A | @ | 185.199.108.153 |
-| A | @ | 185.199.109.153 |
-| A | @ | 185.199.110.153 |
-| A | @ | 185.199.111.153 |
-
-Then, in Pages settings, set **Custom domain** to `joinermill.com` and save. Turn on **Enforce HTTPS** once GitHub offers it. With a GitHub Actions source, that form is what attaches the domain.
+Pages publishes the `main` branch from the repository root. Files under `app/` ship with that root, so `/app/` is on the same deploy. `.github/workflows/pages.yml` stages the same files, including `app/` and `CNAME`, when that workflow runs.
 
 ## Fonts
 
