@@ -31,7 +31,7 @@ jobs:
       - name: Stage site
         run: |
           mkdir -p _site
-          cp -a index.html styles.css favicon.svg 404.html fonts .nojekyll _site/
+          cp -a index.html styles.css favicon.svg 404.html fonts .nojekyll CNAME _site/
       - name: Upload site
         uses: actions/upload-pages-artifact@v4
         with:
