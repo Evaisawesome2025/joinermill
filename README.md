@@ -6,24 +6,24 @@ EvaOS is an internal name and is not used on this site.
 
 ## GitHub Pages
 
-The site is the repository root. It should be served at <https://evaisawesome2025.github.io/joinermill/>.
+The site is the repository root and is meant to be served at <https://evaisawesome2025.github.io/joinermill/>.
 
-Branch publishing, which reads `CNAME` from `main`:
+Pages is a repository setting. Publishing the files does not turn it on, and the credential used for this repo cannot change that setting (the Pages API returns 403). An admin needs to save it once:
 
-1. Open **Settings → Pages**.
-2. Under **Build and deployment**, choose **Deploy from a branch**.
-3. Branch: **main**. Folder: **/ (root)**.
-4. Save.
+1. Open <https://github.com/Evaisawesome2025/joinermill/settings/pages>.
+2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+3. Leave **Custom domain** empty. Do not choose **Deploy from a branch** yet.
+4. Open the **Actions** tab, open the failed **Deploy GitHub Pages** run, and click **Re-run jobs**.
 
-`.nojekyll` is present so Pages serves these files as written.
+`.github/workflows/pages.yml` publishes the root of `main` on every push after that. `.nojekyll` is present so the files are served as written.
 
-If the source has to be GitHub Actions instead, **Settings → Pages → Source: GitHub Actions**. The workflow `.github/workflows/pages.yml` deploys the root on every push to `main`. With an Actions source, GitHub does not apply the `CNAME` file; set the custom domain in Pages settings only after DNS points here.
+Branch deploy (`main` / `/ (root)`) would also publish this folder, and it would apply `CNAME` immediately. Leave that for the cutover below. `joinermill.com` still points at Porkbun parking, so attaching it now would send people to the parking page.
 
 ## Custom domain, later
 
-`CNAME` contains `joinermill.com`. That tells GitHub Pages which domain to attach. DNS was not changed: `joinermill.com` still points at Porkbun parking, not at GitHub.
+`CNAME` contains `joinermill.com`. DNS was not changed.
 
-When you intend to serve the domain, remove the parking records at Porkbun and point the apex at GitHub Pages:
+When you intend to serve the domain, remove the Porkbun parking records and point the apex at GitHub Pages:
 
 | Type | Name | Value |
 | --- | --- | --- |
@@ -33,6 +33,8 @@ When you intend to serve the domain, remove the parking records at Porkbun and p
 | A | @ | 185.199.111.153 |
 
 Leave `CNAME` in the repo. Do not switch DNS until you want `joinermill.com` to replace the parking page. Until then, use the `github.io` address.
+
+After those records answer on GitHub's addresses, open Pages settings, set **Custom domain** to `joinermill.com`, and save. Turn on **Enforce HTTPS** once GitHub offers it. With a GitHub Actions source, that form is what attaches the domain.
 
 ## Fonts
 
