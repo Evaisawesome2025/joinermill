@@ -1,0 +1,485 @@
+@font-face {
+  font-family: Fraunces;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/fraunces-latin-600-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: Fraunces;
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("fonts/fraunces-latin-500-italic.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Source Sans 3";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("fonts/source-sans-3-latin-400-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Source Sans 3";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("fonts/source-sans-3-latin-600-normal.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --paper: #f3ecdf;
+  --ink: #241c16;
+  --rule: #ddcfc0;
+  --brass: #6b3f22;
+  --brass-bright: #b57a3a;
+  --rail: #4a332b;
+  --rail-ink: #f3ecdf;
+  --sans: "Source Sans 3", "Segoe UI", sans-serif;
+  --serif: Fraunces, "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #161310;
+    --ink: #f3ecdf;
+    --rule: #3c342c;
+    --brass: #e2b07a;
+    --brass-bright: #e2b07a;
+    --rail: #2a201c;
+    --rail-ink: #f3ecdf;
+    color-scheme: dark;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  font-synthesis: none;
+  color: var(--ink);
+  background: var(--paper);
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, .promise, .who-list strong, .email {
+  font-family: var(--serif);
+  font-style: normal;
+  font-weight: 600;
+}
+
+::selection {
+  background: #e2b07a;
+  color: #241c16;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+a {
+  color: inherit;
+}
+
+a:visited {
+  color: inherit;
+}
+
+.skip {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.6rem;
+  z-index: 5;
+  padding: 0.45rem 0.7rem;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--ink);
+  transform: translateY(-160%);
+}
+
+.skip:focus {
+  transform: none;
+}
+
+.rail {
+  position: fixed;
+  z-index: 4;
+  background: var(--rail);
+  user-select: none;
+}
+
+.rail span {
+  display: none;
+}
+
+.wrap {
+  width: min(68rem, calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.site-header {
+  position: sticky;
+  top: 0.45rem;
+  z-index: 3;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+}
+
+.header-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem 1.5rem;
+  min-height: 4.25rem;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  min-height: 44px;
+  font-size: 1.35rem;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+}
+
+.mark {
+  display: block;
+  flex: none;
+}
+
+.mark .board { fill: #4a332b; }
+.mark .key { fill: #e2b07a; }
+
+@media (prefers-color-scheme: dark) {
+  .mark .board { fill: #e7d7c4; }
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+}
+
+nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 0.28em;
+}
+
+.hero {
+  padding: 2.75rem 0 2.5rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.8rem, 12vw, 6.6rem);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+}
+
+h1::after {
+  content: "";
+  display: block;
+  width: 4.5rem;
+  height: 3px;
+  margin-top: 1rem;
+  background: var(--brass-bright);
+}
+
+.hero-copy {
+  margin-top: 1.5rem;
+}
+
+.promise {
+  margin: 0;
+  max-width: 22em;
+  font-size: clamp(1.45rem, 2.5vw, 1.9rem);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+.lede,
+.intro {
+  max-width: 38rem;
+  text-wrap: pretty;
+}
+
+.lede {
+  margin: 1rem 0 0;
+  font-size: 1.125rem;
+}
+
+section {
+  scroll-margin-top: 5.5rem;
+}
+
+#work,
+#who,
+#contact {
+  padding: 2.75rem 0;
+}
+
+h2 {
+  margin: 0 0 0.55rem;
+  font-size: clamp(2rem, 4vw, 2.7rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.intro {
+  margin: 0;
+}
+
+.stations {
+  list-style: none;
+  margin: 1.75rem 0 0;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid var(--ink);
+  display: grid;
+  gap: 2rem;
+}
+
+.stations h3 {
+  margin: 0 0 0.45rem;
+  font-size: 1.5rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.num {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 1rem;
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  color: var(--brass);
+}
+
+.stations p {
+  margin: 0;
+}
+
+.who-list {
+  display: grid;
+  gap: 1.75rem;
+  margin: 1.75rem 0 0;
+}
+
+.who-list div {
+  margin: 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--ink);
+}
+
+.who-list dt {
+  margin: 0 0 0.45rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.who-list dd {
+  margin: 0;
+}
+
+.who-list strong {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: clamp(1.7rem, 3vw, 2.15rem);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+#contact {
+  border-top: 1px solid var(--ink);
+}
+
+address {
+  margin: 1.25rem 0 0;
+  font-style: normal;
+}
+
+.email {
+  display: inline-block;
+  max-width: 100%;
+  padding-block: 0.15rem;
+  font-size: clamp(1.55rem, 4.6vw, 3.15rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+  text-decoration-color: var(--brass-bright);
+  overflow-wrap: anywhere;
+}
+
+.site-footer {
+  border-top: 1px solid var(--rule);
+  padding: 1.25rem 0 2.5rem;
+}
+
+.site-footer p {
+  margin: 0;
+}
+
+@media (min-width: 700px) {
+  .rail {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 2.6rem;
+    background-color: var(--rail);
+    background-image:
+      repeating-linear-gradient(to bottom, transparent 0 15px, rgba(243, 236, 223, 0.28) 15px 16px),
+      repeating-linear-gradient(to bottom, transparent 0 79px, rgba(243, 236, 223, 0.55) 79px 80px);
+    background-size: 8px 100%, 14px 100%;
+    background-position: left center, left center;
+    background-repeat: repeat-y;
+  }
+
+  .rail span {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    writing-mode: vertical-rl;
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--rail-ink);
+  }
+
+  body {
+    padding-left: 2.6rem;
+  }
+
+  .skip {
+    left: 3.35rem;
+  }
+
+  .site-header {
+    top: 0;
+  }
+
+  .wrap {
+    width: min(68rem, calc(100% - 4rem));
+  }
+
+  .hero {
+    padding: 4.75rem 0 3.25rem;
+  }
+
+  .stations,
+  .who-list {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #work,
+  #who,
+  #contact {
+    padding: 4rem 0;
+  }
+}
+
+@media (min-width: 860px) {
+  .hero-copy {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 1.25rem 3rem;
+    align-items: start;
+  }
+
+  .lede {
+    margin: 0;
+  }
+}
+
+@media (min-width: 980px) {
+  .stations {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2rem;
+  }
+
+  .who-list {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 699px) {
+  .rail {
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 0.45rem;
+  }
+
+  body {
+    padding-top: 0.45rem;
+  }
+}
+
+@media print {
+  .rail,
+  .skip,
+  nav {
+    display: none;
+  }
+
+  body {
+    padding: 0;
+    background: #fff;
+    color: #000;
+  }
+
+  .site-header {
+    position: static;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
