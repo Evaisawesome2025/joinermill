@@ -6,16 +6,18 @@ EvaOS is an internal name and is not used on this site.
 
 ## GitHub Pages
 
-Publish from the `main` branch, root folder:
+The site is the repository root. It should be served at <https://evaisawesome2025.github.io/joinermill/>.
+
+Branch publishing, which reads `CNAME` from `main`:
 
 1. Open **Settings → Pages**.
 2. Under **Build and deployment**, choose **Deploy from a branch**.
 3. Branch: **main**. Folder: **/ (root)**.
 4. Save.
 
-The site is served at <https://evaisawesome2025.github.io/joinermill/>.
-
 `.nojekyll` is present so Pages serves these files as written.
+
+If the source has to be GitHub Actions instead, **Settings → Pages → Source: GitHub Actions**. The workflow `.github/workflows/pages.yml` deploys the root on every push to `main`. With an Actions source, GitHub does not apply the `CNAME` file; set the custom domain in Pages settings only after DNS points here.
 
 ## Custom domain, later
 
