@@ -280,9 +280,14 @@ a.enter:focus-visible {
 }
 
 .enter-note {
-  margin: 0.55rem 0 0;
+  margin: 0.85rem 0 0;
+  max-width: 28rem;
   font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--muted, #6a645a);
 }
+.enter-note a { font-weight: 600; }
+.cta-row .enter:only-child { margin-top: 0; }
 
 section {
   scroll-margin-top: 5.5rem;

@@ -1,19 +1,23 @@
 EvaOS / Joinermill site
-V1.0.0
-label: Trust / PoW board (works · doesn’t · dated evidence)
+V1.1.0
+label: Stranger one-path (one Try · nav≤4 · Trust journey)
 date: 2026-10-01
 host: joinermill.com (GitHub Pages)
-path: V1.0-TRUST-POW-BOARD
+path: V1.1-STRANGER-ONE-PATH
 includes:
-  - /#trust public Trust / PoW board
-  - paid_n=0 honest scoreboard line
-  - ≤1 earned Mill artifact when idle
-  - journey stitch secondary (guest · Mill · signup shell)
-  - V1.0 stamp on home + /app + guest/office/signup/waitlist chrome
-  - guest DEMO · Mill idle · accounts shell preserved
+  - Home hero: one primary Try Eva (preview) → /app/guest/
+  - Dogfood demoted to owner-only text (not equal CTA)
+  - Honesty note ≤2 short lines
+  - Nav ≤4: Trust · Try · Pricing · Contact
+  - #trust kept; one journey line; Mill/Accounts from works column only
+  - Mill home: quiet visual + idle status (no third CTA row)
+  - Guest exit primary → /#trust · canned DEMO · not live Ask
+  - Mira: one stranger promise (who+what) before features
+  - V1.1 stamp · owner name Glen only · paid_n=0
 excludes (LATER / Approve-gated):
   - Clerk magic-link live
   - live email / waitlist capture
   - Worker stranger JWT / Ask
   - rainbow heartbeat without real feed
   - checkout / fake Create Account
+  - Mill+signup+pricing densify redesign
