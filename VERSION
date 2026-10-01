@@ -1,21 +1,19 @@
 EvaOS / Joinermill site
-V1.2.0
-label: Guest light try (canned tour · nav≤3 · Approvals collapsed)
+V1.3.0
+label: Guest work artifact (ListingLift SAMPLE · GramCeramics mug)
 date: 2026-10-01
 host: joinermill.com (GitHub Pages)
-path: V1.2-GUEST-LIGHT
+path: GUEST-WORK-ARTIFACT
 includes:
-  - Guest primary = canned tour only
-  - Approvals wall → one short paragraph + /#trust · seat $ via /#pricing
-  - Guest header nav ≤3: Trust · Public site · Contact (mailto)
-  - Mill + Owner /app/ muted footer only
-  - Promise ≤3 plain bullets · no EvaOS literacy dump
-  - One primary exit Back to Trust · canned DEMO · not live Ask
-  - Home V1.1 stranger path kept (no CTA re-densify)
-  - V1.2 stamp · owner name Glen only · paid_n=0
+  - One public SAMPLE deliverable page /app/guest/sample/
+  - Guest primary beat “Show me a real work sample” → DEMO + inspect artifact
+  - Provenance · SAMPLE · not sent · not your live job
+  - Trust evidence bullet → same URL
+  - V1.2 light path kept (DEMO · Back to Trust · nav≤3 · Approvals short)
+  - Home one-line experience pointer · no CTA densify
 excludes (LATER / Approve-gated):
-  - Clerk magic-link live
-  - live email / waitlist capture
-  - Worker stranger JWT / Ask
-  - checkout / fake Create Account
-  - full Authority Matrix · Mill world · live signup · pricing redesign
+  - Mill ≤1 PoW widget
+  - Outbox reader as primary experience
+  - Multi-artifact gallery · live Worker Ask · streaming theater
+  - Clerk magic-link · waitlist arm · checkout
+  - Stranger write · lead capture · pay

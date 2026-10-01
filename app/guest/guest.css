@@ -315,3 +315,19 @@ h2 {
   .ws-bar { flex-wrap: wrap; }
   .guest { padding: 1.35rem 1rem 3rem; }
 }
+
+/* V1.3 GUEST-WORK-ARTIFACT */
+.prompt-btn.prompt-primary {
+  border-color: var(--brass);
+  font-weight: 600;
+  box-shadow: inset 0 0 0 1px var(--brass);
+}
+.demo-artifact {
+  margin: 0.75rem 0 0;
+}
+.demo-artifact .btn {
+  font-size: 0.92rem;
+  min-height: 40px;
+  padding: 0.45rem 0.9rem;
+}
+.bubble.demo .demo-artifact a { text-decoration: none; }

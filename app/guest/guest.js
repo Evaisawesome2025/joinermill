@@ -1,8 +1,20 @@
-/* EvaOS V0.8 — guest canned tour. DEMO replies only. Never fetch Worker. No secrets. */
+/* EvaOS V1.3 — guest canned tour + work-sample beat. DEMO only. Never fetch Worker. No secrets. */
 (function () {
   "use strict";
 
+  var SAMPLE_HREF = "/app/guest/sample/";
+
   var PROMPTS = [
+    {
+      id: "sample",
+      label: "Show me a real work sample",
+      primary: true,
+      you: "Show me a real work sample Eva actually produced.",
+      demo:
+        "DEMO: One inspectable SAMPLE — ListingLift rewrite for a public GramCeramics pottery-mug listing (built 2026-09-29 from public Etsy copy). Not sent to the shop. Not your live job. Not live Ask.",
+      artifactHref: SAMPLE_HREF,
+      artifactLabel: "Inspect the SAMPLE deliverable"
+    },
     {
       id: "north",
       label: "What is the North Star?",
@@ -36,7 +48,7 @@
       label: "Is this live Eva?",
       you: "Am I talking to live Eva right now?",
       demo:
-        "DEMO: No. This is a canned sandbox tour. Nothing is sent to the live Ask Worker. Dogfood Ask at /app/ still needs an owner access code."
+        "DEMO: No. This is a canned sandbox tour. Nothing is sent to the live Ask Worker. Dogfood Ask at /app/ still needs an owner access code. The work sample page is frozen SAMPLE HTML — still not live chat."
     }
   ];
 
@@ -58,6 +70,13 @@
     var eva = el("div", "bubble demo");
     eva.appendChild(el("span", "who", "Eva · DEMO"));
     eva.appendChild(el("p", null, item.demo));
+    if (item.artifactHref) {
+      var actions = el("p", "demo-artifact");
+      var link = el("a", "btn", item.artifactLabel || "Open sample");
+      link.href = item.artifactHref;
+      actions.appendChild(link);
+      eva.appendChild(actions);
+    }
     stage.appendChild(you);
     stage.appendChild(eva);
     if (label) label.hidden = false;
@@ -67,7 +86,7 @@
     var host = document.getElementById("tour-prompts");
     if (!host) return;
     PROMPTS.forEach(function (item) {
-      var btn = el("button", "prompt-btn", item.label);
+      var btn = el("button", "prompt-btn" + (item.primary ? " prompt-primary" : ""), item.label);
       btn.type = "button";
       btn.setAttribute("aria-label", "Show DEMO reply: " + item.label);
       btn.addEventListener("click", function () {
@@ -85,7 +104,7 @@
   }
 
   if (typeof window !== "undefined") {
-    window.EVAOS_GUEST_MODE = "canned-demo-v08";
+    window.EVAOS_GUEST_MODE = "canned-demo-v13-work-artifact";
   }
 
   if (document.readyState === "loading") {

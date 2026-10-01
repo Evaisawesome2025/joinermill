@@ -1,11 +1,8 @@
-# Joinermill
+# Joinermill (public site)
 
-Public site + EvaOS dogfood workspace + guest DEMO preview + Mill floor + account shell + Trust board.
+Static GitHub Pages site for joinermill.com.
 
-- **Live:** https://joinermill.com/
-- **Trust board:** https://joinermill.com/#trust
-- **Version:** EvaOS V1.2 (see `VERSION`) — guest light try · home stranger one-path kept
-- **Guest DEMO:** https://joinermill.com/app/guest/
-- **Mill floor:** https://joinermill.com/app/office/
-- **Accounts shell (not live):** https://joinermill.com/app/signup/
-- **Waitlist (not collecting):** https://joinermill.com/app/waitlist/
+**Current stamp:** EvaOS **V1.3** — GUEST-WORK-ARTIFACT  
+Guest try includes one inspectable SAMPLE work product (`/app/guest/sample/`).
+
+See `VERSION`, `BUILD.md`, and `architecture/evaos/operating/cycles/`.
