@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Eva — Joinermill</title>
-  <meta name="description" content="EvaOS V1.1 — Joinermill dogfood workspace. Owner-supervised Ask; not open self-serve.">
-  <meta name="evaos-version" content="1.1">
+  <title>Eva — Joinermill · dogfood</title>
+  <meta name="description" content="EvaOS V1.5 — Joinermill dogfood (User Zero prep). Real objectives via access code. Not stranger-live. Clerk deferred.">
+  <meta name="evaos-version" content="1.5">
   <link rel="canonical" href="https://joinermill.com/app/">
   <meta name="theme-color" content="#f3ecdf" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#161310" media="(prefers-color-scheme: dark)">
@@ -30,7 +30,7 @@
         </svg>
         <span>Joinermill</span>
       </a>
-      <p class="ws-kicker">EvaOS V1.1</p>
+      <p class="ws-kicker">EvaOS V1.5 · dogfood</p>
       <a class="site-link" href="/">Public site</a>
     </div>
   </header>
@@ -165,12 +165,12 @@
     <main class="sheet" id="conversation">
       <h1 class="who">Eva</h1>
       <aside class="honesty" id="b4-honesty" aria-label="How authority works">
-        <p class="honesty-kicker">Honesty · EvaOS V1.1</p>
-        <p><strong>Dogfood workspace — not open self-serve.</strong> Ask needs an access code Eva gave you. Replies on this page are public. No passwords or card numbers in messages.</p>
-        <p><strong>You govern.</strong> You set objectives, caps, and Approves. Eva researches, drafts, and works <em>inside</em> those gates. Autonomy is not a blank check.</p>
-        <p class="honesty-gates"><strong>Hard stops (Owner Approves first):</strong> send · spend · publish/deploy · pricing/strategy shifts that bind the company.</p>
-        <p class="honesty-nonclaims">Not sold here: continuous unsupervised autonomy · live checkout · public waitlist capture · live stranger Ask. Scoreboard: <code>paid_n=0</code>. Guest <a href="/app/guest/">preview</a> is DEMO-only. Full board: <a href="/#trust">/#trust</a>.</p>
-        <p class="honesty-links"><a href="/#trust">Trust / PoW board</a> · <a href="/app/guest/">Guest preview</a> (DEMO · no code) · <a href="/app/waitlist/">Founding waitlist</a> (not collecting) · <a href="/app/office/">Mill floor</a> · <a href="/app/signup/">Accounts shell</a> · <a href="/">Public site</a></p>
+        <p class="honesty-kicker">Honesty · EvaOS V1.5 · claim class: dogfood (Glen)</p>
+        <p><strong>Dogfood workspace — User Zero prep for Glen.</strong> Access code required. Not stranger-live. Guest <a href="/app/guest/">DEMO/REPLAY</a> is a separate surface and is <strong>not</strong> User Zero proof.</p>
+        <p><strong>You govern.</strong> Submit a real objective below. Eva understands → plans → delegates named specialists → posts evidence here. Send / spend / publish freeze until you Approve.</p>
+        <p class="honesty-gates"><strong>Hard stops (Owner Approves first):</strong> send · spend · publish/deploy · pricing/strategy that binds the company. Clerk magic-link <strong>deferred</strong> (Atlas 2026-10-01); signup shell stays not-live.</p>
+        <p class="honesty-nonclaims">Not claimed: stranger-live accounts · continuous unsupervised autonomy · live checkout · waitlist capture · Mill busy theater. Scoreboard: <code>paid_n=0</code>. Full board: <a href="/#trust">/#trust</a>.</p>
+        <p class="honesty-links"><a href="/#trust">Trust / PoW board</a> · <a href="/app/guest/">Guest DEMO</a> · <a href="/app/waitlist/">Waitlist</a> (not collecting) · <a href="/app/office/">Mill floor</a> · <a href="/app/signup/">Accounts shell</a> (not live) · <a href="/">Public site</a></p>
       </aside>
       <article class="brief" id="eva-brief" aria-label="Eva">
         <p>North Star: first stranger dollar. Nothing needs a yes or no from you on the online business right now.</p>
@@ -180,13 +180,35 @@
         <p>What moved: the partner introduction went out, and ListingLift stopped its active push. The page and checkout stay up.</p>
       </article>
 
+      <section class="objective-panel" id="objective-panel" aria-labelledby="objective-title">
+        <h2 id="objective-title" class="obj-title">Submit an objective</h2>
+        <p class="obj-lead">User Zero path (dogfood). Free text — no canned picker. Posts through the live Ask Worker. Durable <code>objective_id</code> = Worker <code>intent_id</code>.</p>
+        <form class="bar objective-bar" id="objective-form" autocomplete="off">
+          <label class="sr-only" for="objective-input">Objective for Eva</label>
+          <input id="objective-input" type="text" maxlength="220" placeholder="Your real objective (≤220 chars)" required>
+          <button type="submit" id="objective-submit">Submit objective</button>
+        </form>
+        <p class="ask-status" id="objective-status" aria-live="polite"></p>
+        <p class="quiet-truth">Not a DEMO. Eva will plan and assign real work. Guest rehearsal stays on <a href="/app/guest/mission/">/app/guest/mission/</a>.</p>
+      </section>
+
       <form class="bar" id="real-ask-form" autocomplete="off">
         <label class="sr-only" for="real-ask-input">Message Eva</label>
-        <input id="real-ask-input" type="text" maxlength="240" placeholder="Message Eva" required>
+        <input id="real-ask-input" type="text" maxlength="240" placeholder="Quick message (not an objective)" required>
         <button type="submit" id="ask-submit">Send</button>
       </form>
       <p class="ask-status" id="ask-status" aria-live="polite"></p>
       <p class="quiet-truth">I answer when I next work. I’m not waiting on this page.</p>
+
+      <section class="approve-panel" id="approve-panel" aria-labelledby="approve-title">
+        <h2 id="approve-title" class="obj-title">Consequential Approve</h2>
+        <div class="approve-card dogfood-approve" id="approve-card">
+          <p class="approve-title">Freeze gate · dogfood</p>
+          <p class="approve-idle" id="approve-idle">No consequential Approves waiting. Send · spend · publish stay frozen until Eva posts a packet here for you.</p>
+          <div id="approve-pending" hidden></div>
+          <p class="approve-note">This is the live dogfood gate (not the guest DEMO teach-card). Empty ≠ fake accepted.</p>
+        </div>
+      </section>
 
       <div class="turns" id="pending" aria-live="polite"></div>
       <div class="turns" id="threads" aria-live="polite"></div>

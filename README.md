@@ -2,6 +2,6 @@
 
 Static GitHub Pages site for Joinermill / EvaOS.
 
-**Current:** EvaOS V1.4 — OBJECTIVE-REHEARSAL (DEMO/REPLAY sample objective → dated SAMPLE evidence).
+**Current:** EvaOS V1.5 — USER-ZERO-REAL-LOOP dogfood prep (Objective intake on `/app/` · Approve freeze · Clerk deferred). Guest V1.4 DEMO/REPLAY preserved separate.
 
-See `VERSION`, `BUILD.md`, and `architecture/evaos/operating/cycles/OBJECTIVE_LOOP_NEXT_20261001.md`.
+See `VERSION`, `BUILD.md`, and `architecture/evaos/operating/cycles/USER_ZERO_LOOP_20261001.md`.

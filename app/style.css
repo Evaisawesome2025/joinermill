@@ -662,3 +662,111 @@ a:visited {
 .honesty-nonclaims { color: var(--muted); font-size: 0.9rem; }
 .honesty-links { font-size: 0.9rem; }
 .honesty-links a { color: var(--brass); }
+
+/* EvaOS V1.5 — User Zero dogfood objective + Approve freeze */
+.objective-panel,
+.approve-panel {
+  margin: 0 0 1.25rem;
+  padding: 0.95rem 1rem 1.05rem;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--brass);
+  background: var(--sheet);
+}
+.obj-title {
+  margin: 0 0 0.4rem;
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+.obj-lead {
+  margin: 0 0 0.75rem;
+  font-size: 0.92rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.obj-lead code {
+  font-size: 0.85em;
+}
+.objective-bar {
+  margin-bottom: 0.35rem;
+}
+.obj-meta {
+  margin: 0 0 0.35rem;
+  font-size: 0.82rem;
+  color: var(--quiet);
+}
+.obj-meta .label {
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-right: 0.35rem;
+}
+.obj-meta code {
+  font-size: 0.85em;
+}
+.turn.objective .said {
+  border-left: 2px solid var(--brass);
+  padding-left: 0.55rem;
+}
+.approve-card.dogfood-approve {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+.approve-title {
+  margin: 0 0 0.4rem;
+  font-weight: 600;
+  font-size: 0.98rem;
+}
+.approve-idle,
+.approve-note {
+  margin: 0 0 0.55rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.45;
+}
+.approve-note {
+  margin-bottom: 0;
+  font-size: 0.85rem;
+}
+.approve-item {
+  margin: 0 0 0.85rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+}
+.approve-list {
+  margin: 0.45rem 0 0.65rem;
+  padding-left: 1.15rem;
+  font-size: 0.9rem;
+}
+.approve-item .cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+.approve-item .btn {
+  font: inherit;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--brass);
+  background: var(--brass);
+  color: #fffdf8;
+  cursor: pointer;
+}
+.approve-item .btn.ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--rule);
+}
+.approve-item .btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+.approve-item .hint {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--quiet);
+}

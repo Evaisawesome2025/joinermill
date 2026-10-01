@@ -1,4 +1,4 @@
-/* EvaOS V0.7 — honesty + dogfood Ask. Real send with access code only. No secrets. */
+/* EvaOS V1.5 — dogfood Ask + Objective intake. Access code only. No secrets. Clerk deferred. */
 (function () {
   "use strict";
 
@@ -137,8 +137,21 @@
     } else {
       var html = "";
       list.forEach(function (p) {
+        var meta = "";
+        if (p.kind === "objective") {
+          meta =
+            '<p class="obj-meta"><span class="label">OBJECTIVE</span> id <code>' +
+            esc((p.intent_id || "").slice(0, 16)) +
+            (p.intent_id && p.intent_id.length > 16 ? "…" : "") +
+            "</code>" +
+            (p.submitted_ct ? " · " + esc(p.submitted_ct) : "") +
+            "</p>";
+        }
         html +=
-          '<article class="turn mine">' +
+          '<article class="turn mine' +
+          (p.kind === "objective" ? " objective" : "") +
+          '">' +
+          meta +
           '<p class="said">' +
           esc(p.question || "") +
           "</p>" +
@@ -151,6 +164,7 @@
       root.innerHTML = html;
     }
     renderOrg(lastOutbox, false);
+    renderApprove(lastOutbox);
   }
 
   function upsertPending(entry) {
@@ -248,6 +262,7 @@
     renderPending();
     renderThreads(all);
     renderOrg(data, false);
+    renderApprove(data);
     syncStatus(repliedNow);
   }
 
@@ -337,6 +352,110 @@
       else if (statuses[role.id] === "watching") parts.push(role.name + " is watching.");
     });
     summary.textContent = parts.length ? parts.join(" ") : "Idle. No one is mid-task.";
+  }
+
+
+  function setObjectiveStatus(text, cls) {
+    var el = document.getElementById("objective-status");
+    if (!el) return;
+    el.textContent = text || "";
+    el.className = "ask-status" + (cls ? " " + cls : "");
+  }
+
+  function nowCtStamp() {
+    try {
+      return new Intl.DateTimeFormat("en-CA", {
+        timeZone: "America/Chicago",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      })
+        .format(new Date())
+        .replace(", ", "T") + "-05:00";
+    } catch (e) {
+      return new Date().toISOString();
+    }
+  }
+
+  function renderApprove(data) {
+    var idle = document.getElementById("approve-idle");
+    var pending = document.getElementById("approve-pending");
+    if (!idle || !pending) return;
+    var packets = (data && data.approves) || [];
+    if (!Array.isArray(packets)) packets = [];
+    var open = packets.filter(function (a) {
+      return a && (a.status === "PENDING" || a.status === "waiting" || !a.status);
+    });
+    if (!open.length) {
+      idle.hidden = false;
+      pending.hidden = true;
+      pending.innerHTML = "";
+      return;
+    }
+    idle.hidden = true;
+    pending.hidden = false;
+    var html = "";
+    open.forEach(function (a) {
+      html +=
+        '<article class="approve-item" data-approve-id="' +
+        esc(a.id || a.approve_id || "") +
+        '">' +
+        '<p class="approve-title">' +
+        esc(a.title || "Consequential action") +
+        "</p>" +
+        '<p class="muted">' +
+        esc(a.summary || a.body || "") +
+        "</p>" +
+        '<ul class="approve-list">' +
+        (Array.isArray(a.gates)
+          ? a.gates
+              .map(function (g) {
+                return "<li>" + esc(g) + "</li>";
+              })
+              .join("")
+          : "<li>Send · spend · publish — frozen until Approve</li>") +
+        "</ul>" +
+        '<p class="cta-actions">' +
+        '<button type="button" class="btn approve-accept" data-approve-id="' +
+        esc(a.id || a.approve_id || "") +
+        '">Approve</button>' +
+        '<button type="button" class="btn ghost approve-reject" data-approve-id="' +
+        esc(a.id || a.approve_id || "") +
+        '">Reject</button>' +
+        "</p>" +
+        '<p class="hint">Dogfood gate. Decision is recorded locally until Eva wires durable Approve write-back.</p>' +
+        "</article>";
+    });
+    pending.innerHTML = html;
+  }
+
+  function postIntent(bodyText, opts) {
+    opts = opts || {};
+    var token = getToken();
+    if (!token) {
+      return Promise.resolve({ needToken: true });
+    }
+    return fetch(WORKER_URL.replace(/\/$/, "") + "/intent", {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ type: "ask", body: bodyText }),
+    }).then(function (r) {
+      return r.text().then(function (raw) {
+        var data = {};
+        try {
+          data = raw ? JSON.parse(raw) : {};
+        } catch (err) {
+          data = {};
+        }
+        return { ok: r.ok, data: data };
+      });
+    });
   }
 
   var pollTimer = null;
@@ -457,8 +576,106 @@
     });
   }
 
+
+  var objForm = document.getElementById("objective-form");
+  var objInput = document.getElementById("objective-input");
+  var objBtn = document.getElementById("objective-submit");
+  if (objForm && objInput) {
+    objForm.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var q = (objInput.value || "").trim();
+      if (!q) return;
+      if (q.length > 220) {
+        setObjectiveStatus("Keep the objective under 220 characters.", "failed");
+        return;
+      }
+      var token = getToken();
+      if (!token) {
+        setObjectiveStatus("Paste your access code first.", "failed");
+        var setup = document.getElementById("token-setup");
+        if (setup) {
+          setup.open = true;
+          var code = document.getElementById("owner-token-input");
+          if (code) code.focus();
+        }
+        return;
+      }
+      if (objBtn) objBtn.disabled = true;
+      var wireBody = "OBJECTIVE: " + q;
+      postIntent(wireBody)
+        .then(function (res) {
+          if (res.needToken) {
+            setObjectiveStatus("Paste your access code first.", "failed");
+            return;
+          }
+          if (!res.ok || !res.data || res.data.status === "FAILED") {
+            var code = (res.data && res.data.error) || "request_failed";
+            setObjectiveStatus(friendlyAskError(code), "failed");
+            upsertPending({
+              intent_id: (res.data && res.data.intent_id) || "local-" + Date.now(),
+              question: q,
+              status: "FAILED",
+              error: String(code),
+              kind: "objective",
+              submitted_ct: nowCtStamp(),
+            });
+            return;
+          }
+          objInput.value = "";
+          setObjectiveStatus(
+            "Objective accepted · id " + ((res.data.intent_id || "").slice(0, 12) || "pending") + "…",
+            "got"
+          );
+          upsertPending({
+            intent_id: res.data.intent_id || "local-" + Date.now(),
+            question: q,
+            status: "SENT",
+            kind: "objective",
+            submitted_ct: nowCtStamp(),
+          });
+          pollOutbox();
+        })
+        .catch(function () {
+          var code = "network_or_worker_unreachable";
+          setObjectiveStatus(friendlyAskError(code), "failed");
+          upsertPending({
+            intent_id: "local-" + Date.now(),
+            question: q,
+            status: "FAILED",
+            error: code,
+            kind: "objective",
+            submitted_ct: nowCtStamp(),
+          });
+        })
+        .finally(function () {
+          if (objBtn) objBtn.disabled = false;
+        });
+    });
+  }
+
+  /* Local record of Approve/Reject until durable write-back exists */
+  var approvePanel = document.getElementById("approve-pending");
+  if (approvePanel) {
+    approvePanel.addEventListener("click", function (e) {
+      var t = e.target;
+      if (!t || !t.getAttribute) return;
+      var id = t.getAttribute("data-approve-id");
+      if (!id) return;
+      if (t.classList.contains("approve-accept")) {
+        t.disabled = true;
+        t.textContent = "Approved (local record)";
+        setAskStatus("Approve recorded locally · Eva will execute only what you Approved.", "got");
+      } else if (t.classList.contains("approve-reject")) {
+        t.disabled = true;
+        t.textContent = "Rejected (local record)";
+        setAskStatus("Reject recorded locally · consequential action stays frozen.", "failed");
+      }
+    });
+  }
+
   renderPending();
   renderOrg(null, false);
+  renderApprove(null);
   syncStatus(false);
   pollOutbox();
 })();

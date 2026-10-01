@@ -1,19 +1,15 @@
 EvaOS / Joinermill site
-V1.4.0
-label: Objective rehearsal (DEMO/REPLAY · ListingLift SAMPLE evidence)
+V1.5.0
+label: User Zero dogfood prep (Objective intake · Approve freeze · Clerk deferred)
 date: 2026-10-01
 host: joinermill.com (GitHub Pages)
-path: OBJECTIVE-REHEARSAL
+path: USER-ZERO-REAL-LOOP
 includes:
-  - /app/guest/mission/ — Understood → Plan → Evidence → Approve (precomputed)
-  - One canned objective button (ListingLift mug SAMPLE context)
-  - Evidence deep-link → /app/guest/sample/ (dated 2026-09-29)
-  - Approve freeze card disabled · not live
-  - Guest primary “Give Eva a sample objective”
-  - DEMO · REPLAY · not live Ask chrome
-  - V1.2/V1.3 light path preserved (nav≤3 · no Worker fetch)
-excludes (LATER / Approve-gated):
-  - Free-text objectives · live specialist dispatch
-  - Stranger Worker write · Clerk · waitlist · checkout
-  - Mill working theater · multi-objective catalog
-  - Fake busy seats / timers / rainbow progress
+  - /app/ — dogfood bearer Ask + free-text Objective submit (Worker intent_id)
+  - Consequential Approve freeze panel on dogfood (empty until packet)
+  - Guest DEMO/REPLAY preserved separate · not User Zero proof
+  - Signup shell still not-live · Clerk deferred (Atlas)
+excludes (LATER / gated):
+  - Clerk magic-link · stranger Worker write · waitlist · checkout
+  - Claiming User Zero success before Glen submits + NEW artifact PoW
+  - Mill busy theater · predetermined DEMO on dogfood

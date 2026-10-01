@@ -1,37 +1,37 @@
-# EvaOS V1.4 — Objective rehearsal (Joinermill)
+# EvaOS V1.5 — User Zero dogfood prep (Joinermill)
 
-**When:** 2026-10-01 ~17:56 CT  
-**Canon:** `ATLAS_OBJECTIVE_REHEARSAL_MUST_LATER_20261001.md` · OBJECTIVE-REHEARSAL  
-**Gates:** Gage CHALLENGE AUDIT-20261001-1755 (DEMO/REPLAY · dated SAMPLE · no Mill busy · buttons-only · Approve disabled · no Worker/Clerk/waitlist/checkout · one artifact)  
-**Ship class:** Honest loop rehearsal · $0 · **no** live agents · **no** stranger write
+**When:** 2026-10-01 ~18:08 CT  
+**Canon:** `ATLAS_USER_ZERO_REAL_LOOP_MUST_LATER_20261001.md` · USER-ZERO-REAL-LOOP  
+**Gage:** AUDIT-20261001-1806 path **(B)** dogfood Glen-as-UZ · Bug gate 1–13 required before Glen submit cue / clean claim  
+**Ship class:** Dogfood wire · $0 · Clerk **deferred** · **not** User Zero success claim
 
-**Live:** https://joinermill.com/ · `/#trust` · `/app/guest/` · `/app/guest/mission/` · `/app/guest/sample/`
+**Live:** https://joinermill.com/app/ · Worker https://evaos-v05-ask.joinermill-ask.workers.dev/health
 
 ## MUST (this ship)
 
 | Item | Done means |
 |------|------------|
-| Entry | Guest primary “Give Eva a sample objective” → `/app/guest/mission/` |
-| One objective | Buttons only · ListingLift mug SAMPLE context · SAMPLE·precomputed·not sent·not live job |
-| Stage rail | Understood → Plan → Evidence → Approve · all DEMO/REPLAY · no timers/fake seats |
-| Evidence | Deep-link existing `/app/guest/sample/` (2026-09-29) — not “just now” |
-| Approve | Disabled freeze card · teaches gate · no email · no Worker · no fake accepted |
-| Honesty | DEMO/REPLAY/not live Ask · Back to Trust · Mill idle |
+| Auth | Keep dogfood access-code / bearer · signup not-live |
+| Objective intake | Free-text on /app/ → Worker Ask with `OBJECTIVE:` prefix · durable intent_id + CT stamp in pending |
+| Approve freeze | Dogfood panel · idle until Eva posts `approves[]` in outbox · no fake accepted |
+| Guest separate | /app/guest/* remains DEMO/REPLAY · not User Zero PoW |
+| IdP | Clerk deferred · documented |
 
-## Gage challenge gates (confirm)
+## Honesty / non-claims
 
-- Label spine DEMO/REPLAY/not live Ask everywhere — YES  
-- Output = dated SAMPLE (V1.3) not “just now” — YES  
-- No Mill busy / rainbow / fake seats — YES  
-- Objective = buttons only, non-submit; Approve disabled — YES  
-- Preserve V1.2/V1.3; no fetch Ask/Clerk/waitlist/checkout — YES  
-- One artifact max → `/app/guest/sample/` — YES  
-- Honest next = map canned objective → existing SAMPLE — YES  
+- Claim class: **dogfood** (Glen) — not stranger-live  
+- User Zero **not** claimed until Glen submits a real objective and a **NEW** artifact exists this run  
+- Guest REPLAY / SAMPLE ≠ User Zero evidence  
+- Clerk / waitlist / checkout / stranger write still gated  
+- `paid_n=0`
 
-## LATER (not this cut)
+## Verified before ship
 
-Free-text · live dispatch · stranger write · Clerk · waitlist · checkout · Mill theater · multi-objective catalog
+- Worker /health `write_enabled:true`
+- Unauthorized POST → 401
+- CORS Origin joinermill.com → 204
+- Authenticated SELFTEST 20261001-1808 → 201 SENT · GH #15 · process ANSWERED (ops outbox; selftest not product-pushed)
 
-## Non-claims
+## LATER
 
-REPLAY ≠ live org run · SAMPLE ≠ sent · ≠ your live job · Approve not live · no Clerk · waitlist not armed · `paid_n=0` · owner **Glen** only
+Clerk magic-link (free tier) when opening Owner beyond Glen · durable Approve write-back · longer objective body if Worker MAX_BODY raised
