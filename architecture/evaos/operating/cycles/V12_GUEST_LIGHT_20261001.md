@@ -12,5 +12,5 @@
 - **Unchanged:** Home stranger one-path (V1.1), Trust board structure, Founder/Godfather Glen bio, Mill/signup/Who bodies, waitlist not armed, no Clerk/checkout
 - **Guardrails:** No Hedstrom · no waitlist arm · no checkout · no fake busy · home nav still ≤4
 - **Version:** EvaOS V1.2.0
-- **Ship commit:** PENDING (filled after push)
+- **Ship commit:** `89699f0`
 - **Live PoW:** PENDING — verify `/app/guest/` light + home path still one Try
