@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accounts — Joinermill · EvaOS V0.9</title>
+  <meta name="description" content="How Joinermill accounts will work: guest preview, then email magic link verified before account exists. Not live yet.">
+  <meta name="evaos-version" content="0.9">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://joinermill.com/app/signup/">
+  <meta name="theme-color" content="#f3ecdf" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#161310" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="/fonts/fraunces-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/source-sans-3-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    .su { max-width: 40rem; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+    .su h1 { font-family: Fraunces, Georgia, serif; font-size: clamp(1.8rem, 4vw, 2.4rem); margin: 0 0 0.75rem; }
+    .su .kicker { margin: 0 0 0.35rem; font-size: 0.9rem; font-weight: 600; color: #6b3f22; }
+    .su .banner {
+      border: 1px solid #ddcfc0; border-left: 3px solid #6b3f22;
+      padding: 0.85rem 1rem; margin: 0 0 1.5rem; background: #fffcf7;
+      font-size: 0.95rem; line-height: 1.45;
+    }
+    @media (prefers-color-scheme: dark) {
+      .su .banner { background: #211c18; border-color: #3c342c; }
+      .su .kicker { color: #e2b07a; }
+    }
+    .su .steps { list-style: none; margin: 1.25rem 0; padding: 0; }
+    .su .steps li {
+      border: 1px solid #ddcfc0; padding: 1rem 1.1rem; margin: 0 0 0.65rem;
+      background: #fffcf7;
+    }
+    @media (prefers-color-scheme: dark) {
+      .su .steps li { background: #211c18; border-color: #3c342c; }
+    }
+    .su .steps .n { font-weight: 600; color: #6b3f22; font-size: 0.85rem; }
+    @media (prefers-color-scheme: dark) { .su .steps .n { color: #e2b07a; } }
+    .su .steps h2 { font-size: 1.1rem; margin: 0.2rem 0 0.35rem; font-family: Fraunces, Georgia, serif; }
+    .su .steps p { margin: 0; font-size: 0.95rem; }
+    .su fieldset {
+      border: 1px dashed #ddcfc0; padding: 1rem; margin: 1.25rem 0; opacity: 0.9;
+    }
+    .su fieldset legend { padding: 0 0.4rem; font-weight: 600; }
+    .su label { display: block; margin: 0.65rem 0 0.25rem; font-size: 0.9rem; }
+    .su input {
+      width: 100%; max-width: 28rem; padding: 0.5rem 0.65rem;
+      font: inherit; border: 1px solid #ddcfc0; background: #fffcf7; color: inherit;
+    }
+    .su button[disabled] {
+      margin-top: 0.85rem; padding: 0.55rem 1rem; font: inherit;
+      opacity: 0.55; cursor: not-allowed;
+    }
+    .su .gate { font-size: 0.9rem; color: #6a645a; margin-top: 0.75rem; }
+    @media (prefers-color-scheme: dark) { .su .gate { color: #a89f92; } }
+    .su nav { margin-bottom: 1.5rem; font-size: 0.95rem; }
+    .su nav a { margin-right: 1rem; font-weight: 600; }
+    .su .nonclaims { font-size: 0.9rem; margin-top: 1.5rem; }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <main id="main" class="su">
+    <nav aria-label="Site">
+      <a href="/">Joinermill</a>
+      <a href="/app/guest/">Guest preview</a>
+      <a href="/app/office/">Mill floor</a>
+      <a href="/app/">Dogfood</a>
+    </nav>
+
+    <p class="kicker">EvaOS V0.9 · Onboard shell</p>
+    <h1>How accounts will work</h1>
+
+    <p class="banner" role="status">
+      <strong>Accounts are not live yet.</strong>
+      This page explains the path. There is <strong>no</strong> Clerk signup, <strong>no</strong> email capture, and <strong>no</strong> account row created from this form.
+      Live magic-link create requires a separate owner Approve.
+    </p>
+
+    <p>Progressive trust — value before friction. You can try Eva as a guest first. An account appears only after your email is verified.</p>
+
+    <ol class="steps">
+      <li>
+        <p class="n">Step 1 · now</p>
+        <h2>Guest preview</h2>
+        <p>Open the <a href="/app/guest/">canned DEMO tour</a> — no access code, not live Ask, not your tenant.</p>
+      </li>
+      <li>
+        <p class="n">Step 2 · when Clerk is Approved</p>
+        <h2>Continue with email (magic link)</h2>
+        <p>Enter email → receive a magic link → <strong>click proves inbox</strong> → <strong>only then</strong> create Owner account + Workspace.</p>
+      </li>
+      <li>
+        <p class="n">Hard gate</p>
+        <h2>Email verified before account exists</h2>
+        <p>No password signup. No “confirm later” limbo. No GitHub login for customers. Unverified account rows are forbidden.</p>
+      </li>
+    </ol>
+
+    <fieldset disabled>
+      <legend>Continue with email — not live</legend>
+      <p>CTA disabled until Clerk magic-link is owner-Approved. Submissions are not accepted here.</p>
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" disabled>
+      <label for="name">Name (optional)</label>
+      <input id="name" name="name" type="text" maxlength="80" disabled>
+      <button type="button" disabled>Continue with email (magic link) — not live</button>
+      <p class="gate">When live: magic link verifies inbox <em>before</em> any Owner / Workspace row is created. No charge on this step.</p>
+    </fieldset>
+
+    <p class="nonclaims">
+      <strong>Not this page:</strong> live Clerk · waitlist capture (<a href="/app/waitlist/">interest page</a> also not collecting) · Worker stranger write · multi-tenant Ask.<br>
+      Owner dogfood with an access code: <a href="/app/">/app/</a>.
+    </p>
+  </main>
+</body>
+</html>

@@ -598,3 +598,24 @@ a.enter-secondary:focus-visible {
   font-size: 0.95rem;
   color: var(--muted, #6a645a);
 }
+
+/* V0.9 Mill floor home strip */
+.mill-home-card {
+  border: 1px solid var(--rule);
+  padding: 0.85rem 1rem 1rem;
+  background: #fffcf7;
+  margin-top: 0.75rem;
+}
+@media (prefers-color-scheme: dark) {
+  .mill-home-card { background: #211c18; }
+}
+.mill-home-svg {
+  display: block;
+  width: min(100%, 28rem);
+  height: auto;
+  margin-bottom: 0.65rem;
+  border: 1px solid var(--rule);
+}
+.mill-home-status { margin: 0 0 0.45rem; font-size: 0.95rem; }
+.mill-home-links { margin: 0; font-size: 0.95rem; }
+.mill-home-links a { font-weight: 600; }

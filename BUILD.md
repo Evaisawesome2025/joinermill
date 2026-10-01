@@ -1,39 +1,36 @@
-# EvaOS V0.8 — Atlas guest-try + Vera UX absorb (Joinermill)
+# EvaOS V0.9 — Mill floor + onboard shell (Joinermill)
 
-**When:** 2026-10-01 ~16:12 CT  
-**Canon:** `ATLAS_V08_SHIP_MUST_LATER_20261001.md` · `ABSORB_V08_SHIP_UX_20261001.md`  
-**Ship class:** Guest try (canned DEMO) + thin home CTA + pre-auth pricing honesty · $0 · **no** Worker stranger write · **no** public waitlist arm · **no** checkout  
-**Live home:** https://joinermill.com/ · `/app/` · `/app/guest/` · `/app/waitlist/`  
-**Deploy:** `Evaisawesome2025/joinermill` `main` → GitHub Pages
+**When:** 2026-10-01 ~16:16 CT  
+**Canon:** `ATLAS_V09_SHIP_MUST_LATER_20261001.md` · `OFFICE_VIEW_RECOMMENDATION.md` · Mira presence rules · `ONE_RECOMMENDATION_MULTI_OWNER_ACCOUNTS.md`  
+**Ship class:** Quiet Mill floor + account-model shell · $0 · **no** Clerk · **no** live email capture · **no** waitlist arm · **no** Worker stranger write · **no** decorative rainbow  
+
+**Live:** https://joinermill.com/ · `/app/office/` · `/app/signup/` · `/app/guest/` · `/app/waitlist/`  
 
 ## MUST (this ship)
 
 | Item | Done means |
 |------|------------|
-| Guest try-without-code | `/app/guest/` canned tour · DEMO labels · **no** Worker `fetch` |
-| Thin home CTAs | **Try Eva (preview)** → `/app/guest/` · **Open dogfood** → `/app/` |
-| Version stamp V0.8 | `meta evaos-version=0.8` on `/app`, `/app/guest`, `/waitlist`; kickers |
-| Pre-auth pricing honesty | Home `#pricing` — Founding Owner Seat intent $49/mo · named components · not for sale |
-| Freeze → named approver → hard spend cap | Guest dials + DEMO prompts (sandbox language only) |
-| North Star | First stranger dollar / honest zeros — not vanity counters |
-| Waitlist | Stays **not armed** (stamp bump only) |
-| PoW | curl HTTPS 200 + openssl SAN before claim live |
+| Mill floor | Quiet desk/window · idle=idle · ≤1 earned artifact · **reject** coffee/typing/fake busy |
+| Signup shell | Guest → Continue with email (magic link) · verify-before-account copy · CTA **not live** |
+| V0.9 stamp | `evaos-version=0.9` on surfaces |
+| Waitlist path | Canonical `/app/waitlist/` · root `/waitlist/` redirect (if staged) |
+| Preserve | Guest DEMO · waitlist honesty · pricing intent · no fake live Ask |
+
+## Approve-gated (not this cut)
+
+Clerk magic-link · live capture · Worker JWT stranger write · paid Clerk extras
 
 ## LATER
 
-| Item | Gate |
-|------|------|
-| Worker-backed stranger Ask | AUDITOR + isolation |
-| Armed waitlist / checkout / full B4 / Clerk | Owner Approves + existing gates |
-| Home redesign alone / activity theater | Reject near-term |
+Rainbow heartbeat until real org-activity feed · full B4 UI · checkout · multi-tenant Ask
 
 ## Non-claims
 
-Guest DEMO ≠ live Ask · waitlist not armed · Helm not for sale · FA-01 not PASS · continuous autonomy not sold · paid_n=0 · no governance-vs-competitors slogan.
+Accounts not live · waitlist not armed · Helm not for sale · continuous autonomy not sold · guest DEMO ≠ live Ask · no coffee theater.
 
+## Deploy note (waitlist root)
 
-## Deploy note (waitlist path)
+Actions `pages.yml` still stages `app/` but not root `waitlist/` (OAuth lacks `workflow` scope).
+Canonical: **`/app/waitlist/`**. Root redirect file exists in repo; apply stage line
+`cp -a ... app waitlist _site/` when workflow scope available (see prior PAGES_YML patch).
 
-Actions `pages.yml` stages `app/` but not root `waitlist/` (OAuth lacks `workflow` scope to patch).
-Live honesty waitlist: **`/app/waitlist/`**. Root `/waitlist/` may 404 until Glen applies:
-`cp ... app waitlist _site/` (see `PAGES_YML_WAITLIST_STAGE_PATCH_20261001.md`).

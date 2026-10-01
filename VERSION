@@ -1,18 +1,18 @@
 EvaOS / Joinermill site
-V0.8.0
-label: guest-try canned DEMO + pricing honesty
+V0.9.0
+label: mill-floor + onboard/signup shell (Clerk not live)
 date: 2026-10-01
 host: joinermill.com (GitHub Pages)
 includes:
-  - /app/guest/ canned tour (DEMO · no Worker)
-  - home Try Eva (preview) vs Open dogfood
-  - home #pricing Founding Owner Seat intent $49/mo
-  - guest freeze → named approver → hard spend cap language
-  - North Star: first stranger dollar
-  - version stamp V0.8
-  - /waitlist not-armed (stamp only)
-excludes (LATER):
-  - Worker stranger Ask
-  - armed waitlist / checkout
-  - full Authority Matrix UI
-  - Clerk
+  - /app/office/ Mill floor (idle · ≤1 earned artifact · no coffee theater)
+  - home #mill quiet strip
+  - /app/signup/ Guest → magic-link shell (CTA not live)
+  - V0.9 stamp · guest DEMO preserved
+  - /app/waitlist/ not-armed · root /waitlist/ → redirect
+  - pricing intent $49/mo unchanged
+excludes (LATER / Approve-gated):
+  - Clerk magic-link live
+  - live email / waitlist capture
+  - Worker stranger JWT / Ask
+  - rainbow heartbeat without real feed
+  - full Authority Matrix UI · checkout
