@@ -1,31 +1,32 @@
-# EvaOS V0.7 — Atlas honesty ship (Joinermill)
+# EvaOS V0.8 — Atlas guest-try + Vera UX absorb (Joinermill)
 
-**When:** 2026-10-01 ~16:15 CT  
-**Canon:** `ATLAS_VNEXT_SHIP_MUST_LATER_20261001.md`  
-**Ship class:** Honesty + discover/trust · $0 · no Worker edit · **no** public waitlist arm · **no** stranger Ask unlock  
-**Live home:** https://joinermill.com/ · https://joinermill.com/app/ · https://joinermill.com/waitlist/  
-**Deploy:** `Evaisawesome2025/joinermill` `main` → `.github/workflows/pages.yml`
+**When:** 2026-10-01 ~16:12 CT  
+**Canon:** `ATLAS_V08_SHIP_MUST_LATER_20261001.md` · `ABSORB_V08_SHIP_UX_20261001.md`  
+**Ship class:** Guest try (canned DEMO) + thin home CTA + pre-auth pricing honesty · $0 · **no** Worker stranger write · **no** public waitlist arm · **no** checkout  
+**Live home:** https://joinermill.com/ · `/app/` · `/app/guest/` · `/waitlist/`  
+**Deploy:** `Evaisawesome2025/joinermill` `main` → GitHub Pages
 
 ## MUST (this ship)
 
 | Item | Done means |
 |------|------------|
-| Version stamp V0.7 | `meta name="evaos-version" content="0.7"` on `/app` + `/waitlist`; kicker visible |
-| B4 honesty lite on `/app` | North-star + Dial-C hard stops + non-claims; Ask still behind access code |
-| `/waitlist/` honesty-not-armed | Static page; form disabled; **no** public POST / Worker / Sheet |
-| Marketing honesty | C3 dogfood CTA kept; note waitlist not collecting |
-| PoW | curl HTTPS 200 + openssl SAN match before claim live |
+| Guest try-without-code | `/app/guest/` canned tour · DEMO labels · **no** Worker `fetch` |
+| Thin home CTAs | **Try Eva (preview)** → `/app/guest/` · **Open dogfood** → `/app/` |
+| Version stamp V0.8 | `meta evaos-version=0.8` on `/app`, `/app/guest`, `/waitlist`; kickers |
+| Pre-auth pricing honesty | Home `#pricing` — Founding Owner Seat intent $49/mo · named components · not for sale |
+| Freeze → named approver → hard spend cap | Guest dials + DEMO prompts (sandbox language only) |
+| North Star | First stranger dollar / honest zeros — not vanity counters |
+| Waitlist | Stays **not armed** (stamp bump only) |
+| PoW | curl HTTPS 200 + openssl SAN before claim live |
 
 ## LATER
 
 | Item | Gate |
 |------|------|
-| Guest try-without-code (OVB-02 / BUILD #2) | Next build — not this ship |
-| Armed waitlist capture / email / invite | Glen Approve + OVB-12 |
-| Checkout / charge URL | Spend Approve + B3 + FA-01 |
-| Full B4 Authority Matrix UI | SURFACE GATED |
-| Clerk | OVB-04 deferred |
+| Worker-backed stranger Ask | AUDITOR + isolation |
+| Armed waitlist / checkout / full B4 / Clerk | Owner Approves + existing gates |
+| Home redesign alone / activity theater | Reject near-term |
 
 ## Non-claims
 
-Waitlist not armed · Helm not for sale · guest try not live · FA-01 not PASS · continuous autonomy not sold · paid_n=0.
+Guest DEMO ≠ live Ask · waitlist not armed · Helm not for sale · FA-01 not PASS · continuous autonomy not sold · paid_n=0 · no governance-vs-competitors slogan.

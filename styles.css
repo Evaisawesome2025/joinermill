@@ -290,6 +290,7 @@ section {
 
 #work,
 #who,
+#pricing,
 #contact {
   padding: 2.75rem 0;
 }
@@ -519,4 +520,81 @@ address {
   a {
     text-decoration: none;
   }
+}
+
+
+/* EvaOS V0.8 dual CTA */
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.35rem;
+  align-items: center;
+}
+.cta-row .enter {
+  margin-top: 0;
+}
+a.enter-secondary,
+a.enter-secondary:visited {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid var(--ink);
+}
+a.enter-secondary:hover,
+a.enter-secondary:focus-visible {
+  background: transparent;
+  border-color: var(--brass);
+  color: var(--brass);
+}
+@media (prefers-color-scheme: dark) {
+  a.enter-secondary:hover,
+  a.enter-secondary:focus-visible {
+    color: var(--brass);
+  }
+}
+
+
+/* EvaOS V0.8 pricing honesty */
+.price-card {
+  max-width: 38rem;
+  margin-top: 1rem;
+  padding: 1.15rem 1.25rem;
+  border: 1px solid var(--rule);
+  background: #fffcf7;
+}
+@media (prefers-color-scheme: dark) {
+  .price-card { background: #211c18; }
+}
+.price-name {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+.pill-inline {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.1rem 0.45rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted, #6a645a);
+  font-weight: 600;
+}
+.price-amount {
+  margin: 0.45rem 0 0.75rem;
+  font-family: var(--serif);
+  font-size: 1.65rem;
+  font-weight: 600;
+}
+.price-parts {
+  margin: 0 0 0.85rem;
+  padding-left: 1.15rem;
+}
+.price-parts li { margin: 0.35rem 0; }
+.price-status {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--muted, #6a645a);
 }

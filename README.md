@@ -1,13 +1,9 @@
 # Joinermill
 
-Public company site + EvaOS surface on **https://joinermill.com**.
+Public site + EvaOS dogfood workspace + guest DEMO preview.
 
-| Path | What |
-|------|------|
-| `/` | Marketing |
-| `/app/` | EvaOS **V0.7** dogfood workspace (Ask behind access code) |
-| `/waitlist/` | Helm founding interest — **honesty, not armed** (no public POST) |
-
-**Deploy:** push `main` → GitHub Actions `pages.yml` (stages `app/` + `waitlist/` + `CNAME`).
-
-See `BUILD.md` for V0.7 MUST / LATER.
+- **Live:** https://joinermill.com/
+- **Version:** EvaOS V0.8 — see `BUILD.md` / `VERSION`
+- **Guest try:** https://joinermill.com/app/guest/ (canned DEMO · not live Ask)
+- **Dogfood:** https://joinermill.com/app/ (access code)
+- **Waitlist:** https://joinermill.com/waitlist/ (**not armed**)
