@@ -24,6 +24,20 @@
 - `https://joinermill.com/waitlist/` not 404 (meta-refresh or 200 body → `/app/waitlist/`)
 - `https://joinermill.com/app/` still Objective submit (dogfood)
 
+## Verified live (2026-10-01 ~18:16 CT)
+
+| Check | Result |
+|-------|--------|
+| Tip SHA | `5a93413` |
+| `#trust` Proof | V1.5 ship `ad36cb4` present · enter-note EvaOS V1.5 |
+| `/waitlist/` | **HTTP 200** · meta-refresh → `/app/waitlist/` · not collecting |
+| `/app/` | 200 · Submit objective · Approve freeze · V1.5 dogfood |
+| Actions `Deploy GitHub Pages` | `disabled_manually` (legacy branch publish active) |
+
+## Side effect
+
+Legacy publish serves full repo root (incl. `architecture/`). Prefer re-enable Actions only after `pages.yml` stages `waitlist` (needs `workflow` OAuth scope).
+
 ## Re-audit
 
 Eva pings Gage with this note + live URLs + tip SHA of this fix commit.
