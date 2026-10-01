@@ -1,7 +1,7 @@
 # PoW — V1.5 User Zero dogfood prep
 
 **When:** 2026-10-01 ~18:08 CT  
-**SHA:** (filled after push)  
+**SHA:** ad36cb4  
 **Class:** dogfood wire · not User Zero success
 
 ## Evidence
