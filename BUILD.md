@@ -3,7 +3,7 @@
 **When:** 2026-10-01 ~16:12 CT  
 **Canon:** `ATLAS_V08_SHIP_MUST_LATER_20261001.md` · `ABSORB_V08_SHIP_UX_20261001.md`  
 **Ship class:** Guest try (canned DEMO) + thin home CTA + pre-auth pricing honesty · $0 · **no** Worker stranger write · **no** public waitlist arm · **no** checkout  
-**Live home:** https://joinermill.com/ · `/app/` · `/app/guest/` · `/waitlist/`  
+**Live home:** https://joinermill.com/ · `/app/` · `/app/guest/` · `/app/waitlist/`  
 **Deploy:** `Evaisawesome2025/joinermill` `main` → GitHub Pages
 
 ## MUST (this ship)
@@ -30,3 +30,10 @@
 ## Non-claims
 
 Guest DEMO ≠ live Ask · waitlist not armed · Helm not for sale · FA-01 not PASS · continuous autonomy not sold · paid_n=0 · no governance-vs-competitors slogan.
+
+
+## Deploy note (waitlist path)
+
+Actions `pages.yml` stages `app/` but not root `waitlist/` (OAuth lacks `workflow` scope to patch).
+Live honesty waitlist: **`/app/waitlist/`**. Root `/waitlist/` may 404 until Glen applies:
+`cp ... app waitlist _site/` (see `PAGES_YML_WAITLIST_STAGE_PATCH_20261001.md`).
