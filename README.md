@@ -1,8 +1,7 @@
-# Joinermill (public site)
+# joinermill.com (EvaOS public site)
 
-Static GitHub Pages site for joinermill.com.
+Static GitHub Pages site for Joinermill / EvaOS.
 
-**Current stamp:** EvaOS **V1.3** — GUEST-WORK-ARTIFACT  
-Guest try includes one inspectable SAMPLE work product (`/app/guest/sample/`).
+**Current:** EvaOS V1.4 — OBJECTIVE-REHEARSAL (DEMO/REPLAY sample objective → dated SAMPLE evidence).
 
-See `VERSION`, `BUILD.md`, and `architecture/evaos/operating/cycles/`.
+See `VERSION`, `BUILD.md`, and `architecture/evaos/operating/cycles/OBJECTIVE_LOOP_NEXT_20261001.md`.

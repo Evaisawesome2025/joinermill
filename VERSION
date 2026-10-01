@@ -1,19 +1,19 @@
 EvaOS / Joinermill site
-V1.3.0
-label: Guest work artifact (ListingLift SAMPLE · GramCeramics mug)
+V1.4.0
+label: Objective rehearsal (DEMO/REPLAY · ListingLift SAMPLE evidence)
 date: 2026-10-01
 host: joinermill.com (GitHub Pages)
-path: GUEST-WORK-ARTIFACT
+path: OBJECTIVE-REHEARSAL
 includes:
-  - One public SAMPLE deliverable page /app/guest/sample/
-  - Guest primary beat “Show me a real work sample” → DEMO + inspect artifact
-  - Provenance · SAMPLE · not sent · not your live job
-  - Trust evidence bullet → same URL
-  - V1.2 light path kept (DEMO · Back to Trust · nav≤3 · Approvals short)
-  - Home one-line experience pointer · no CTA densify
+  - /app/guest/mission/ — Understood → Plan → Evidence → Approve (precomputed)
+  - One canned objective button (ListingLift mug SAMPLE context)
+  - Evidence deep-link → /app/guest/sample/ (dated 2026-09-29)
+  - Approve freeze card disabled · not live
+  - Guest primary “Give Eva a sample objective”
+  - DEMO · REPLAY · not live Ask chrome
+  - V1.2/V1.3 light path preserved (nav≤3 · no Worker fetch)
 excludes (LATER / Approve-gated):
-  - Mill ≤1 PoW widget
-  - Outbox reader as primary experience
-  - Multi-artifact gallery · live Worker Ask · streaming theater
-  - Clerk magic-link · waitlist arm · checkout
-  - Stranger write · lead capture · pay
+  - Free-text objectives · live specialist dispatch
+  - Stranger Worker write · Clerk · waitlist · checkout
+  - Mill working theater · multi-objective catalog
+  - Fake busy seats / timers / rainbow progress

@@ -1,14 +1,25 @@
-/* EvaOS V1.3 — guest canned tour + work-sample beat. DEMO only. Never fetch Worker. No secrets. */
+/* EvaOS V1.4 — guest canned tour + objective rehearsal entry + work-sample. DEMO only. Never fetch Worker. No secrets. */
 (function () {
   "use strict";
 
   var SAMPLE_HREF = "/app/guest/sample/";
+  var MISSION_HREF = "/app/guest/mission/";
 
   var PROMPTS = [
     {
+      id: "mission",
+      label: "Give Eva a sample objective",
+      primary: true,
+      you: "Give Eva a sample objective so I can see how the org responds.",
+      demo:
+        "DEMO · REPLAY: One canned objective — improve a public handmade-mug Etsy listing title/tags. Precomputed stages (Understood → Plan → Evidence → Approve). Evidence is the dated SAMPLE from 2026-09-29 — not live Ask, not your live job, Mill stays idle.",
+      artifactHref: MISSION_HREF,
+      artifactLabel: "Open sample objective rehearsal"
+    },
+    {
       id: "sample",
       label: "Show me a real work sample",
-      primary: true,
+      primary: false,
       you: "Show me a real work sample Eva actually produced.",
       demo:
         "DEMO: One inspectable SAMPLE — ListingLift rewrite for a public GramCeramics pottery-mug listing (built 2026-09-29 from public Etsy copy). Not sent to the shop. Not your live job. Not live Ask.",
@@ -104,7 +115,7 @@
   }
 
   if (typeof window !== "undefined") {
-    window.EVAOS_GUEST_MODE = "canned-demo-v13-work-artifact";
+    window.EVAOS_GUEST_MODE = "canned-demo-v14-objective-rehearsal";
   }
 
   if (document.readyState === "loading") {

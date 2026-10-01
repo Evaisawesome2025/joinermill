@@ -1,25 +1,37 @@
-# EvaOS V1.3 — Guest work artifact (Joinermill)
+# EvaOS V1.4 — Objective rehearsal (Joinermill)
 
-**When:** 2026-10-01 ~17:46 CT  
-**Canon:** `ATLAS_GUEST_WORK_ARTIFACT_MUST_LATER_20261001.md` · GUEST-WORK-ARTIFACT  
-**Ship class:** One SAMPLE deliverable + one guest beat · $0 · **no** Clerk · **no** waitlist arm · **no** checkout · **no** Worker stranger write · **no** Mill PoW widget (LATER)
+**When:** 2026-10-01 ~17:56 CT  
+**Canon:** `ATLAS_OBJECTIVE_REHEARSAL_MUST_LATER_20261001.md` · OBJECTIVE-REHEARSAL  
+**Gates:** Gage CHALLENGE AUDIT-20261001-1755 (DEMO/REPLAY · dated SAMPLE · no Mill busy · buttons-only · Approve disabled · no Worker/Clerk/waitlist/checkout · one artifact)  
+**Ship class:** Honest loop rehearsal · $0 · **no** live agents · **no** stranger write
 
-**Live:** https://joinermill.com/ · `/#trust` · `/app/guest/` · `/app/guest/sample/`
+**Live:** https://joinermill.com/ · `/#trust` · `/app/guest/` · `/app/guest/mission/` · `/app/guest/sample/`
 
 ## MUST (this ship)
 
 | Item | Done means |
 |------|------------|
-| Artifact page | `/app/guest/sample/` renders ListingLift GramCeramics mug SAMPLE — date · what · SAMPLE·not sent·not your live job |
-| Guest beat | Primary prompt “Show me a real work sample” → DEMO framing + open/inspect artifact |
-| Light path | DEMO · not live Ask · Back to Trust · nav≤3 · Approvals stay short |
-| Provenance + Trust | Provenance on artifact · one Trust Proof bullet → same URL |
-| Stamp | EvaOS V1.3 |
+| Entry | Guest primary “Give Eva a sample objective” → `/app/guest/mission/` |
+| One objective | Buttons only · ListingLift mug SAMPLE context · SAMPLE·precomputed·not sent·not live job |
+| Stage rail | Understood → Plan → Evidence → Approve · all DEMO/REPLAY · no timers/fake seats |
+| Evidence | Deep-link existing `/app/guest/sample/` (2026-09-29) — not “just now” |
+| Approve | Disabled freeze card · teaches gate · no email · no Worker · no fake accepted |
+| Honesty | DEMO/REPLAY/not live Ask · Back to Trust · Mill idle |
+
+## Gage challenge gates (confirm)
+
+- Label spine DEMO/REPLAY/not live Ask everywhere — YES  
+- Output = dated SAMPLE (V1.3) not “just now” — YES  
+- No Mill busy / rainbow / fake seats — YES  
+- Objective = buttons only, non-submit; Approve disabled — YES  
+- Preserve V1.2/V1.3; no fetch Ask/Clerk/waitlist/checkout — YES  
+- One artifact max → `/app/guest/sample/` — YES  
+- Honest next = map canned objective → existing SAMPLE — YES  
 
 ## LATER (not this cut)
 
-Mill ≤1 PoW widget · outbox reader as primary · gallery · live Worker Ask · Clerk · waitlist · checkout · streaming theater · stranger write
+Free-text · live dispatch · stranger write · Clerk · waitlist · checkout · Mill theater · multi-objective catalog
 
 ## Non-claims
 
-SAMPLE ≠ sent to shop · ≠ your live job · ≠ live Ask · no rank/sales guarantee · accounts not live · waitlist not armed · Helm not for sale · `paid_n=0` · owner **Glen** only · no coffee theater
+REPLAY ≠ live org run · SAMPLE ≠ sent · ≠ your live job · Approve not live · no Clerk · waitlist not armed · `paid_n=0` · owner **Glen** only

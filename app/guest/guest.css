@@ -331,3 +331,97 @@ h2 {
   padding: 0.45rem 0.9rem;
 }
 .bubble.demo .demo-artifact a { text-decoration: none; }
+
+/* V1.4 OBJECTIVE-REHEARSAL */
+.mission-page .mission-pick { margin-top: 1.5rem; }
+.mission-meta { margin: 0.75rem 0 0; }
+.mission-rail {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+.rail-steps {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+.rail-step {
+  border: 1px solid var(--rule);
+  background: var(--sheet);
+  padding: 0.95rem 1.05rem;
+}
+.rail-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+  margin-bottom: 0.55rem;
+}
+.rail-head h3 {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 1.05rem;
+}
+.rail-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 999px;
+  border: 1px solid var(--brass);
+  color: var(--brass);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+.rail-body p { margin: 0 0 0.55rem; }
+.rail-body p:last-child { margin-bottom: 0; }
+.plan-line { font-size: 0.98rem; }
+.plan-notes {
+  margin: 0.35rem 0 0;
+  padding-left: 1.15rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+.plan-notes li { margin: 0.3rem 0; }
+.approve-card {
+  border: 1px dashed var(--rule);
+  padding: 0.85rem 1rem;
+  background: var(--paper);
+}
+.approve-title {
+  margin: 0 0 0.4rem;
+  font-weight: 600;
+}
+.approve-list {
+  margin: 0.5rem 0 0.85rem;
+  padding-left: 1.15rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+.btn.approve-disabled,
+button.approve-disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background: var(--quiet);
+  color: var(--paper);
+  border: none;
+}
+.btn.approve-disabled:hover,
+button.approve-disabled:hover {
+  background: var(--quiet);
+  color: var(--paper);
+  border: none;
+}
+.btn.ghost {
+  border: 1px solid var(--rule);
+  color: var(--ink);
+  background: transparent;
+}
+.btn.ghost:hover, .btn.ghost:focus-visible {
+  border-color: var(--brass);
+  color: var(--brass);
+  background: transparent;
+}
