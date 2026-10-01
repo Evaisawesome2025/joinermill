@@ -18,6 +18,6 @@
 - Guest: https://joinermill.com/app/guest/
 - Sample: https://joinermill.com/app/guest/sample/
 - Trust: https://joinermill.com/#trust
-- Ship SHA: PENDING
+- Ship SHA: `964ce6e`
 
 *— End V13_GUEST_WORK_ARTIFACT_20261001 —*

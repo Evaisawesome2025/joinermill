@@ -40,6 +40,11 @@ Ship **GUEST-WORK-ARTIFACT** (Atlas lock). One public SAMPLE deliverable strange
 
 Stranger finishes Try having **read a real Eva work product**, knows it was SAMPLE/canned path, and still sees honest zeros on Trust.
 
+## Ship
+
+- SHA: `964ce6e`
+- Sample: https://joinermill.com/app/guest/sample/
+
 ## Post-ship
 
 Gage should audit (Eva will ping). Stamp label V1.3 is ops chrome — content > number.
