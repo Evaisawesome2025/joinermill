@@ -7,3 +7,4 @@
 - **Version:** EvaOS V1.1 retained; this is a small copy patch.
 - **Ship commit:** `0ab96c246d6c698ab16b2fa4e6ecc90fa00e9ab3`
 - **Live PoW:** Verified 2026-10-01 17:32 CDT at `https://joinermill.com/`; Founder/Glen bio present and case-insensitive `Hedstrom` count is 0.
+- **Follow-up (2026-10-01 17:32 CDT):** Updated the role line to “Founder · The Godfather of the Mill”; bio, Glen-only privacy lock, and Eva Operator card unchanged.
