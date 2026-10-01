@@ -57,7 +57,7 @@ Stranger can pick one objective-shaped input and see org response shape + dated 
 
 ## Ship
 
-- SHA: _(filled after commit)_
+- SHA: `05a2636`
 - Mission: https://joinermill.com/app/guest/mission/
 - Evidence: https://joinermill.com/app/guest/sample/
 
