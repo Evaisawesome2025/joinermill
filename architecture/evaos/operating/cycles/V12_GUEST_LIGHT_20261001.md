@@ -13,4 +13,4 @@
 - **Guardrails:** No Hedstrom · no waitlist arm · no checkout · no fake busy · home nav still ≤4
 - **Version:** EvaOS V1.2.0
 - **Ship commit:** `89699f0`
-- **Live PoW:** PENDING — verify `/app/guest/` light + home path still one Try
+- **Live PoW:** Verified 2026-10-01 ~17:37 CT at `https://joinermill.com/app/guest/` — V1.2 stamp, nav≤3, Approvals collapsed, Back to Trust; home `https://joinermill.com/` still one Try · nav≤4 · Founder Glen · ship `89699f0` on Trust · Hedstrom=0
