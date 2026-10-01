@@ -1,18 +1,19 @@
 EvaOS / Joinermill site
-V0.9.0
-label: mill-floor + onboard/signup shell (Clerk not live)
+V1.0.0
+label: Trust / PoW board (works · doesn’t · dated evidence)
 date: 2026-10-01
 host: joinermill.com (GitHub Pages)
+path: V1.0-TRUST-POW-BOARD
 includes:
-  - /app/office/ Mill floor (idle · ≤1 earned artifact · no coffee theater)
-  - home #mill quiet strip
-  - /app/signup/ Guest → magic-link shell (CTA not live)
-  - V0.9 stamp · guest DEMO preserved
-  - /app/waitlist/ not-armed · root /waitlist/ → redirect
-  - pricing intent $49/mo unchanged
+  - /#trust public Trust / PoW board
+  - paid_n=0 honest scoreboard line
+  - ≤1 earned Mill artifact when idle
+  - journey stitch secondary (guest · Mill · signup shell)
+  - V1.0 stamp on home + /app + guest/office/signup/waitlist chrome
+  - guest DEMO · Mill idle · accounts shell preserved
 excludes (LATER / Approve-gated):
   - Clerk magic-link live
   - live email / waitlist capture
   - Worker stranger JWT / Ask
   - rainbow heartbeat without real feed
-  - full Authority Matrix UI · checkout
+  - checkout / fake Create Account

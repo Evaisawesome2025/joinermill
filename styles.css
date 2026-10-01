@@ -619,3 +619,71 @@ a.enter-secondary:focus-visible {
 .mill-home-status { margin: 0 0 0.45rem; font-size: 0.95rem; }
 .mill-home-links { margin: 0; font-size: 0.95rem; }
 .mill-home-links a { font-weight: 600; }
+
+/* EvaOS V1.0 Trust / PoW board */
+.trust-board {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) {
+  .trust-board {
+    grid-template-columns: 1fr 1fr;
+  }
+  .trust-evidence {
+    grid-column: 1 / -1;
+  }
+}
+.trust-col,
+.trust-evidence {
+  border: 1px solid var(--rule);
+  padding: 1rem 1.15rem;
+  background: #fffcf7;
+}
+@media (prefers-color-scheme: dark) {
+  .trust-col,
+  .trust-evidence { background: #211c18; }
+}
+.trust-col h3,
+.trust-evidence h3 {
+  margin: 0 0 0.55rem;
+  font-size: 1.05rem;
+  font-family: var(--serif);
+}
+.trust-col ul,
+.trust-evidence ul {
+  margin: 0;
+  padding-left: 1.15rem;
+}
+.trust-col li,
+.trust-evidence li {
+  margin: 0.35rem 0;
+  font-size: 0.95rem;
+}
+.trust-col.works h3 { color: #6b3f22; }
+@media (prefers-color-scheme: dark) {
+  .trust-col.works h3 { color: #e2b07a; }
+}
+.trust-metric {
+  margin: 0.75rem 0 0;
+  font-size: 0.95rem;
+}
+.trust-metric strong { font-variant-numeric: tabular-nums; }
+.journey-stitch {
+  margin: 1.1rem 0 0;
+  padding: 0.85rem 1rem;
+  border: 1px dashed var(--rule);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.journey-stitch a { font-weight: 600; }
+.journey-stitch .path-label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--muted, #6a645a);
+}
