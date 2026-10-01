@@ -57,7 +57,7 @@ Stranger can pick one objective-shaped input and see org response shape + dated 
 
 ## Ship
 
-- SHA: `05a2636`
+- SHA: `05a2636` (content) · tip `010a075` (Trust/PoW stamp)
 - Mission: https://joinermill.com/app/guest/mission/
 - Evidence: https://joinermill.com/app/guest/sample/
 
