@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Guest preview — EvaOS · Joinermill</title>
   <meta name="description" content="Read-only guest preview of EvaOS / Helm. Sandboxed demo — no access code, no production writes.">
-  <meta name="evaos-version" content="1.1">
+  <meta name="evaos-version" content="1.2">
   <meta name="robots" content="index,follow">
   <link rel="canonical" href="https://joinermill.com/app/guest/">
   <meta name="theme-color" content="#f3ecdf" media="(prefers-color-scheme: light)">
@@ -19,7 +19,7 @@
   <link rel="preload" href="/fonts/source-sans-3-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/app/guest/guest.css">
 </head>
-<body data-evaos-mode="guest-preview" data-evaos-version="1.1">
+<body data-evaos-mode="guest-preview" data-evaos-version="1.2">
   <a class="skip" href="#tour">Skip to tour</a>
 
   <div class="honesty-banner" role="status">
@@ -37,12 +37,11 @@
         </svg>
         <span>Joinermill</span>
       </a>
-      <p class="ws-kicker">Guest preview · V1.1</p>
+      <p class="ws-kicker">Guest preview · V1.2</p>
       <nav class="header-nav" aria-label="Guest">
-        <a href="/#trust">Trust board</a>
+        <a href="/#trust">Trust</a>
         <a href="/">Public site</a>
-        <a href="/app/office/">Mill</a>
-        <a href="/app/">Owner workspace</a>
+        <a href="mailto:hello@joinermill.com">Contact</a>
       </nav>
     </div>
   </header>
@@ -50,17 +49,15 @@
   <main class="guest" id="tour">
     <section class="hero-block" aria-labelledby="guest-title">
       <p class="pill">Try without access code</p>
-      <h1 id="guest-title">What EvaOS / Helm does</h1>
+      <h1 id="guest-title">What Eva does</h1>
       <p class="lede">
-        You set objectives and Approves. Eva researches, drafts, and operates
-        <em>inside</em> those gates. This page is a <strong>read-only tour</strong>
-        so a stranger can feel the product before any account or code.
+        You set the goals and Approves. Eva does the daily work inside those gates.
+        This page is a short read-only tour — not a live account.
       </p>
       <ul class="promise-list">
-        <li><strong>North Star:</strong> progress toward <em>first stranger dollar</em> with honest zeros — not vanity company counts</li>
-        <li><strong>Discover → Validate → Launch → Run</strong> — four stations under owner supervision</li>
-        <li><strong>Consequential freeze:</strong> send / spend / publish stop until a <em>named</em> owner Approves</li>
-        <li><strong>Hard spend cap:</strong> when a cap is set, work that would burn past it pauses — owner override explicit</li>
+        <li>Aim: first real customer cash, with honest zeros</li>
+        <li>Send, spend, and publish wait for your named Approve</li>
+        <li>Spend caps pause burn until you override</li>
       </ul>
     </section>
 
@@ -68,7 +65,7 @@
       <h2 id="tour-title">Canned tour</h2>
       <p class="muted">
         Pick a sample question. Replies are <strong>pre-written demo copy</strong>
-        stored in this page — Eva is not chatting live, and nothing is sent to the Worker.
+        on this page — Eva is not chatting live, and nothing is sent to the Worker.
       </p>
       <div class="prompts" id="tour-prompts" role="group" aria-label="Sample questions"></div>
       <div class="stage" id="tour-stage" aria-live="polite">
@@ -80,60 +77,12 @@
     </section>
 
     <section class="authority-block" aria-labelledby="auth-title">
-      <h2 id="auth-title">Approvals boundaries</h2>
-      <p class="muted">
-        Founding-seat packaging (plain language). Autonomy is not a blank check.
-      </p>
-      <div class="dials">
-        <article class="dial dial-stop">
-          <h3>1 · Consequential freeze</h3>
-          <p>Send, spend, publish/deploy, and binding price/strategy <strong>freeze</strong> until someone says yes. Demo rule: freeze is the default.</p>
-        </article>
-        <article class="dial dial-stop">
-          <h3>2 · Named approver</h3>
-          <p>The Approver is a <strong>named owner</strong> (you), not “the system.” Eva does not self-approve money, mail, or public ship.</p>
-        </article>
-        <article class="dial dial-stop">
-          <h3>3 · Hard spend cap</h3>
-          <p>When a spend cap is set, work that would cross it <strong>pauses</strong>. Soft warn first; hard stop at 100%. Override is explicit and yours.</p>
-        </article>
-      </div>
-      <div class="dials" style="margin-top:0.75rem">
-        <article class="dial">
-          <h3>Eva handles (inside gates)</h3>
-          <p>Research, drafts, internal notes, private prototypes, experiments you already Approved within caps.</p>
-        </article>
-        <article class="dial">
-          <h3>You are notified</h3>
-          <p>Priority jumps, material deviations, workflow failures — Eva keeps working unless you intervene.</p>
-        </article>
-        <article class="dial">
-          <h3>Pricing intent (pre-auth)</h3>
-          <p>Founding Owner Seat intended <strong>$49/mo or $490/yr</strong>. Not for sale on this page. No checkout URL.</p>
-        </article>
-      </div>
-      <div class="may-grid">
-        <div>
-          <h3>Owner may authorize</h3>
-          <ul>
-            <li>Objectives and success metrics for their seat</li>
-            <li>Named Approves with Max $ and daily limits</li>
-            <li>Pause / park / kill experiments they Approved</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Owner may <em>not</em> authorize</h3>
-          <ul>
-            <li>“Run the company while I sleep with no Approves”</li>
-            <li>Eva holding payment credentials</li>
-            <li>Open stranger write to the live dogfood Worker</li>
-            <li>Waitlist capture as auto-email / charge funnel</li>
-          </ul>
-        </div>
-      </div>
-      <p class="payment-note">
-        <strong>Payment handoff:</strong> Eva fills every safe non-payment field and stops at the pay wall.
-        <strong>You</strong> authorize the charge. Eva never stores your card.
+      <h2 id="auth-title">Approvals (short)</h2>
+      <p class="authority-note">
+        Consequential acts freeze until a named owner Approves. Seat intent
+        <strong>$49/mo or $490/yr</strong> is on
+        <a href="/#pricing">Pricing</a> — not for sale here.
+        Full Trust board: <a href="/#trust">what works today</a>.
       </p>
     </section>
 
@@ -142,22 +91,25 @@
       <div class="cta-box">
         <p class="pill soon">Canned DEMO · not live Ask</p>
         <p>
-          You finished the preview. See what is real on the public site today — then decide if you want to talk to us.
+          You finished the preview. See what is real on the public site today.
         </p>
         <p class="cta-actions">
           <a class="btn" href="/#trust">Back to Trust</a>
         </p>
         <p class="muted">
-          Owner dogfood (access code): <a href="/app/">/app/</a>
-          · Questions → <a href="mailto:hello@joinermill.com">hello@joinermill.com</a>
+          Questions → <a href="mailto:hello@joinermill.com">hello@joinermill.com</a>
         </p>
       </div>
     </section>
 
     <footer class="guest-foot">
       <p>
-        EvaOS <strong>V1.1</strong> · stranger one-path · canned DEMO · not live Ask ·
+        EvaOS <strong>V1.2</strong> · guest light try · canned DEMO · not live Ask ·
         Joinermill © 2026 · operated by Eva under owner supervision
+      </p>
+      <p class="muted small">
+        Mill floor: <a href="/app/office/">/app/office/</a>
+        · Owner dogfood (access code): <a href="/app/">/app/</a>
       </p>
       <p class="muted small">
         Non-claims: not a live multi-tenant account · continuous autonomy not sold ·

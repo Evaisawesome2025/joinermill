@@ -1,21 +1,20 @@
-# EvaOS V1.1 — Stranger one-path (Joinermill)
+# EvaOS V1.2 — Guest light try (Joinermill)
 
-**When:** 2026-10-01 ~17:15 CT  
-**Canon:** `ATLAS_V11_SHIP_MUST_LATER_20261001.md` · Mira stranger promise · Market Readiness  
-**Ship class:** Path clarity only · $0 · **no** Clerk · **no** live email capture · **no** waitlist arm · **no** Worker stranger write · **no** decorative rainbow  
+**When:** 2026-10-01 ~17:34 CT  
+**Canon:** `ATLAS_V12_SHIP_MUST_LATER_20261001.md` · V1.2-GUEST-LIGHT  
+**Ship class:** Guest lighten only · $0 · **no** Clerk · **no** live email capture · **no** waitlist arm · **no** Worker stranger write · **no** home CTA re-densify
 
-**Live:** https://joinermill.com/ · `/#trust` · `/app/guest/`  
+**Live:** https://joinermill.com/ · `/#trust` · `/app/guest/`
 
 ## MUST (this ship)
 
 | Item | Done means |
 |------|------------|
-| One Try CTA | Hero primary → `/app/guest/` only; dogfood plain text |
-| Nav ≤4 | Trust · Try · Pricing · Contact |
-| Trust + journey | `#trust` kept; one journey line; Mill/Accounts from works only |
-| Mill home | Quiet visual + idle — no third CTA row |
-| Guest exit | Primary → `/#trust` · canned DEMO · not live Ask · V1.1 |
-| Mira promise | Who+what before features/roster/infra |
+| Guest primary | Canned tour only; Approvals / may-may-not / payment wall → one short paragraph + `/#trust` (seat $ via `/#pricing`) |
+| Guest nav ≤3 | Trust · Public site · Contact (mailto); Mill + Owner muted footer |
+| Promise light | ≤3 plain bullets · no EvaOS literacy dump |
+| Exit | One primary Back to Trust · canned DEMO · not live Ask · stamp V1.2 |
+| Home path | V1.1 stranger one-path kept · no CTA re-densify · Mill/signup/Who untouched |
 
 ## Approve-gated (not this cut)
 
@@ -23,7 +22,7 @@ Clerk magic-link · live capture · Worker JWT stranger write · checkout
 
 ## LATER
 
-Rainbow heartbeat until real feed · Mill/signup/pricing densify redesign · full B4 UI
+Full Authority Matrix · Mill world · live signup · pricing redesign · waitlist arm
 
 ## Non-claims
 

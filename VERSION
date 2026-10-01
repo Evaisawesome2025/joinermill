@@ -1,23 +1,21 @@
 EvaOS / Joinermill site
-V1.1.0
-label: Stranger one-path (one Try · nav≤4 · Trust journey)
+V1.2.0
+label: Guest light try (canned tour · nav≤3 · Approvals collapsed)
 date: 2026-10-01
 host: joinermill.com (GitHub Pages)
-path: V1.1-STRANGER-ONE-PATH
+path: V1.2-GUEST-LIGHT
 includes:
-  - Home hero: one primary Try Eva (preview) → /app/guest/
-  - Dogfood demoted to owner-only text (not equal CTA)
-  - Honesty note ≤2 short lines
-  - Nav ≤4: Trust · Try · Pricing · Contact
-  - #trust kept; one journey line; Mill/Accounts from works column only
-  - Mill home: quiet visual + idle status (no third CTA row)
-  - Guest exit primary → /#trust · canned DEMO · not live Ask
-  - Mira: one stranger promise (who+what) before features
-  - V1.1 stamp · owner name Glen only · paid_n=0
+  - Guest primary = canned tour only
+  - Approvals wall → one short paragraph + /#trust · seat $ via /#pricing
+  - Guest header nav ≤3: Trust · Public site · Contact (mailto)
+  - Mill + Owner /app/ muted footer only
+  - Promise ≤3 plain bullets · no EvaOS literacy dump
+  - One primary exit Back to Trust · canned DEMO · not live Ask
+  - Home V1.1 stranger path kept (no CTA re-densify)
+  - V1.2 stamp · owner name Glen only · paid_n=0
 excludes (LATER / Approve-gated):
   - Clerk magic-link live
   - live email / waitlist capture
   - Worker stranger JWT / Ask
-  - rainbow heartbeat without real feed
   - checkout / fake Create Account
-  - Mill+signup+pricing densify redesign
+  - full Authority Matrix · Mill world · live signup · pricing redesign

@@ -288,3 +288,30 @@ h2 {
   font-size: 0.9rem;
   color: var(--muted);
 }
+
+/* V1.2 guest-light: collapsed Approvals note */
+.authority-note {
+  margin: 0;
+  max-width: 40rem;
+  font-size: 1.02rem;
+  line-height: 1.5;
+}
+.authority-note a { font-weight: 600; }
+.header-nav { flex-wrap: wrap; }
+.btn {
+  background: var(--ink);
+  color: var(--paper);
+}
+.btn:hover, .btn:focus-visible {
+  background: var(--brass);
+  color: var(--paper);
+  border-color: var(--brass);
+}
+@media (prefers-color-scheme: dark) {
+  .btn:hover, .btn:focus-visible { color: #241c16; }
+}
+@media (max-width: 640px) {
+  .header-nav { gap: 0.65rem 1rem; margin-left: 0; width: 100%; }
+  .ws-bar { flex-wrap: wrap; }
+  .guest { padding: 1.35rem 1rem 3rem; }
+}
