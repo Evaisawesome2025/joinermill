@@ -634,3 +634,31 @@ a:visited {
     filter: none;
   }
 }
+
+
+/* EvaOS V0.7 B4 honesty lite */
+.honesty {
+  margin: 0 0 1.15rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--brass);
+  background: var(--sheet);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.honesty-kicker {
+  margin: 0 0 0.45rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--quiet);
+  font-weight: 600;
+}
+.honesty p { margin: 0 0 0.55rem; }
+.honesty p:last-child { margin-bottom: 0; }
+.honesty-gates { color: var(--ink); }
+.honesty-nonclaims { color: var(--muted); font-size: 0.9rem; }
+.honesty-links { font-size: 0.9rem; }
+.honesty-links a { color: var(--brass); }

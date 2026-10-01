@@ -1,4 +1,4 @@
-/* EvaOS V0.6 — one conversation. Real send, no invented replies. No secrets. */
+/* EvaOS V0.7 — honesty + dogfood Ask. Real send with access code only. No secrets. */
 (function () {
   "use strict";
 
