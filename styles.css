@@ -717,6 +717,11 @@ a.enter-secondary:focus-visible {
   line-height: 1.45;
 }
 
+.honesty-banner .pill-inline,
+.enter-note .pill-inline {
+  margin: 0 0.4rem 0.2rem 0;
+}
+
 .nonclaims {
   display: flex;
   flex-wrap: wrap;
