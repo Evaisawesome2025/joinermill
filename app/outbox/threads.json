@@ -1,7 +1,7 @@
 {
   "version": "1",
-  "updated_ct": "2026-10-02T08:26-05:00",
-  "note": "Public replies for the Joinermill workspace (owner threads only; selftests stay on ops outbox). Presence stays idle unless a real job is recorded. No secrets.",
+  "updated_ct": "2026-10-02T08:36-05:00",
+  "note": "Joinermill workspace outbox (owner threads only; selftests stay on ops). Terminal replies may include evidence[]. Presence idle unless a real job is recorded. Publisher flag remains default OFF \u2014 not auto-publish. No secrets.",
   "presence": [
     {
       "id": "eva",
@@ -96,5 +96,5 @@
       "kind": "owner"
     }
   ],
-  "updated": "2026-10-02T08:26-05:00"
+  "updated": "2026-10-02T08:36-05:00"
 }
