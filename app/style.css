@@ -656,6 +656,18 @@ a:visited {
   color: var(--quiet);
   font-weight: 600;
 }
+.honesty .pill-inline {
+  display: inline-block;
+  margin: 0 0.4rem 0.15rem 0;
+  padding: 0.1rem 0.45rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--quiet);
+  font-weight: 600;
+}
 .honesty p { margin: 0 0 0.55rem; }
 .honesty p:last-child { margin-bottom: 0; }
 .honesty-gates { color: var(--ink); }
