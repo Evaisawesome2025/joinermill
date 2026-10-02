@@ -1,15 +1,5 @@
 EvaOS / Joinermill site
-V1.5.0
-label: User Zero dogfood prep (Objective intake · Approve freeze · Clerk deferred)
-date: 2026-10-01
+V1.5.1
+public names: Joinermill (brand) · EvaOS (product) · Eva (operator)
+Helm: internal workspace / technical name — not primary public product name
 host: joinermill.com (GitHub Pages)
-path: USER-ZERO-REAL-LOOP
-includes:
-  - /app/ — dogfood bearer Ask + free-text Objective submit (Worker intent_id)
-  - Consequential Approve freeze panel on dogfood (empty until packet)
-  - Guest DEMO/REPLAY preserved separate · not User Zero proof
-  - Signup shell still not-live · Clerk deferred (Atlas)
-excludes (LATER / gated):
-  - Clerk magic-link · stranger Worker write · waitlist · checkout
-  - Claiming User Zero success before Glen submits + NEW artifact PoW
-  - Mill busy theater · predetermined DEMO on dogfood
