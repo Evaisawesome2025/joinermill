@@ -31,7 +31,8 @@ jobs:
       - name: Stage site
         run: |
           mkdir -p _site
-          cp -a index.html styles.css favicon.svg 404.html fonts .nojekyll CNAME app _site/
+          # founding and waitlist must be staged. Omitting them 404s those URLs if this workflow is re-enabled.
+          cp -a index.html styles.css favicon.svg 404.html fonts .nojekyll CNAME app waitlist founding _site/
       - name: Upload site
         uses: actions/upload-pages-artifact@v4
         with:
