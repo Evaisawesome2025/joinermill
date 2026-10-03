@@ -225,6 +225,43 @@ else:
 PY
 ```
 
+Command that reads result/synthetic/s0/STOP.txt and result/synthetic/s0/index.html and, when that file is exactly stop, clears the page:
+
+```sh
+python3 - << 'PY'
+from pathlib import Path
+import re
+page = Path("result/synthetic/s0/index.html")
+raw = Path("result/synthetic/s0/STOP.txt").read_text()
+if raw.endswith("\n"):
+    raw = raw[:-1]
+html = page.read_text()
+if raw == "stop":
+    subject = "None. This page has no subject."
+    quiet = "None. No feedback yet."
+    replacements = (
+        ("objective-title", "Objective", subject),
+        ("plan-title", "Plan", subject),
+        ("evidence-title", "Evidence", subject),
+        ("feedback-title", "Feedback", quiet),
+    )
+    updated = html
+    for heading_id, label, text in replacements:
+        updated, replaced = re.subn(
+            rf'(<h2 id="{heading_id}">{label}</h2>\s*<p>)[^<]*(</p>)',
+            lambda match, text=text: match.group(1) + text + match.group(2),
+            updated,
+            count=1,
+        )
+        if replaced != 1:
+            raise SystemExit("paragraph not cleared")
+    page.write_text(updated)
+    print("Cleared.")
+else:
+    print("Not cleared.")
+PY
+```
+
 Output:
 
 ```
@@ -234,6 +271,7 @@ Synthetic test only. Add one word and stop.
 Synthetic test only. Add one word and stop. stopped
 One word was added. The run stopped.
 Synthetic feedback only.
+Cleared.
 ```
 
 Stop. No send, no spend, no merge, no deploy, and no person.
