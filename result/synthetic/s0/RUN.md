@@ -65,4 +65,54 @@ print(output)
 PY
 ```
 
+Command that reads result/synthetic/s0/IN.txt and replaces the Objective paragraph in result/synthetic/s0/index.html:
+
+```sh
+python3 - << 'PY'
+from pathlib import Path
+import re
+page = Path("result/synthetic/s0/index.html")
+raw = Path("result/synthetic/s0/IN.txt").read_text()
+if raw.endswith("\n"):
+    raw = raw[:-1]
+if raw == "" or "\n" in raw:
+    raise SystemExit("IN.txt must be one line")
+html = page.read_text()
+objective = re.search(
+    r'<h2 id="objective-title">Objective</h2>\s*<p>([^<]*)</p>',
+    html,
+)
+plan = re.search(
+    r'<h2 id="plan-title">Plan</h2>\s*<p>([^<]*)</p>',
+    html,
+)
+evidence = re.search(
+    r'<h2 id="evidence-title">Evidence</h2>\s*<p>([^<]*)</p>',
+    html,
+)
+if objective is None or plan is None or evidence is None:
+    raise SystemExit("objective, plan, or evidence paragraph not found")
+updated, replaced = re.subn(
+    r'(<h2 id="objective-title">Objective</h2>\s*<p>)[^<]*(</p>)',
+    lambda match: match.group(1) + raw + match.group(2),
+    html,
+    count=1,
+)
+if replaced != 1:
+    raise SystemExit("objective paragraph not replaced")
+plan_after = re.search(
+    r'<h2 id="plan-title">Plan</h2>\s*<p>([^<]*)</p>',
+    updated,
+)
+evidence_after = re.search(
+    r'<h2 id="evidence-title">Evidence</h2>\s*<p>([^<]*)</p>',
+    updated,
+)
+if plan_after.group(1) != plan.group(1) or evidence_after.group(1) != evidence.group(1):
+    raise SystemExit("plan or evidence changed")
+page.write_text(updated)
+print(raw)
+PY
+```
+
 Stop. No send, no spend, no merge, no deploy, and no person.
