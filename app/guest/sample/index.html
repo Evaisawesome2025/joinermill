@@ -25,11 +25,12 @@
       background: var(--sheet);
       padding: 0.85rem 1rem;
       margin: 0 0 1.25rem;
-      font-size: 0.95rem;
+      font-size: 1.0625rem;
       line-height: 1.45;
+      color: var(--ink);
     }
     .sample-banner strong { display: block; margin-bottom: 0.25rem; }
-    .meta-row { color: var(--muted); font-size: 0.92rem; margin: 0 0 1rem; }
+    .meta-row { color: var(--ink); font-size: 1.0625rem; margin: 0 0 1rem; }
     .meta-row code { font-size: 0.88em; }
     .compare {
       display: grid;
@@ -45,10 +46,10 @@
       border: 1px solid var(--rule);
       background: var(--sheet);
     }
-    .compare h3 { margin: 0 0 0.45rem; font-size: 0.95rem; font-family: var(--sans); }
+    .compare h3 { margin: 0 0 0.45rem; font-size: 1.0625rem; font-family: var(--sans); color: var(--ink); }
     .compare p, .compare .title-text {
       margin: 0;
-      font-size: 0.92rem;
+      font-size: 1.0625rem;
       line-height: 1.45;
       color: var(--ink);
       word-break: break-word;
@@ -56,20 +57,20 @@
     .title-box {
       margin: 0.75rem 0 1.25rem;
       padding: 0.95rem 1.05rem;
-      border: 2px solid var(--brass);
+      border: 1px solid var(--brass);
       background: var(--sheet);
     }
     .title-box .label {
-      display: inline-block;
-      font-size: 0.75rem;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
+      display: block;
+      font-size: 1.0625rem;
+      letter-spacing: 0;
+      text-transform: none;
       font-weight: 600;
-      color: var(--brass);
+      color: var(--ink);
       margin-bottom: 0.35rem;
     }
     .title-box strong { display: block; font-size: 1.08rem; line-height: 1.4; }
-    .score-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; margin: 0.75rem 0 1.25rem; }
+    .score-table { width: 100%; border-collapse: collapse; font-size: 1.0625rem; margin: 0.75rem 0 1.25rem; color: var(--ink); }
     .score-table th, .score-table td {
       border: 1px solid var(--rule);
       padding: 0.45rem 0.55rem;
@@ -77,15 +78,15 @@
       vertical-align: top;
     }
     .score-table th { background: var(--sheet); font-weight: 600; }
-    .tag-list { margin: 0.5rem 0 1.25rem; padding-left: 1.15rem; color: var(--muted); font-size: 0.92rem; }
+    .tag-list { margin: 0.5rem 0 1.25rem; padding-left: 1.15rem; color: var(--ink); font-size: 1.0625rem; }
     .tag-list li { margin: 0.2rem 0; }
     .prov {
       margin: 1.5rem 0 1rem;
       padding: 0.85rem 1rem;
       border-left: 3px solid var(--brass);
       background: var(--sheet);
-      font-size: 0.92rem;
-      color: var(--muted);
+      font-size: 1.0625rem;
+      color: var(--ink);
     }
     .sample-actions { display: flex; flex-wrap: wrap; gap: 0.65rem; margin: 1.25rem 0 0; }
   </style>
@@ -94,7 +95,8 @@
   <a class="skip" href="#artifact">Skip to sample</a>
 
   <div class="honesty-banner" role="status">
-    <strong>Free labeled test · SAMPLE · not sent · not your live job.</strong>
+    <strong>Sample of a closed experiment.</strong> Not the free test.
+    SAMPLE · not sent · not your live job.
     Not a founding seat. Not a paid product.
     Public-data demo Eva produced — not live Ask · nothing is billed · shop was never contacted
   </div>
@@ -109,17 +111,17 @@
         </svg>
         <span>Joinermill</span>
       </a>
-      <p class="ws-kicker" data-path-class="free-labeled-test">Free labeled test · SAMPLE</p>
+      <p class="ws-kicker" data-path-class="free-labeled-test">Sample of a closed experiment</p>
       <nav class="header-nav" aria-label="Sample">
         <a href="/#trust">Trust</a>
-        <a href="/app/guest/">Guest try</a>
+        <a href="/app/guest/">Canned tour</a>
         <a href="/app/guest/mission/">Sample objective</a>
       </nav>
     </div>
   </header>
 
   <main class="sample-page" id="artifact" data-path-class="free-labeled-test">
-    <p class="pill">Free labeled test · SAMPLE</p>
+    <p class="pill">Canned tour · SAMPLE · not the free test</p>
     <h1>Red stoneware mug — listing rewrite</h1>
     <p class="meta-row">
       Dated <strong>2026-09-29</strong> · historical ListingLift Single ($39 intent · experiment now closed) ·
@@ -147,7 +149,7 @@
     <div class="title-box">
       <span class="label">Ready-to-paste title</span>
       <strong>Red Stoneware Pottery Mug 14oz — Handmade Ceramic Coffee Mug</strong>
-      <p class="muted" style="margin:0.45rem 0 0;font-size:0.9rem">12 words · color + material + item first · gift/occasion moved to tags · no sales guarantee</p>
+      <p class="muted" style="margin:0.45rem 0 0">12 words · color + material + item first · gift/occasion moved to tags · no sales guarantee</p>
     </div>
 
     <h2>Scorecard (craft judgment on public copy)</h2>
@@ -163,7 +165,7 @@
         <tr><td>Rubric (ListingLift /100)</td><td>~26/100</td><td>~88/100</td></tr>
       </tbody>
     </table>
-    <p class="muted" style="font-size:0.9rem;margin-top:-0.5rem">
+    <p class="muted" style="margin-top:0.35rem">
       Scores are craft judgments on public copy — <strong>not</strong> traffic predictions. We do not guarantee rank or sales.
     </p>
 
@@ -176,10 +178,10 @@
     </ul>
 
     <h2>Description hook (first ~160 chars)</h2>
-    <p style="font-size:1.02rem;line-height:1.45">
+    <p style="font-size:1.0625rem;line-height:1.45">
       Red stoneware pottery mug (14 oz) — a handmade ceramic coffee mug with a solid handle for everyday brewing.
     </p>
-    <p class="muted" style="font-size:0.9rem">
+    <p class="muted">
       Full rewrite, attribute checklist, FAQ, and 14-day measurement card lived in the internal SAMPLE packet —
       this page shows the inspectable core a stranger can judge.
     </p>
@@ -192,7 +194,7 @@
     </div>
 
     <p class="sample-actions">
-      <a class="btn" href="/app/guest/">Back to guest try</a>
+      <a class="btn" href="/app/guest/">Back to canned tour</a>
       <a class="btn ghost" href="/#trust">Back to Trust</a>
     </p>
 
