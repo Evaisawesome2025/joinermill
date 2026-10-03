@@ -729,8 +729,9 @@ a.enter-secondary:focus-visible {
 .trust-col h3,
 .trust-evidence h3 {
   margin: 0 0 0.55rem;
-  font-size: 1.05rem;
+  font-size: 1.0625rem;
   font-family: var(--serif);
+  color: var(--ink);
 }
 .trust-col ul,
 .trust-evidence ul {

@@ -56,7 +56,12 @@ body {
   font-size: 1.0625rem;
   line-height: 1.5;
 }
-a { color: var(--brass); }
+a {
+  color: var(--ink);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+  text-decoration-color: var(--brass);
+}
 .skip {
   position: absolute; left: -9999px;
 }
@@ -234,7 +239,7 @@ h2 {
   background: var(--sheet);
   padding: 0.85rem 1rem;
 }
-.dial h3 { margin: 0 0 0.35rem; font-size: 1rem; }
+.dial h3 { margin: 0 0 0.35rem; font-size: 1.0625rem; color: var(--ink); }
 .dial p { margin: 0; font-size: 1.0625rem; color: var(--ink); }
 .dial-stop { border-left: 3px solid var(--brass); }
 .may-grid {
@@ -245,7 +250,7 @@ h2 {
 @media (min-width: 640px) {
   .may-grid { grid-template-columns: 1fr 1fr; }
 }
-.may-grid h3 { margin: 0 0 0.4rem; font-size: 1rem; }
+.may-grid h3 { margin: 0 0 0.4rem; font-size: 1.0625rem; color: var(--ink); }
 .may-grid ul { margin: 0; padding-left: 1.15rem; color: var(--ink); font-size: 1.0625rem; }
 .payment-note {
   font-size: 1.0625rem;
@@ -299,8 +304,9 @@ h2 {
 .authority-note {
   margin: 0;
   max-width: 40rem;
-  font-size: 1.02rem;
+  font-size: 1.0625rem;
   line-height: 1.5;
+  color: var(--ink);
 }
 .authority-note a { font-weight: 600; }
 .header-nav { flex-wrap: wrap; }
@@ -371,7 +377,8 @@ h2 {
 .rail-head h3 {
   margin: 0;
   font-family: var(--sans);
-  font-size: 1.05rem;
+  font-size: 1.0625rem;
+  color: var(--ink);
 }
 .rail-num {
   display: inline-flex;
