@@ -186,6 +186,45 @@ else:
 PY
 ```
 
+Command that reads result/synthetic/s0/index.html and result/synthetic/s0/FEEDBACK.txt and, when Plan is exactly "One word was added. The run stopped.", writes the Feedback paragraph from that file:
+
+```sh
+python3 - << 'PY'
+from pathlib import Path
+import re
+page = Path("result/synthetic/s0/index.html")
+raw = Path("result/synthetic/s0/FEEDBACK.txt").read_text()
+if raw.endswith("\n"):
+    raw = raw[:-1]
+if raw == "" or "\n" in raw:
+    raise SystemExit("FEEDBACK.txt must be one line")
+html = page.read_text()
+plan = re.search(
+    r'<h2 id="plan-title">Plan</h2>\s*<p>([^<]*)</p>',
+    html,
+)
+feedback = re.search(
+    r'<h2 id="feedback-title">Feedback</h2>\s*<p>([^<]*)</p>',
+    html,
+)
+if plan is None or feedback is None:
+    raise SystemExit("plan or feedback paragraph not found")
+if plan.group(1) == "One word was added. The run stopped.":
+    updated, replaced = re.subn(
+        r'(<h2 id="feedback-title">Feedback</h2>\s*<p>)[^<]*(</p>)',
+        lambda match: match.group(1) + raw + match.group(2),
+        html,
+        count=1,
+    )
+    if replaced != 1:
+        raise SystemExit("feedback paragraph not replaced")
+    page.write_text(updated)
+    print(raw)
+else:
+    print(feedback.group(1))
+PY
+```
+
 Output:
 
 ```
@@ -194,6 +233,7 @@ Synthetic test only. Add one word and stop.
 8
 Synthetic test only. Add one word and stop. stopped
 One word was added. The run stopped.
+Synthetic feedback only.
 ```
 
 Stop. No send, no spend, no merge, no deploy, and no person.
