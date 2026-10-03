@@ -109,13 +109,6 @@ print(output)
 PY
 ```
 
-Output:
-
-```
-Synthetic test only. Add one word and stop.
-8
-```
-
 Command that reads the Objective paragraph in result/synthetic/s0/index.html and writes the Evidence paragraph as that text plus the word stopped:
 
 ```sh
@@ -156,6 +149,13 @@ if objective_after.group(1) != objective.group(1) or plan_after.group(1) != plan
 path.write_text(updated)
 print(output)
 PY
+```
+
+Output:
+
+```
+Synthetic test only. Add one word and stop.
+8
 ```
 
 Stop. No send, no spend, no merge, no deploy, and no person.
