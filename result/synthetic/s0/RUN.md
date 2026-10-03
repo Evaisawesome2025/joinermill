@@ -151,11 +151,49 @@ print(output)
 PY
 ```
 
+Command that reads result/synthetic/s0/index.html and, when Evidence ends with " stopped", replaces Plan and prints the new Plan sentence:
+
+```sh
+python3 - << 'PY'
+from pathlib import Path
+import re
+path = Path("result/synthetic/s0/index.html")
+html = path.read_text()
+evidence = re.search(
+    r'<h2 id="evidence-title">Evidence</h2>\s*<p>([^<]*)</p>',
+    html,
+)
+plan = re.search(
+    r'<h2 id="plan-title">Plan</h2>\s*<p>([^<]*)</p>',
+    html,
+)
+if evidence is None or plan is None:
+    raise SystemExit("evidence or plan paragraph not found")
+if evidence.group(1).endswith(" stopped"):
+    output = "One word was added. The run stopped."
+    updated, replaced = re.subn(
+        r'(<h2 id="plan-title">Plan</h2>\s*<p>)[^<]*(</p>)',
+        lambda match: match.group(1) + output + match.group(2),
+        html,
+        count=1,
+    )
+    if replaced != 1:
+        raise SystemExit("plan paragraph not replaced")
+    path.write_text(updated)
+    print(output)
+else:
+    print(plan.group(1))
+PY
+```
+
 Output:
 
 ```
+6
 Synthetic test only. Add one word and stop.
 8
+Synthetic test only. Add one word and stop. stopped
+One word was added. The run stopped.
 ```
 
 Stop. No send, no spend, no merge, no deploy, and no person.
