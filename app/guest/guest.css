@@ -53,9 +53,15 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--sans);
+  font-size: 1.0625rem;
   line-height: 1.5;
 }
-a { color: var(--brass); }
+a {
+  color: var(--ink);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+  text-decoration-color: var(--brass);
+}
 .skip {
   position: absolute; left: -9999px;
 }
@@ -65,8 +71,9 @@ a { color: var(--brass); }
   padding: 0.7rem 1.25rem;
   background: var(--sheet);
   border-bottom: 1px solid var(--rule);
-  border-left: 3px solid var(--brass);
-  font-size: 0.95rem;
+  border-left: 1px solid var(--brass);
+  font-size: 1.0625rem;
+  color: var(--ink);
 }
 
 .ws-header {
@@ -94,13 +101,13 @@ a { color: var(--brass); }
 .brand .mark .key { fill: var(--paper); stroke: var(--ink); stroke-width: 1.2; }
 .ws-kicker {
   margin: 0;
-  font-size: 0.85rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--quiet);
+  font-size: 1.0625rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
   font-weight: 600;
 }
-.header-nav { margin-left: auto; display: flex; gap: 1rem; font-size: 0.95rem; }
+.header-nav { margin-left: auto; display: flex; gap: 1rem; font-size: 1.0625rem; }
 .header-nav a { text-decoration: none; color: var(--ink); }
 .header-nav a:hover { color: var(--brass); }
 
@@ -117,18 +124,21 @@ a { color: var(--brass); }
 }
 .lede { font-size: 1.1rem; max-width: 40rem; }
 .pill {
-  display: inline-block;
-  margin: 0;
-  padding: 0.2rem 0.55rem;
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  font-size: 0.78rem;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  color: var(--quiet);
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 0.35rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  font-size: 1.0625rem;
+  line-height: 1.35;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
   font-weight: 600;
 }
-.pill.soon { border-color: var(--brass); color: var(--brass); }
+.pill.soon { color: var(--ink); }
 .promise-list { padding-left: 1.2rem; max-width: 40rem; }
 .promise-list li { margin: 0.4rem 0; }
 
@@ -142,8 +152,9 @@ h2 {
   font-size: 1.55rem;
   margin: 0 0 0.5rem;
 }
-.muted { color: var(--muted); }
-.muted.small { font-size: 0.88rem; }
+.muted { color: var(--ink); }
+.muted.small,
+.foot-note { font-size: 1.0625rem; color: var(--ink); }
 
 .prompts {
   display: flex;
@@ -153,7 +164,7 @@ h2 {
 }
 .prompt-btn {
   font: inherit;
-  font-size: 0.92rem;
+  font-size: 1.0625rem;
   padding: 0.45rem 0.75rem;
   border: 1px solid var(--rule);
   background: var(--sheet);
@@ -181,15 +192,15 @@ h2 {
   background: var(--sheet);
   border-radius: 0.35rem;
 }
-.stage-empty { margin: 0; color: var(--quiet); }
+.stage-empty { margin: 0; color: var(--ink); }
 .bubble { margin: 0 0 0.85rem; }
 .bubble:last-child { margin-bottom: 0; }
 .bubble .who {
   display: block;
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--quiet);
+  font-size: 1.0625rem;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
   font-weight: 600;
   margin-bottom: 0.2rem;
 }
@@ -201,18 +212,18 @@ h2 {
 }
 .tour-label {
   margin: 0.65rem 0 0;
-  font-size: 0.88rem;
-  color: var(--muted);
+  font-size: 1.0625rem;
+  color: var(--ink);
 }
 .tour-label .label {
-  display: inline-block;
-  margin-right: 0.35rem;
-  padding: 0.1rem 0.4rem;
-  border: 1px solid var(--brass);
-  color: var(--brass);
-  font-size: 0.72rem;
+  display: block;
+  margin: 0 0 0.15rem;
+  padding: 0;
+  border: 0;
+  color: var(--ink);
+  font-size: 1.0625rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0;
 }
 
 .dials {
@@ -228,8 +239,8 @@ h2 {
   background: var(--sheet);
   padding: 0.85rem 1rem;
 }
-.dial h3 { margin: 0 0 0.35rem; font-size: 1rem; }
-.dial p { margin: 0; font-size: 0.92rem; color: var(--muted); }
+.dial h3 { margin: 0 0 0.35rem; font-size: 1.0625rem; color: var(--ink); }
+.dial p { margin: 0; font-size: 1.0625rem; color: var(--ink); }
 .dial-stop { border-left: 3px solid var(--brass); }
 .may-grid {
   display: grid;
@@ -239,10 +250,10 @@ h2 {
 @media (min-width: 640px) {
   .may-grid { grid-template-columns: 1fr 1fr; }
 }
-.may-grid h3 { margin: 0 0 0.4rem; font-size: 1rem; }
-.may-grid ul { margin: 0; padding-left: 1.15rem; color: var(--muted); font-size: 0.92rem; }
+.may-grid h3 { margin: 0 0 0.4rem; font-size: 1.0625rem; color: var(--ink); }
+.may-grid ul { margin: 0; padding-left: 1.15rem; color: var(--ink); font-size: 1.0625rem; }
 .payment-note {
-  font-size: 0.95rem;
+  font-size: 1.0625rem;
   padding: 0.75rem 1rem;
   border: 1px dashed var(--rule);
   background: var(--sheet);
@@ -267,7 +278,7 @@ h2 {
   padding: 0.55rem 1rem;
   text-decoration: none;
   font-weight: 600;
-  font-size: 0.98rem;
+  font-size: 1.0625rem;
 }
 .btn.secondary {
   background: var(--ink);
@@ -278,23 +289,24 @@ h2 {
   color: var(--ink);
   background: transparent;
 }
-.btn.secondary:hover, .btn.ghost:hover { border-color: var(--brass); color: var(--brass); background: transparent; }
-.btn.secondary:hover { background: var(--brass); color: var(--paper); border-color: var(--brass); }
+.btn.secondary:hover, .btn.ghost:hover { border-color: var(--ink); color: var(--ink); background: transparent; }
+.btn.secondary:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 
 .guest-foot {
   margin-top: 2.5rem;
   padding-top: 1.25rem;
   border-top: 1px solid var(--rule);
-  font-size: 0.9rem;
-  color: var(--muted);
+  font-size: 1.0625rem;
+  color: var(--ink);
 }
 
 /* V1.2 guest-light: collapsed Approvals note */
 .authority-note {
   margin: 0;
   max-width: 40rem;
-  font-size: 1.02rem;
+  font-size: 1.0625rem;
   line-height: 1.5;
+  color: var(--ink);
 }
 .authority-note a { font-weight: 600; }
 .header-nav { flex-wrap: wrap; }
@@ -303,9 +315,12 @@ h2 {
   color: var(--paper);
 }
 .btn:hover, .btn:focus-visible {
-  background: var(--brass);
+  background: var(--ink);
   color: var(--paper);
-  border-color: var(--brass);
+  border-color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
 }
 @media (prefers-color-scheme: dark) {
   .btn:hover, .btn:focus-visible { color: #241c16; }
@@ -318,15 +333,15 @@ h2 {
 
 /* V1.3 GUEST-WORK-ARTIFACT */
 .prompt-btn.prompt-primary {
-  border-color: var(--brass);
+  border-color: var(--rule);
   font-weight: 600;
-  box-shadow: inset 0 0 0 1px var(--brass);
+  box-shadow: none;
 }
 .demo-artifact {
   margin: 0.75rem 0 0;
 }
 .demo-artifact .btn {
-  font-size: 0.92rem;
+  font-size: 1.0625rem;
   min-height: 40px;
   padding: 0.45rem 0.9rem;
 }
@@ -362,28 +377,29 @@ h2 {
 .rail-head h3 {
   margin: 0;
   font-family: var(--sans);
-  font-size: 1.05rem;
+  font-size: 1.0625rem;
+  color: var(--ink);
 }
 .rail-num {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 1.55rem;
-  height: 1.55rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 999px;
   border: 1px solid var(--brass);
-  color: var(--brass);
-  font-size: 0.8rem;
+  color: var(--ink);
+  font-size: 1.0625rem;
   font-weight: 700;
 }
 .rail-body p { margin: 0 0 0.55rem; }
 .rail-body p:last-child { margin-bottom: 0; }
-.plan-line { font-size: 0.98rem; }
+.plan-line { font-size: 1.0625rem; }
 .plan-notes {
   margin: 0.35rem 0 0;
   padding-left: 1.15rem;
-  color: var(--muted);
-  font-size: 0.92rem;
+  color: var(--ink);
+  font-size: 1.0625rem;
 }
 .plan-notes li { margin: 0.3rem 0; }
 .approve-card {
@@ -398,8 +414,8 @@ h2 {
 .approve-list {
   margin: 0.5rem 0 0.85rem;
   padding-left: 1.15rem;
-  color: var(--muted);
-  font-size: 0.92rem;
+  color: var(--ink);
+  font-size: 1.0625rem;
 }
 .btn.approve-disabled,
 button.approve-disabled {

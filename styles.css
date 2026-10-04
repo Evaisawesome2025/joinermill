@@ -67,7 +67,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   -webkit-text-size-adjust: 100%;
 }
 
@@ -208,7 +208,7 @@ nav a:focus-visible {
 h1 {
   margin: 0;
   font-size: clamp(2.8rem, 12vw, 6.6rem);
-  line-height: 0.9;
+  line-height: 1;
   letter-spacing: -0.04em;
 }
 
@@ -216,9 +216,9 @@ h1::after {
   content: "";
   display: block;
   width: 4.5rem;
-  height: 3px;
+  height: 1px;
   margin-top: 1rem;
-  background: var(--brass-bright);
+  background: var(--brass);
 }
 
 .hero-copy {
@@ -268,25 +268,36 @@ a.enter:visited {
 
 a.enter:hover,
 a.enter:focus-visible {
-  background: var(--brass);
+  background: var(--ink);
   color: var(--paper);
-}
-
-@media (prefers-color-scheme: dark) {
-  a.enter:hover,
-  a.enter:focus-visible {
-    color: #241c16;
-  }
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
 }
 
 .enter-note {
   margin: 0.85rem 0 0;
-  max-width: 28rem;
-  font-size: 0.95rem;
+  max-width: 36rem;
+  font-size: 1.0625rem;
   line-height: 1.45;
-  color: var(--muted, #6a645a);
+  color: var(--ink);
 }
-.enter-note a { font-weight: 600; }
+.enter-note .note-line,
+.enter-note .pill-inline {
+  display: block;
+}
+.enter-note .pill-inline {
+  margin: 0.75rem 0 0.15rem;
+}
+.enter-note .pill-inline:first-child {
+  margin-top: 0;
+}
+.name-key {
+  margin: 0.35rem 0 0;
+  font-size: 1.0625rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
 .cta-row .enter:only-child { margin-top: 0; }
 
 section {
@@ -330,11 +341,11 @@ h2 {
 .num {
   display: block;
   margin-bottom: 0.35rem;
-  font-size: 1rem;
+  font-size: 1.0625rem;
   font-weight: 500;
   font-style: italic;
   letter-spacing: 0.04em;
-  color: var(--brass);
+  color: var(--ink);
 }
 
 .stations p {
@@ -355,10 +366,11 @@ h2 {
 
 .who-list dt {
   margin: 0 0 0.45rem;
-  font-size: 0.78rem;
+  font-size: 1.0625rem;
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
+  color: var(--ink);
 }
 
 .who-list dd {
@@ -492,6 +504,10 @@ address {
   }
 }
 
+.header-mail {
+  display: none;
+}
+
 @media (max-width: 699px) {
   .rail {
     top: 0;
@@ -502,6 +518,60 @@ address {
 
   body {
     padding-top: 0.45rem;
+  }
+
+  body:not(.founding) h1 {
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .header-bar {
+    align-items: flex-start;
+    min-height: 0;
+    padding-top: 0.35rem;
+    padding-bottom: 0.15rem;
+  }
+
+  .site-header nav {
+    display: none;
+  }
+
+  .header-mail {
+    display: inline-flex;
+    flex: 1 0 100%;
+    align-items: center;
+    min-height: 44px;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.16em;
+    text-decoration-color: var(--brass);
+  }
+
+  .cta-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  a.sample-cta,
+  a.sample-cta:visited {
+    order: 2;
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+  }
+
+  a.founding-cta,
+  a.founding-cta:visited,
+  a.founding-cta:hover,
+  a.founding-cta:focus-visible {
+    order: 1;
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
   }
 }
 
@@ -548,14 +618,11 @@ a.enter-secondary:visited {
 a.enter-secondary:hover,
 a.enter-secondary:focus-visible {
   background: transparent;
-  border-color: var(--brass);
-  color: var(--brass);
-}
-@media (prefers-color-scheme: dark) {
-  a.enter-secondary:hover,
-  a.enter-secondary:focus-visible {
-    color: var(--brass);
-  }
+  border-color: var(--ink);
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
 }
 
 
@@ -563,35 +630,44 @@ a.enter-secondary:focus-visible {
 .price-card {
   max-width: 38rem;
   margin-top: 1rem;
-  padding: 1.15rem 1.25rem;
-  border: 1px solid var(--rule);
-  background: #fffcf7;
-}
-@media (prefers-color-scheme: dark) {
-  .price-card { background: #211c18; }
+  padding: 0.85rem 0 0;
+  border: 0;
+  border-top: 1px solid var(--brass);
+  background: transparent;
 }
 .price-name {
   margin: 0;
   font-weight: 600;
-  font-size: 1.05rem;
+  font-size: 1.0625rem;
+  color: var(--ink);
 }
 .pill-inline {
-  display: inline-block;
-  margin-left: 0.35rem;
-  padding: 0.1rem 0.45rem;
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  font-size: 0.72rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: var(--muted, #6a645a);
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0.35rem 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  font-size: 1.0625rem;
+  line-height: 1.35;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
   font-weight: 600;
 }
 .price-amount {
-  margin: 0.45rem 0 0.75rem;
+  margin: 0.45rem 0 0;
   font-family: var(--serif);
   font-size: 1.65rem;
   font-weight: 600;
+  color: var(--ink);
+}
+.price-ready {
+  margin: 0.2rem 0 0.75rem;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--ink);
 }
 .price-parts {
   margin: 0 0 0.85rem;
@@ -600,8 +676,8 @@ a.enter-secondary:focus-visible {
 .price-parts li { margin: 0.35rem 0; }
 .price-status {
   margin: 0;
-  font-size: 0.95rem;
-  color: var(--muted, #6a645a);
+  font-size: 1.0625rem;
+  color: var(--ink);
 }
 
 /* V0.9 Mill floor home strip */
@@ -621,8 +697,8 @@ a.enter-secondary:focus-visible {
   margin-bottom: 0.65rem;
   border: 1px solid var(--rule);
 }
-.mill-home-status { margin: 0 0 0.45rem; font-size: 0.95rem; }
-.mill-home-links { margin: 0; font-size: 0.95rem; }
+.mill-home-status { margin: 0 0 0.45rem; font-size: 1.0625rem; color: var(--ink); }
+.mill-home-links { margin: 0; font-size: 1.0625rem; }
 .mill-home-links a { font-weight: 600; }
 
 /* EvaOS V1.0 Trust / PoW board */
@@ -653,8 +729,9 @@ a.enter-secondary:focus-visible {
 .trust-col h3,
 .trust-evidence h3 {
   margin: 0 0 0.55rem;
-  font-size: 1.05rem;
+  font-size: 1.0625rem;
   font-family: var(--serif);
+  color: var(--ink);
 }
 .trust-col ul,
 .trust-evidence ul {
@@ -664,33 +741,32 @@ a.enter-secondary:focus-visible {
 .trust-col li,
 .trust-evidence li {
   margin: 0.35rem 0;
-  font-size: 0.95rem;
+  font-size: 1.0625rem;
 }
-.trust-col.works h3 { color: #6b3f22; }
-@media (prefers-color-scheme: dark) {
-  .trust-col.works h3 { color: #e2b07a; }
-}
+.trust-col.works h3 { color: var(--ink); }
 .trust-metric {
   margin: 0.75rem 0 0;
-  font-size: 0.95rem;
+  font-size: 1.0625rem;
+  color: var(--ink);
 }
 .trust-metric strong { font-variant-numeric: tabular-nums; }
 .journey-stitch {
   margin: 1.1rem 0 0;
   padding: 0.85rem 1rem;
   border: 1px dashed var(--rule);
-  font-size: 0.95rem;
+  font-size: 1.0625rem;
   line-height: 1.5;
+  color: var(--ink);
 }
 .journey-stitch a { font-weight: 600; }
 .journey-stitch .path-label {
   display: block;
   margin-bottom: 0.35rem;
-  font-size: 0.8rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-size: 1.0625rem;
+  letter-spacing: 0;
+  text-transform: none;
   font-weight: 600;
-  color: var(--muted, #6a645a);
+  color: var(--ink);
 }
 
 /* B3 founding preview — /founding/ */
@@ -712,32 +788,46 @@ a.enter-secondary:focus-visible {
   margin: 1.25rem 0 0;
   padding: 0.9rem 1rem;
   border: 1px solid var(--rule);
-  border-left: 3px solid var(--brass);
+  border-left: 1px solid var(--brass);
   background: #fffcf7;
   line-height: 1.45;
+  font-size: 1.0625rem;
+  color: var(--ink);
 }
 
-.honesty-banner .pill-inline,
-.enter-note .pill-inline {
-  margin: 0 0.4rem 0.2rem 0;
+.honesty-banner a {
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+  text-decoration-color: var(--brass);
+}
+
+.honesty-banner .pill-inline {
+  margin: 0 0 0.35rem;
 }
 
 .nonclaims {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
   margin: 0.85rem 0 0;
   padding: 0;
   list-style: none;
 }
 
 .nonclaims li {
-  padding: 0.28rem 0.6rem;
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  font-size: 0.82rem;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  font-size: 1.0625rem;
   font-weight: 600;
-  letter-spacing: 0.01em;
+  letter-spacing: 0;
+  color: var(--ink);
 }
 
 .plain-list {
@@ -753,7 +843,7 @@ a.enter-secondary:focus-visible {
 .north-star {
   margin: 1.1rem 0 0;
   padding-left: 1rem;
-  border-left: 3px solid var(--brass-bright);
+  border-left: 1px solid var(--brass);
   font-family: var(--serif);
   font-size: 1.35rem;
   font-weight: 500;
@@ -781,7 +871,8 @@ a.enter-secondary:focus-visible {
 
 .dial p,
 .dial li {
-  font-size: 0.98rem;
+  font-size: 1.0625rem;
+  color: var(--ink);
 }
 
 .dial ul {
@@ -804,12 +895,13 @@ button.disarmed:disabled {
   min-height: 48px;
   margin-top: 0.35rem;
   padding: 0.7rem 1.15rem;
-  border: 1px dashed var(--rule);
+  border: 1px dashed var(--ink);
   background: transparent;
   color: var(--ink);
   font: inherit;
+  font-size: 1.0625rem;
   font-weight: 600;
-  opacity: 0.72;
+  opacity: 1;
   cursor: not-allowed;
 }
 
@@ -834,8 +926,9 @@ button.disarmed:disabled {
 }
 
 .evidence-when {
-  color: var(--muted, #6a645a);
-  font-size: 0.92rem;
+  display: block;
+  color: var(--ink);
+  font-size: 1.0625rem;
 }
 
 .faq {
@@ -867,5 +960,27 @@ button.disarmed:disabled {
   .dial-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
     align-items: start;
+  }
+}
+
+@media (max-width: 699px) {
+  a.sample-cta,
+  a.sample-cta:visited,
+  a.sample-cta:hover,
+  a.sample-cta:focus-visible {
+    order: 2;
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+  }
+
+  a.founding-cta,
+  a.founding-cta:visited,
+  a.founding-cta:hover,
+  a.founding-cta:focus-visible {
+    order: 1;
+    background: var(--ink);
+    color: var(--paper);
+    border-color: var(--ink);
   }
 }
