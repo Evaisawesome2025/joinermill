@@ -1,35 +1,31 @@
-# Start here — Joinermill editable brief workspace
+# Start here — Joinermill work desk
 
-## Release state
+## Current checkpoint
 
-2026-10-05: implementation reviewed and tests passing; **publication pending verification**. This document does not claim the update is live. Previous verified frontend release: `4123538bf18c4eb322c20247e23656625df40169`. Coordinated backend repository: [evaos-v05](https://github.com/Evaisawesome2025/evaos-v05).
+2026-10-05: **feature-branch work only; not deployed or merged to main.** This increment is on `next/command-center-20261005`, based on frozen reviewed release commit `7f78c54097d70dc46d2d51b45f5e3d513f88fe67`. The frozen `release/editable-brief-20261005` branch remains unchanged. The last verified published frontend source is `4123538bf18c4eb322c20247e23656625df40169`; this document makes no new live claim.
 
-## What works
+The matching backend branch is `next/command-center-contract-20261005` in [evaos-v05](https://github.com/Evaisawesome2025/evaos-v05), based on frozen `d39936927821ce80087194eec948c7d94857037b`. This second increment changes backend documentation only: its existing six-field contract is sufficient. The first release's backend and frontend remain undeployed in this work trail.
 
-The new workspace uses six editable fields supplied by the person: objective, available inputs, deliverable, constraints, success checklist and stop rule. It prepares a reviewable brief and downloads the exact plain-text specification, with unchecked criteria. This is deterministic brief software, not AI judgment, an agent run or proof that the proposed work is done.
+## What a person can do
 
-Examples remain separate from the person's draft. The directory retains 13 specialist roles, with no invented presence, activity or assignment. Drafts live only in the open tab: switching views preserves them; reset/reload clears them. There is no automatic save, storage import, customer database write or account flow. A download creates a file only at the person's request. The optional format-check button explicitly sends the six fields to the existing EVAOS service; its handler stores/logs no body. Infrastructure may retain request metadata.
+Write the six-field brief, review its actual objective, intended deliverable and stop rule, then record a next action and unresolved inputs. The notes are the person's own plan, not inferred assignments or verified results. Download the complete work plan, or download a clearly labeled incomplete plan while still drafting. The original six-field brief export remains available.
 
-## Resume work
+Use **Save in this browser** to keep one bounded snapshot on this browser profile and site origin. Saving is manual, edits are not autosaved, and reload never restores content automatically. Restore replaces the open draft only after confirmation when it contains text. A snapshot includes the brief, two planning notes and save timestamp; it excludes backend verification state. Clear draft empties the open tab; the saved copy remains until **Remove saved copy**. Downloads remain on the person's device. Browser data may be cleared or unavailable, and a shared browser profile can access the copy. There is no account sync or import from arbitrary files.
 
-1. Read [RELEASE.md](RELEASE.md) and [RELEASE_LOG.md](RELEASE_LOG.md). Inspect current remote main before editing; preserve concurrent work.
-2. Run `npm ci && npm test`. The coordinated backend's `worker/src/brief-model.js` must match this repository's `preview/brief-model.js` byte for byte.
-3. Follow RELEASE.md to run browser regression tests with the backend cloned alongside this repository. The test uses synthetic content only. Test output is local and ignored by Git.
-4. Review capability/privacy labels, keyboard/mobile behavior and export fidelity before publication. Deploy backend first; publish frontend through existing GitHub Pages. Verify exact commits, successful deployment and live browser behavior.
+The optional format-check button sends only the six brief fields to EVAOS after an explicit click. Planning notes and local save metadata are excluded. The handler does not store or log bodies; infrastructure may retain request metadata. It checks structure and export bytes, not the plan's quality or whether work is complete. Local review and downloads work without that check.
 
-Tests at the implementation checkpoint: frontend 2/2 unit tests; 13 browser regression groups; zero axe violations across six views at desktop and mobile widths; 320px reflow check; no page errors with browser storage blocked. Backend 70/70 tests. These are tests, not evidence of AI or autonomous work.
+## Resume and verify
 
-## Preserve these boundaries
+1. Read [RELEASE_STATUS.json](RELEASE_STATUS.json), [RELEASE.md](RELEASE.md) and [RELEASE_LOG.md](RELEASE_LOG.md). Fetch and inspect remote state before any change; preserve concurrent work.
+2. Run `npm ci && npm test`. Clone the coordinated backend alongside this repository and use the matching frozen backend or its documentation-only next branch. Keep `preview/brief-model.js` byte-identical to its `worker/src/brief-model.js`.
+3. Serve this checkout on localhost port 8765 and run `npm run test:browser`; see RELEASE.md for browser setup. All tests use synthetic content and a local invocation of the Worker handler, not customer records or live server processing.
+4. Review the checkpoint screenshots in [docs/screenshots](docs/screenshots). The portable review evidence and final branch commit hashes are supplied with the handoff. Repository status describes the code checkpoint and does not imply deployment.
+5. Stop after reviewed branch publication. A later release session must first verify network access and current remote/deployed state, then review the release candidate before deploying the backend and publishing Pages. Do not treat these branch instructions as a request to deploy now.
 
-- Held [Joinermill PR15](https://github.com/Evaisawesome2025/joinermill/pull/15) and [EVAOS PR32](https://github.com/Evaisawesome2025/evaos-v05/pull/32) remain unmerged and untouched.
-- Pulse is an isolated, completed controller prototype reported as **UNSCORED**. Its artifacts are not present in these release checkouts and this update neither ships it nor claims production autonomy. Obtain its actual reviewed artifacts before any separate work.
-- No model calls, paid infrastructure, new services, background execution, outreach, spending or publishing on behalf of a site visitor are provided by the brief workflow.
-- Legacy `/app/` paths remain separate and unchanged. This release upgrades the homepage workspace.
+## Boundaries and recovery
 
-## Known limits and rollback
+The 13-role directory and separate fixed examples remain; neither is a presence feed or executed team. This is deterministic brief software, not AI judgment or agent execution. No model calls, paid infrastructure, new services, server-side customer persistence, background jobs, outreach or spending are provided.
 
-The checker validates shape and length only. It cannot assess the user's plan, truth of supplied text, or completed checklist evidence. Drafts are not recoverable after reload without a downloaded copy; there is no import in this release. The server check is optional and may be unavailable or rate-limited; local review/export remains useful.
+Held [Joinermill PR15](https://github.com/Evaisawesome2025/joinermill/pull/15) and [EVAOS PR32](https://github.com/Evaisawesome2025/evaos-v05/pull/32) remain untouched and unmerged. Pulse remains a separate completed **UNSCORED** prototype; it is absent from this checkout and is not deployed. Legacy `/app/` paths are unchanged.
 
-The previous frontend source is commit `4123538bf18c4eb322c20247e23656625df40169`. After publication, revert only the release commit(s) following inspection of later changes; do not force-reset main. Monitor the resulting Pages deployment to successful completion. Backend rollback instructions are in its worker/RELEASE.md and preserve existing state.
-
-Next useful work: observe the real brief workflow with non-sensitive examples, then address specific usability findings. Any execution, persistent customer storage or new service is a separate scoped decision.
+Nothing was deployed by this increment, so no live rollback is needed. To undo this increment on its branch, inspect later changes and revert its commit; do not force-reset or rewrite frozen branches. Future live rollback instructions remain in RELEASE.md and the backend's worker/RELEASE.md. Never deploy the older backend main as rollback: it lacks some already deployed routes.

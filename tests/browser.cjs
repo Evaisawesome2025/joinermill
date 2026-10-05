@@ -4,6 +4,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs/promises');
 const path = require('node:path');
 const ROOT = path.resolve(__dirname, '..');
+const BASE_URL = process.env.BRIEF_TEST_URL || 'http://127.0.0.1:8765/';
 const OUTPUT = process.env.BRIEF_TEST_OUTPUT || path.join(ROOT, 'test-results');
 const fixture = { objective: 'Compare two fictional offers for a repair shop.', inputs: 'Two synthetic public offer drafts, A and B.', deliverable: 'A one-page comparison with a suggested headline.', constraints: 'Use only supplied drafts. No outreach, spend or publishing.', success: 'Each recommendation cites draft A or B.\nOne important tradeoff is named.', stopRule: 'Stop after the draft. Ask me if a source is missing.' };
 (async () => {
@@ -25,7 +26,7 @@ const fixture = { objective: 'Compare two fictional offers for a repair shop.', 
  });
  const report=[];
  async function check(name,fn){await fn();report.push({name,status:'pass'});console.log('PASS '+name);}
- await page.goto('http://127.0.0.1:8765/');
+ await page.goto(BASE_URL);
  await check('keyboard entry, objective validation and six-field validation',async()=>{
   await page.keyboard.press('Tab');assert.equal(await page.locator(':focus').textContent(),'Skip to workspace');
   await page.getByRole('button',{name:'Build my brief'}).click();assert.equal(await page.locator('#objective').getAttribute('aria-invalid'),'true');
