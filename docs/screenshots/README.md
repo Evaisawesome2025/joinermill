@@ -15,3 +15,16 @@ These additional local synthetic fixtures show owner acceptance after an interru
 - [Confirmation — phone, 390px viewport](confirmation-readiness-mobile.png)
 
 The regression also covers 320px reflow, keyboard focus, cancellation, stale confirmation controls and explicit import retry. These images do not imply hosted availability or independent verification of an owner decision.
+
+## Reusable instructions checkpoint
+
+These local screenshots contain fictional repair-offer instructions. The separate template editor holds owner-written directions; the start confirmation explains replacement and clearing of old result/review state. The active-context images show copied directions, not assigned work, enforced blockers or a completed deliverable.
+
+- [Instructions editor — desktop](instructions-editor-desktop.png)
+- [Instructions editor — phone](instructions-editor-mobile.png)
+- [Start confirmation — desktop](instructions-start-desktop.png)
+- [Start confirmation — phone](instructions-start-mobile.png)
+- [Copied directions — desktop](instructions-active-desktop.png)
+- [Copied directions — phone](instructions-active-mobile.png)
+
+All views were tested at 1440/390/320px. No hosted or live deployment is implied.

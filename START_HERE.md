@@ -1,4 +1,14 @@
-# Start here — reliable local confirmations
+# Start here — reusable manual work instructions
+
+2026-10-06: **new feature branches only; no main merge or deployment.** Frontend `next/reusable-instructions-20261006` extends `6a03b5da0d3d8103a87c6df3e69e71e227b4be5e`. Matching backend `next/reusable-instructions-contract-20261006` extends `31c003066eb771a21f59836110b433e68dad97c4`; changes there are documentation only. Read [REUSABLE_INSTRUCTIONS.md](REUSABLE_INSTRUCTIONS.md) for the new workflow, separate file/storage formats, migration and clean-start guarantees.
+
+Work instructions are a separate local editor. Save/download the definition explicitly; starting fresh work asks before replacement and copies only brief/directions. It clears old results, sources, acceptance, captured target, timestamps, notes and validation. The copied owner/blocker/handoff fields do not assign work or enforce gates. Active backup v3 preserves copied directions; v1/v2 remain readable without automatic writes.
+
+Current final source hashes, branch publication verification, test/review evidence and portable patches are in the handoff STATUS.json. Preserve all prior release, command-center, result-review and confirmation-readiness branches. Stop after reviewed feature-branch pushes. The following prior checkpoint documents the preserved result/review workflow and release boundaries.
+
+---
+
+## Prior checkpoint — reliable local confirmations
 
 ## Checkpoint
 

@@ -25,8 +25,8 @@ test('strict result schema rejects forged shapes, impossible states, invalid dat
  const record=accepted();for(const patch of [{text:'x'.repeat(8001)},{provenance:'x'.repeat(1001)},{feedback:'x'.repeat(2001)},{text:'a\u0000b'},{baseline:{...brief,extra:'x'}},{baseline:{...brief,objective:123}},{decision:'verified'},{decision:['accepted']},{decision:['unreviewed']},{decision:{}},{decision:1},{decision:null},{decision:true},{recordedAt:null},{reviewedAt:null},{recordedAt:'2026-02-30T01:00:00.000Z'},{decision:'unreviewed',reviewedAt:second},{feedback:' '},{extra:'x'}])assert.equal(validateResult({...record,...patch}),false,JSON.stringify(patch));
  assert.equal(validateResult(null),false);assert.equal(validateResult([]),false);assert.equal(validateResult(emptyResult()),true);
 });
-test('version2 backup roundtrip preserves literal result, decision and original target exactly',()=>{
- const record={...accepted(),text:'<script>alert(1)</script> & actual result\nLine two.'};const raw=encodeSnapshot(brief,notes,second,record);const restored=decodeSnapshot(raw);assert.equal(restored.version,2);assert.deepEqual(restored.result,record);assert.deepEqual(restored.draft,brief);assert.equal(validateResult(restored.result),true);
+test('version3 backup roundtrip preserves literal result, decision and original target exactly',()=>{
+ const record={...accepted(),text:'<script>alert(1)</script> & actual result\nLine two.'};const raw=encodeSnapshot(brief,notes,second,record);const restored=decodeSnapshot(raw);assert.equal(restored.version,3);assert.deepEqual(restored.result,record);assert.deepEqual(restored.draft,brief);assert.equal(validateResult(restored.result),true);
 });
 test('legacy version1 restores empty result without writing or discarding its actual draft',()=>{
  const raw=JSON.stringify({version:1,savedAt:first,draft:brief,plan:notes});const store={getItem:k=>k===STORAGE_KEY?raw:null,setItem(){throw new Error('must not write')}};const data=readSaved(store);assert.deepEqual(data.result,emptyResult());assert.deepEqual(data.draft,brief);assert.equal(data.version,1);assert.equal(store.getItem(STORAGE_KEY),raw);

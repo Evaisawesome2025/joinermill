@@ -1,12 +1,14 @@
 import { FIELDS, normalizeBrief, exportBrief, digestText } from './brief-model.js';
 import { validatePlan, exportPlan, readSaved, saveDraft, removeSaved, encodeSnapshot, decodeSnapshot, MAX_SNAPSHOT_BYTES } from './work-plan.js';
 import { emptyResult, validateResult, editResult, recordResult, reviewResult, sameBrief, DECISIONS } from './result-review.js';
+import { DIRECTION_FIELDS } from './instructions.js';
+import { setupInstructions } from './instructions-ui.js';
 import { templates } from './examples.js';
 const ENDPOINT = 'https://evaos-v05-ask.joinermill-ask.workers.dev/brief/validate';
 const $ = id => document.getElementById(id);
 const make = (tag, cls, text) => { const n = document.createElement(tag); n.className = cls || ''; n.textContent = text; return n; };
 const announce = text => { $('announcement').textContent = text; };
-let prepared = null, pending = null, resultRecord = emptyResult(), acceptanceTarget = null;
+let prepared = null, pending = null, resultRecord = emptyResult(), acceptanceTarget = null, activeDirections = null, instructionsUI;
 let resultOrigin = 'Entered in this tab. Browser-clock timestamps and owner identity are not authenticated.';
 function cancelCheck() {
   if (pending) { pending.abort(); pending = null; $('check-status').textContent = 'Check cancelled. You can try again.'; }
@@ -35,7 +37,7 @@ function renderReview() {
   $('desk-objective').textContent = prepared.objective;
   $('desk-deliverable').textContent = prepared.deliverable;
   $('desk-stop').textContent = prepared.stopRule;
-  renderResult();
+  renderResult(); renderDirections();
   $('review-content').replaceChildren(...Object.entries(FIELDS).map(([key, field]) => {
     const section = make('section', 'review-section', ''); section.append(make('h2', '', field.label));
     if (key === 'success') {
@@ -65,14 +67,15 @@ function renderExample() {
 }
 function navigate(focus = false) {
   const key = location.hash.slice(1) || 'workspace';
-  const view = ['workspace', 'brief', 'review', 'example', 'team', 'about'].includes(key) ? key : 'workspace';
+  const view = ['workspace', 'brief', 'review', 'instructions', 'example', 'team', 'about'].includes(key) ? key : 'workspace';
   if (view === 'review' && !prepared) { location.replace('#brief'); return; }
   if (view !== 'review') cancelCheck();
+  instructionsUI?.leave(view);
   document.querySelectorAll('.view').forEach(n => { n.hidden = n.id !== 'view-' + view; });
   document.querySelectorAll('nav a').forEach(a => { if (a.dataset.view === (view === 'review' ? 'brief' : view)) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
   if (view === 'example') renderExample();
   if (view === 'review') renderReview();
-  document.title = ({ workspace: 'Eva’s desk', brief: 'Edit work brief', review: 'Your work desk', example: 'Separate example', team: 'The organization', about: 'How it works' })[view] + ' — EvaOS by Joinermill';
+  document.title = ({ workspace: 'Eva’s desk', brief: 'Edit work brief', review: 'Your work desk', example: 'Separate example', instructions: 'Reusable work instructions', team: 'The organization', about: 'How it works' })[view] + ' — EvaOS by Joinermill';
   if (focus) { $('main').focus({ preventScroll: true }); window.scrollTo(0, 0); }
 }
 function updateCount() { $('character-count').textContent = $('objective').value.length + ' / 600'; $('objective-error').hidden = true; $('objective').removeAttribute('aria-invalid'); }
@@ -98,14 +101,14 @@ $('brief-form').addEventListener('submit', event => {
   $('objective').value = prepared.objective; updateCount(); $('brief-tag').textContent = 'Prepared';
   renderReview(); location.hash = 'review'; announce('Brief prepared locally. Checklist items remain unverified.');
 });
-function download(content, filename, button, status, mime = 'text/plain;charset=utf-8') {
+function download(content, filename, button, status, mime = 'text/plain;charset=utf-8', fileKind = null) {
   if (button.disabled) return;
   button.disabled = true;
   let url;
   try {
     url = URL.createObjectURL(new Blob([content], { type: mime }));
     const a = document.createElement('a'); a.href = url; a.download = filename; document.body.append(a); a.click(); a.remove();
-    const kind = mime === 'application/json' ? 'JSON backup' : 'text file';
+    const kind = fileKind || (mime === 'application/json' ? 'JSON backup' : 'text file');
     if (status) status.textContent = 'Download requested. Check your browser’s downloads for the ' + kind + '.';
     announce(kind + ' download requested.');
   } catch { if (status) status.textContent = 'Download could not start. Your draft is still here; try again in this browser.'; announce('Download could not start.'); }
@@ -139,7 +142,7 @@ $('check-brief').addEventListener('click', async () => {
     const result = await readResponse(response); const expected = exportBrief(snapshot);
     if (!result.ok || result.schema_version !== 1 || result.kind !== 'deterministic_work_brief' || result.executed !== false || result.validation !== 'structure_only' || result.exportText !== expected || result.sha256 !== await digestText(expected) || JSON.stringify(result.brief) !== JSON.stringify(snapshot)) throw new Error('mismatch');
     if (pending !== controller || prepared !== snapshot) return;
-    $('check-status').textContent = 'Format checked. The six-field brief export matches byte for byte. Your planning notes, result and owner review stayed local. This does not verify the plan or checklist. SHA-256: ' + result.sha256;
+    $('check-status').textContent = 'Format checked. The six-field brief export matches byte for byte. Your planning notes, work directions, result and owner review stayed local. This does not verify the plan or checklist. SHA-256: ' + result.sha256;
   } catch (error) {
     if (pending !== controller) return;
     $('check-status').textContent = error.message === 'busy' ? 'The checker is busy. Try again in a minute. Your local brief and download still work.' : 'Check unavailable or response could not be verified. Your local brief is unchanged; download it or try again.';
@@ -153,7 +156,7 @@ let resetTrigger;
 document.querySelectorAll('[data-reset]').forEach(button => button.addEventListener('click', () => { resetTrigger = button; showConfirmation(dialog, keep); }));
 keep.addEventListener('click', () => dialog.close());
 dialog.addEventListener('close', () => returnFocus(dialog, resetTrigger));
-reset.addEventListener('click', () => { if (!dialog.open) return; closeConfirmations(); invalidate(); clearResult(); cancelImport(); $('brief-form').reset(); $('objective-form').reset(); $('nextAction').value = ''; $('unresolvedInputs').value = ''; updatePlanNotes(); clearErrors(); updateCount(); $('review-content').replaceChildren(); for (const key of ['desk-objective', 'desk-deliverable', 'desk-stop']) $(key).textContent = ''; dialog.close(); location.hash = 'workspace'; announce('Draft cleared from this tab.'); });
+reset.addEventListener('click', () => { if (!dialog.open) return; closeConfirmations(); invalidate(); clearResult(); activeDirections = null; renderDirections(); cancelImport(); $('brief-form').reset(); $('objective-form').reset(); $('nextAction').value = ''; $('unresolvedInputs').value = ''; updatePlanNotes(); clearErrors(); updateCount(); $('review-content').replaceChildren(); for (const key of ['desk-objective', 'desk-deliverable', 'desk-stop']) $(key).textContent = ''; dialog.close(); location.hash = 'workspace'; announce('Draft cleared from this tab.'); });
 function readPlan() { return { nextAction: $('nextAction').value, unresolvedInputs: $('unresolvedInputs').value }; }
 function storageStatus(text) { if ($('storage-status').textContent !== text) $('storage-status').textContent = text; }
 function markUnsaved() { storageStatus('Changes in this tab are not saved automatically. Save a browser copy or download your work plan.'); }
@@ -193,14 +196,14 @@ document.querySelectorAll('[data-save]').forEach(button => button.addEventListen
   if (button.disabled || !briefAndPlanOK()) return;
   button.disabled = true;
   try {
-    saveDraft(window.localStorage, readDraft(), readPlan(), resultRecord); refreshSaved();
+    saveDraft(window.localStorage, readDraft(), readPlan(), resultRecord, activeDirections); refreshSaved();
     storageStatus('Saved in this browser. Later edits need another Save; nothing was sent to a server.');
   } catch { storageStatus('Saving could not be confirmed. Your draft is still in this tab. Download a work plan to keep a copy.'); }
   finally { setTimeout(() => { button.disabled = false; }, 500); }
 }));
 document.querySelectorAll('[data-download-plan]').forEach(button => button.addEventListener('click', () => {
   if (!briefAndPlanOK()) return;
-  try { download(exportPlan(readDraft(), readPlan(), resultRecord), 'joinermill-work-plan.txt', button, $('storage-status')); }
+  try { download(exportPlan(readDraft(), readPlan(), resultRecord, activeDirections), 'joinermill-work-plan.txt', button, $('storage-status')); }
   catch { storageStatus('The draft contains unsupported characters or is too long. Review the fields before exporting.'); }
 }));
 const restoreDialog = document.createElement('dialog'); restoreDialog.setAttribute('aria-labelledby', 'restore-title');
@@ -208,12 +211,13 @@ const restoreTitle = make('h2', '', 'Replace this tab’s draft?'); restoreTitle
 restoreDialog.append(restoreTitle, make('p', '', 'Restoring replaces the current brief, planning notes, result and owner review with the saved browser copy. Unsaved changes will be lost.'));
 const restoreActions = make('div', 'dialog-actions', ''); const cancelRestore = make('button', 'secondary', 'Keep current draft'); const confirmRestore = make('button', 'primary', 'Restore copy');
 restoreActions.append(cancelRestore, confirmRestore); restoreDialog.append(restoreActions); document.body.append(restoreDialog);
-function applyCopy(saved, source) {
+function applyCopy(saved, source, fresh = false) {
   closeConfirmations(); invalidate();
   for (const [key, value] of Object.entries(saved.draft)) $('edit-' + key).value = value;
   $('objective').value = saved.draft.objective;
   for (const [key, value] of Object.entries(saved.plan)) $(key).value = value;
-  resultRecord = saved.result; resultOrigin = source + ' Decisions and timestamps in this copy are user-provided claims, not authenticated approval.'; populateResult();
+  activeDirections = saved.directions ?? null; renderDirections();
+  resultRecord = saved.result; resultOrigin = fresh ? 'Started from instructions. No result, source, owner decision or prior timestamps were copied.' : source + ' Decisions and timestamps in this copy are user-provided claims, not authenticated approval.'; populateResult();
   clearErrors(); updateCount(); updatePlanNotes();
   const result = normalizeBrief(saved.draft);
   if (result.ok) { prepared = result.brief; $('brief-tag').textContent = 'Prepared'; renderReview(); location.hash = 'review'; }
@@ -295,7 +299,7 @@ confirmAccept.addEventListener('click', () => {
 });
 $('download-backup').addEventListener('click', () => {
   if (!briefAndPlanOK()) return;
-  try { download(encodeSnapshot(readDraft(), readPlan(), new Date().toISOString(), resultRecord), 'joinermill-local-backup.json', $('download-backup'), $('import-status'), 'application/json'); }
+  try { download(encodeSnapshot(readDraft(), readPlan(), new Date().toISOString(), resultRecord, activeDirections), 'joinermill-local-backup.json', $('download-backup'), $('import-status'), 'application/json'); }
   catch { $('import-status').textContent = 'Backup could not be created. Check the field limits; your current draft remains here.'; }
 });
 let importGeneration = 0, importCandidate = null, importReading = false;
@@ -318,10 +322,12 @@ function returnFocus(modal, target, opener = target) {
 }
 // A confirmation must not outlive the work it describes, or stack over a different action.
 function closeConfirmations() {
+  instructionsUI?.interrupt(null);
   acceptanceTarget = null;
   document.querySelectorAll('dialog[open]').forEach(modal => modal.close());
 }
 function showConfirmation(modal, cancelButton) {
+  instructionsUI?.interrupt(modal);
   if (modal !== importDialog) cancelImport('Import cancelled because another confirmation was opened. Select the backup again to import it.');
   document.querySelectorAll('dialog[open]').forEach(other => {
     if (other === modal) return;
@@ -355,6 +361,11 @@ confirmImport.addEventListener('click', () => {
   const copy = importCandidate; cancelImport(); applyCopy(copy, 'Imported a local file into this tab.');
   $('import-status').textContent = 'Imported into this tab only. Use Save to replace the browser copy, or download to keep a file.';
 });
+function renderDirections() {
+  $('active-directions').hidden = !activeDirections; $('directions-heading').textContent = activeDirections?.title || '';
+  $('directions-content').replaceChildren(...(activeDirections ? Object.entries(DIRECTION_FIELDS).filter(([key]) => key !== 'title').map(([key, field]) => { const section = make('section', '', ''); section.append(make('h3', '', field.label), make('p', '', activeDirections[key])); return section; }) : []));
+}
+instructionsUI = setupInstructions({ readDraft, showConfirmation, returnFocus, applyCopy, download });
 $('team-grid').replaceChildren(...window.JoinermillRoster.map(person => {
   const card = make('article', 'person-card', ''); card.append(make('span', 'person-initial', person.name[0]), make('h3', '', person.name), make('p', 'person-role', person.role), make('p', 'person-description', person.description));
   const details = document.createElement('details'); details.append(make('summary', '', 'Responsibility boundary'), make('p', '', person.boundary)); card.append(details); return card;

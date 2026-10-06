@@ -7,7 +7,7 @@ const complete = { objective:'Compare two fictional page drafts.', inputs:'Publi
 const plan={nextAction:'Ask for the missing source.',unresolvedInputs:'Second draft\nDelivery-time source'};
 function memory(){const m=new Map();return{getItem:k=>m.has(k)?m.get(k):null,setItem:(k,v)=>m.set(k,v),removeItem:k=>m.delete(k)};}
 test('round-trips partial drafts and local planning notes with exact user text',()=>{
- const x={...draft,objective:'  My unfinished direction  '};const raw=encodeSnapshot(x,plan);const y=decodeSnapshot(raw);assert.deepEqual(y.draft,x);assert.deepEqual(y.plan,plan);assert.equal(y.version,2);
+ const x={...draft,objective:'  My unfinished direction  '};const raw=encodeSnapshot(x,plan);const y=decodeSnapshot(raw);assert.deepEqual(y.draft,x);assert.deepEqual(y.plan,plan);assert.equal(y.version,3);
 });
 test('rejects corrupt JSON, oversized bytes, unknown schemas, extra fields and unsafe types',()=>{
  for(const raw of ['{', 'x'.repeat(MAX_SNAPSHOT_BYTES+1),'"primitive"',JSON.stringify({version:2}),JSON.stringify({...JSON.parse(encodeSnapshot(draft,plan)),unexpected:'x'})])assert.throws(()=>decodeSnapshot(raw));
