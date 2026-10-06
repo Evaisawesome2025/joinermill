@@ -1,70 +1,49 @@
 {
   "schema_version": 1,
-  "checkpoint": "reusable-instructions-20261006",
-  "scope": "new_reviewed_feature_branches_only",
+  "checkpoint": "readability-candidate-20261006",
+  "scope": "reviewed_feature_branch_only",
   "deployed": false,
   "main_merged": false,
-  "frontend_base": "6a03b5da0d3d8103a87c6df3e69e71e227b4be5e",
-  "backend_base": "31c003066eb771a21f59836110b433e68dad97c4",
-  "frontend_branch": "next/reusable-instructions-20261006",
-  "backend_branch": "next/reusable-instructions-contract-20261006",
-  "backend_runtime_changed": false,
-  "snapshot_schema_changed": true,
-  "preserve_branches": [
-    "release/editable-brief-20261005",
-    "release/brief-validation-20261005",
-    "next/command-center-20261005",
-    "next/command-center-contract-20261005",
-    "next/result-review-20261006",
-    "next/result-review-contract-20261006",
-    "next/confirmation-readiness-20261006",
-    "next/confirmation-readiness-contract-20261006"
+  "frontend_base": "ad0af760bae86702526bd935ff6fc5fc17a172f9",
+  "backend_test_base": "c23ce45671e9d8bc9d153d65b277caae2f1513a2",
+  "frontend_branch": "fix/phone-readability-20261006",
+  "product_files": [
+    "index.html",
+    "preview/preview.css"
   ],
+  "backend_runtime_changed": false,
+  "snapshot_schema_changed": false,
+  "javascript_changed": false,
   "held_prs": {
     "joinermill": 15,
     "evaos-v05": 32
   },
-  "pulse": {
-    "scope": "excluded_separate_task",
-    "paths_or_branches_touched": false,
-    "compatibility_tested": false
-  },
+  "pulse": "excluded_no_changes_or_deployment",
   "verification": {
-    "frontend_unit_tests": 25,
+    "frontend_units": 25,
     "backend_tests": 70,
-    "status": "full_regression_and_independent_review_passed",
+    "existing_browser_groups": 64,
+    "readability_browser_groups": 6,
+    "existing_axe_scans": 36,
     "test_data": "synthetic_only",
-    "browser_groups": 64,
-    "axe_scans": 36,
-    "axe_violations": 0,
-    "page_errors": 0,
     "independent_review": {
-      "approved_for_new_feature_branches_only": true,
-      "reviewed_file_count": 30,
-      "frontend_units": 25,
-      "backend_tests": 70,
-      "model_groups": 1,
-      "browser_keyboard_groups": 15,
-      "axe_scans": 9,
+      "status": "approved_for_scoped_branch_push",
+      "reviewed_files": 8,
+      "normal_view_width_checks": 28,
+      "actual_text200_view_width_checks": 28,
+      "long_label_width_checks": 3,
+      "axe_scans": 14,
+      "axe_violations": 0,
+      "computed_text_contrast_failures": 0,
+      "javascript_errors": 0,
+      "outside_requests": 0,
       "open_material_findings": 0
     }
   },
-  "release_readiness": {
-    "document": "READINESS.md",
-    "public_verification": "historical_tunnel_HTTP_403_before_origin; not_retried_this_increment",
-    "first_real_user_workflow": "not_yet_observed",
-    "live_release_verified": false
+  "separate_live_hotfix": {
+    "branch": "fix/live-readability-20261006",
+    "base": "4123538bf18c4eb322c20247e23656625df40169",
+    "reason": "older_live_preview_disclosures_and_behavior_preserved"
   },
-  "next_step": "Publish only the two reviewed reusable-instructions branches, verify exact remote commits, package portable handoff and stop. No further features, merge or deployment.",
-  "repository": "joinermill",
-  "feature": "Separate local reusable definition with clean fresh-work start; no execution or assignment.",
-  "schemas": {
-    "instructions": 1,
-    "active_snapshot": 3,
-    "readable_active_versions": [
-      1,
-      2,
-      3
-    ]
-  }
+  "next_step": "Push reviewed branch only; parent release task integrates the appropriate patch and verifies deployment. Do not blindly apply both readability branches."
 }

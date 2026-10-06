@@ -1,3 +1,11 @@
+# Current checkpoint — phone and desktop readability
+
+2026-10-06: `fix/phone-readability-20261006`, based on `ad0af760bae86702526bd935ff6fc5fc17a172f9`. Read [READABILITY.md](READABILITY.md) before integration. This changes presentation and two accurate objective-form notes, with no feature/backend/storage changes. Reviewed branch publication only; parent release task owns deployment. A separate live-preview hotfix preserves the older preview behavior and has a different base. Exact heads, review hashes and portable evidence are in the handoff STATUS.json.
+
+The following is preserved historical context.
+
+---
+
 # Start here — reusable manual work instructions
 
 2026-10-06: **new feature branches only; no main merge or deployment.** Frontend `next/reusable-instructions-20261006` extends `6a03b5da0d3d8103a87c6df3e69e71e227b4be5e`. Matching backend `next/reusable-instructions-contract-20261006` extends `31c003066eb771a21f59836110b433e68dad97c4`; changes there are documentation only. Read [REUSABLE_INSTRUCTIONS.md](REUSABLE_INSTRUCTIONS.md) for the new workflow, separate file/storage formats, migration and clean-start guarantees.

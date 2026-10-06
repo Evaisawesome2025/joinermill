@@ -19,3 +19,114 @@
 .instructions-intro{padding:22px;background:#eef1e8;border:1px solid var(--line);border-radius:7px;margin-bottom:22px}.instructions-intro>p{max-width:760px;margin-bottom:16px}.instructions-intro .quiet-link{display:inline-block;margin-left:18px}.instructions-transfer label{display:block;font-weight:600;margin:22px 0 8px}.instructions-transfer input{max-width:100%;font-size:14px;min-height:44px}.active-directions{background:#f3f0e8;border:1px solid var(--line);border-radius:7px;padding:26px;margin:28px 0;overflow-wrap:anywhere}.active-directions h2{font:600 26px/1.3 var(--serif);margin:9px 0 20px;white-space:pre-wrap}.active-directions h3{font-size:14px;margin:16px 0 6px}.active-directions p,.instruction-confirm-summary{white-space:pre-wrap;overflow-wrap:anywhere}.active-directions .demo-note{margin-top:20px}.active-directions .quiet-link{display:inline-block;margin-top:10px}.instruction-confirm-summary{margin-top:16px;color:var(--ink);font-weight:600}#view-instructions .brief-controls{min-width:0}#saved-instructions-label{overflow-wrap:anywhere}#instructions-status{padding:0 4px}#instruction-fields textarea{min-height:80px}@media(max-width:600px){.instructions-intro .secondary{white-space:normal;width:100%}.instructions-intro .quiet-link{margin-left:0}.active-directions{padding:20px}}
 
 @media(max-width:900px){nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}nav a{min-width:0;min-height:44px}}@media(max-width:600px){nav{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Readability: scalable type, clear secondary text, and a compact phone hierarchy. */
+:root{--muted:#50594b}
+body{font-size:1.125rem;line-height:1.5}
+h1{font-size:clamp(2rem,3.2vw,2.75rem);line-height:1.2;letter-spacing:-.035em}
+.page-heading>div{min-width:0}
+.page-heading>div>p{font-size:1.0625rem;line-height:1.5;max-width:65ch}
+.eva-message{font:400 1.125rem/1.5 var(--sans);letter-spacing:normal;margin:16px 0;color:var(--ink);max-width:58ch}
+.operator-top{flex-wrap:wrap}
+.operator-top h2{font-size:1.125rem;line-height:1.3}
+.operator-top p,.operator-top .badge,.badge,.preview-label{font-size:.9375rem;line-height:1.4}
+.badge{white-space:normal;overflow-wrap:anywhere}
+.operator-foot{font-size:.9375rem;line-height:1.5;flex-wrap:wrap}
+.operator-foot>span,.operator-foot>a{max-width:none;text-align:left}
+.card-heading{flex-direction:column;align-items:flex-start;gap:8px}
+.card-heading label{font-size:1.25rem;line-height:1.4;max-width:none}
+.step-label{font-size:.9375rem;line-height:1.4;letter-spacing:.06em;text-align:left;max-width:none}
+.input-meta{font-size:.9375rem;line-height:1.5;flex-wrap:wrap;gap:8px 16px}
+.input-meta>span:first-child{max-width:none;flex:1 1 200px}
+.form-bottom p,.demo-note,.storage-status,.error,
+.brief-field>p:not(.error),.brief-controls .guide-card>p,
+.saved-banner p,.result-grid p,.result-grid #result-times,.result-grid #result-origin,
+.next-card>p:not(.eyebrow),.missing-card>p:not(.eyebrow),.keep-card>p:not(.eyebrow),
+.workdesk-grid label,.active-directions .demo-note{font-size:1rem;line-height:1.5}
+.form-bottom p{max-width:45ch}
+.form-bottom p>span:last-child{padding-left:0}
+textarea,.brief-paper textarea,.workdesk-grid textarea,.result-grid textarea{font-size:1.0625rem;line-height:1.5;border-color:#87917e}
+textarea::placeholder{color:#586250;opacity:1}
+.primary,.secondary,.text-button,.saved-actions button,select{font-size:1rem;line-height:1.4;min-height:48px;white-space:normal;overflow-wrap:anywhere}
+.secondary,select{border-color:#87917e}
+.primary:disabled,.secondary:disabled{opacity:1;background:#e5e8df;color:#50594b;border-color:#a6af9c;cursor:not-allowed}
+.guide-card ol strong{font-size:1.0625rem}
+.guide-card ol p,.sample-link strong,.sample-link small,.sample-link,
+.brief-paper p,.work-steps,.stop-box,.approval-card p,.approval-card button,
+.person-description,.person-card details,.person-card details p,.person-role,
+.suggested-person small,.team-eva p,.team-eva-note,.about-grid .guide-card>p,
+.plain-list,.principles p,.transfer-controls,.transfer-actions input,
+.instructions-transfer input,.captured-brief .review-section p{font-size:1rem;line-height:1.5}
+.guide-card ol li>span{font-size:.9375rem;width:30px;height:30px}
+.eyebrow,.document-top,.bottom-note,footer,.workspace-label small,.owner small,
+.sidebar-note p,.sidebar-note a,.section-label>span,.brief-paper h4,
+.workdesk-grid h3,.active-directions h3,.review-section h2{font-size:.9375rem;line-height:1.5}
+.eyebrow,.document-top,.bottom-note>span{letter-spacing:.07em}
+.brief-field label,.result-grid label{font-size:1.0625rem;line-height:1.5}
+.brief-paper>label,.instructions-transfer label{font-size:1rem;line-height:1.5}
+.transfer-actions label,.instructions-transfer input{min-width:0;max-width:100%}
+.saved-label,.saved-description,.saved-actions,.saved-banner>div{min-width:0;overflow-wrap:anywhere}
+.saved-actions{flex-shrink:1}
+nav a{font-size:1rem;line-height:1.4;min-height:48px;overflow-wrap:anywhere}
+nav a:hover,nav a[aria-current=page]{text-decoration:none}
+nav a[aria-current=page]{background:#e2e9db;border-color:#c4cfba;box-shadow:none;font-weight:600}
+nav a small{font-size:.875rem}
+:focus-visible{outline-color:#6a4726}
+.person-card summary{min-height:44px}
+dialog{max-width:32rem;max-height:calc(100dvh - 32px);overflow:auto}
+dialog p{font-size:1rem;line-height:1.5}
+dialog h2{font-size:1.5rem;line-height:1.3;overflow-wrap:anywhere}
+dialog .dialog-actions{flex-wrap:wrap}
+@media(max-width:900px){
+  nav a{font-size:1rem;padding:.65rem .5rem;gap:.5rem}
+  .app-shell{grid-template-columns:minmax(0,1fr)}
+  .sidebar{border-right:0;border-bottom:1px solid var(--line)}
+  .workspace-label,.sidebar-note,.owner{display:none}
+}
+@media(max-width:650px){
+  body{font-size:1.0625rem}
+  .topbar{height:auto;min-height:64px;flex-wrap:wrap;gap:8px;padding:12px 18px}
+  .top-right{min-width:0}
+  .brand .product{font-size:1rem}
+  .preview-label{font-size:.9375rem}
+  main{padding:22px 16px 0}
+  h1{font-size:2rem;line-height:1.2}
+  .page-heading{margin:12px 0 20px;flex-wrap:wrap}
+  .page-heading>div>p{max-width:none;margin-top:10px}
+  .operator-card{padding:18px}
+  .operator-top .badge{margin-left:0}
+  .eva-message{font-size:1.0625rem;margin:14px 0}
+  .operator-foot{flex-direction:column;align-items:flex-start;gap:8px}
+  .operator-foot a{display:inline-flex;align-items:center;min-height:44px}
+  .objective-card{padding:20px 18px}
+  .form-bottom{flex-direction:column;align-items:stretch;gap:16px}
+  .form-bottom>.primary{width:100%;justify-content:space-between}
+  .desk-aside .mill-illustration{display:none}
+  .guide-card h2{font-size:1.5rem;line-height:1.3}
+  .sample-link{padding:18px 0}
+  .bottom-note{flex-direction:column;align-items:flex-start;gap:12px}
+  .bottom-note>span{letter-spacing:.04em}
+  .section-label{align-items:flex-start;gap:12px;flex-wrap:wrap}
+  .team-eva{align-items:flex-start;flex-wrap:wrap}
+  .team-eva h2 span{display:block;margin-left:0;font-size:1rem}
+  .result-entry>button,.result-actions>button{width:100%}
+  dialog .dialog-actions{flex-direction:column}
+  dialog .dialog-actions button{width:100%}
+}
+
+/* Text enlargement must reflow both the brand and specialist directory. */
+.brand{max-width:100%;flex-wrap:wrap;overflow-wrap:anywhere}
+.brand svg,nav a>span{flex:none}
+nav a>span{width:auto}
+.view,.brief-paper,.guide-card,.team-eva,.person-card{min-width:0;overflow-wrap:anywhere}
+.team-eva>div{min-width:0}
+.team-eva-note{white-space:normal}
+@media(max-width:650px){.team-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* Keep labels legible at desktop text zoom and secondary contrast consistent. */
+nav a{column-gap:6px;flex-wrap:wrap}
+nav a small{flex:none;white-space:nowrap}
+.principles section>span{font-size:.9375rem;color:#50594b}
+.edition-stamp{color:#515d43}
+.illustration-caption{color:#565641}
+.approval-card button{color:#50594b}
