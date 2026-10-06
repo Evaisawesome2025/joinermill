@@ -1,0 +1,19 @@
+{
+  "started_utc": "2026-10-06T03:48:36.722Z",
+  "base": "https://joinermill.com/",
+  "functional": [],
+  "layout": [],
+  "axe": [],
+  "page_errors": [],
+  "unexpected_requests": [],
+  "failed_responses": [],
+  "asset_hashes": [],
+  "finished_utc": "2026-10-06T03:48:37.858Z",
+  "passed": false,
+  "status": "blocked_before_document_load",
+  "failure": "net::ERR_CERT_AUTHORITY_INVALID at https://joinermill.com/",
+  "public_navigation_attempts": 1,
+  "tls_checks_disabled": false,
+  "trust_settings_changed": false,
+  "diagnosis": "Chromium navigation fails certificate validation before loading the page. The current environment-proxy CA fingerprint is already present in the existing NSS database under OpenAI-nebula-dns; a missing CA is not established. The exact browser validation cause remains undetermined. Normal curl validates TLS and all nine live file hashes match. No TLS bypass, client identity change, proxy change, or trust configuration change was attempted."
+}

@@ -1,0 +1,372 @@
+{
+  "started_utc": "2026-10-06T03:46:10.959Z",
+  "base": "http://127.0.0.1:8766/",
+  "functional": [
+    {
+      "name": "navigation and unknown-hash fallback",
+      "passed": true
+    },
+    {
+      "name": "invalid objective exposes error and retains focus",
+      "passed": true
+    },
+    {
+      "name": "three starters preserve existing templates and stops",
+      "passed": true
+    },
+    {
+      "name": "objective remains literal text and input stays local",
+      "passed": true
+    },
+    {
+      "name": "download contains objective and execution disclosure",
+      "passed": true
+    },
+    {
+      "name": "reset and reload clear objective without persistent storage",
+      "passed": true
+    }
+  ],
+  "layout": [
+    {
+      "width": 320,
+      "enlarged": false,
+      "view": "workspace",
+      "client_width": 320,
+      "scroll_width": 320,
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "enlarged": false,
+      "view": "brief",
+      "client_width": 320,
+      "scroll_width": 320,
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "enlarged": false,
+      "view": "team",
+      "client_width": 320,
+      "scroll_width": 320,
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "enlarged": false,
+      "view": "about",
+      "client_width": 320,
+      "scroll_width": 320,
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "enlarged": true,
+      "view": "workspace",
+      "client_width": 320,
+      "scroll_width": 320,
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "enlarged": true,
+      "view": "brief",
+      "client_width": 320,
+      "scroll_width": 320,
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "enlarged": true,
+      "view": "team",
+      "client_width": 320,
+      "scroll_width": 320,
+      "overflowing": []
+    },
+    {
+      "width": 320,
+      "enlarged": true,
+      "view": "about",
+      "client_width": 320,
+      "scroll_width": 320,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "enlarged": false,
+      "view": "workspace",
+      "client_width": 390,
+      "scroll_width": 390,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "enlarged": false,
+      "view": "brief",
+      "client_width": 390,
+      "scroll_width": 390,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "enlarged": false,
+      "view": "team",
+      "client_width": 390,
+      "scroll_width": 390,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "enlarged": false,
+      "view": "about",
+      "client_width": 390,
+      "scroll_width": 390,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "enlarged": true,
+      "view": "workspace",
+      "client_width": 390,
+      "scroll_width": 390,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "enlarged": true,
+      "view": "brief",
+      "client_width": 390,
+      "scroll_width": 390,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "enlarged": true,
+      "view": "team",
+      "client_width": 390,
+      "scroll_width": 390,
+      "overflowing": []
+    },
+    {
+      "width": 390,
+      "enlarged": true,
+      "view": "about",
+      "client_width": 390,
+      "scroll_width": 390,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "enlarged": false,
+      "view": "workspace",
+      "client_width": 768,
+      "scroll_width": 768,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "enlarged": false,
+      "view": "brief",
+      "client_width": 768,
+      "scroll_width": 768,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "enlarged": false,
+      "view": "team",
+      "client_width": 768,
+      "scroll_width": 768,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "enlarged": false,
+      "view": "about",
+      "client_width": 768,
+      "scroll_width": 768,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "enlarged": true,
+      "view": "workspace",
+      "client_width": 768,
+      "scroll_width": 768,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "enlarged": true,
+      "view": "brief",
+      "client_width": 768,
+      "scroll_width": 768,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "enlarged": true,
+      "view": "team",
+      "client_width": 768,
+      "scroll_width": 768,
+      "overflowing": []
+    },
+    {
+      "width": 768,
+      "enlarged": true,
+      "view": "about",
+      "client_width": 768,
+      "scroll_width": 768,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "enlarged": false,
+      "view": "workspace",
+      "client_width": 1440,
+      "scroll_width": 1440,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "enlarged": false,
+      "view": "brief",
+      "client_width": 1440,
+      "scroll_width": 1440,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "enlarged": false,
+      "view": "team",
+      "client_width": 1440,
+      "scroll_width": 1440,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "enlarged": false,
+      "view": "about",
+      "client_width": 1440,
+      "scroll_width": 1440,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "enlarged": true,
+      "view": "workspace",
+      "client_width": 1440,
+      "scroll_width": 1440,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "enlarged": true,
+      "view": "brief",
+      "client_width": 1440,
+      "scroll_width": 1440,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "enlarged": true,
+      "view": "team",
+      "client_width": 1440,
+      "scroll_width": 1440,
+      "overflowing": []
+    },
+    {
+      "width": 1440,
+      "enlarged": true,
+      "view": "about",
+      "client_width": 1440,
+      "scroll_width": 1440,
+      "overflowing": []
+    }
+  ],
+  "axe": [
+    {
+      "width": 390,
+      "view": "workspace",
+      "violations": []
+    },
+    {
+      "width": 390,
+      "view": "brief",
+      "violations": []
+    },
+    {
+      "width": 390,
+      "view": "team",
+      "violations": []
+    },
+    {
+      "width": 390,
+      "view": "about",
+      "violations": []
+    },
+    {
+      "width": 1440,
+      "view": "workspace",
+      "violations": []
+    },
+    {
+      "width": 1440,
+      "view": "brief",
+      "violations": []
+    },
+    {
+      "width": 1440,
+      "view": "team",
+      "violations": []
+    },
+    {
+      "width": 1440,
+      "view": "about",
+      "violations": []
+    }
+  ],
+  "page_errors": [],
+  "unexpected_requests": [],
+  "failed_responses": [],
+  "asset_hashes": [
+    {
+      "asset": "index.html",
+      "status": 200,
+      "actual_sha256": "342536e609eb0897e605fee09cdb2c7435fe31f2bb8e11daf7adc8051b3f6072",
+      "expected_sha256": "342536e609eb0897e605fee09cdb2c7435fe31f2bb8e11daf7adc8051b3f6072",
+      "match": true
+    },
+    {
+      "asset": "preview/preview.css",
+      "status": 200,
+      "actual_sha256": "3f27a96b7ab75a15e54031f9d65c82c52992240ab32d27a2b3588761b06d4e79",
+      "expected_sha256": "3f27a96b7ab75a15e54031f9d65c82c52992240ab32d27a2b3588761b06d4e79",
+      "match": true
+    },
+    {
+      "asset": "preview/preview.js",
+      "status": 200,
+      "actual_sha256": "978d13fc25228959b9c20262b1ee2ebdf11514bf916bfe2f565913508c811773",
+      "expected_sha256": "978d13fc25228959b9c20262b1ee2ebdf11514bf916bfe2f565913508c811773",
+      "match": true
+    },
+    {
+      "asset": "preview/roster.js",
+      "status": 200,
+      "actual_sha256": "2ec81a27146fd0c46f6ccacb21f03b4a951522d9184b3121321f014baaf94d2d",
+      "expected_sha256": "2ec81a27146fd0c46f6ccacb21f03b4a951522d9184b3121321f014baaf94d2d",
+      "match": true
+    },
+    {
+      "asset": "favicon.svg",
+      "status": 200,
+      "actual_sha256": "a77a6a478c9b83b470fbdf0fd62c67125c3e060f1cd43f5cc0a6522b7d5ddd7b",
+      "expected_sha256": "a77a6a478c9b83b470fbdf0fd62c67125c3e060f1cd43f5cc0a6522b7d5ddd7b",
+      "match": true
+    }
+  ],
+  "passed": true,
+  "finished_utc": "2026-10-06T03:46:23.204Z"
+}

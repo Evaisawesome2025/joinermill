@@ -1,0 +1,69 @@
+{
+  "recorded_utc": "2026-10-06T03:50:14.962458+00:00",
+  "status": "published_ci_and_live_hashes_verified_live_browser_transport_blocked",
+  "live_url": "https://joinermill.com/",
+  "reviewed_hotfix": "0bb01ed52c2284f61d40cb53cc95faf9913d56f5",
+  "previous_main": "4123538bf18c4eb322c20247e23656625df40169",
+  "published_commit": "4bc82d2dd07d2cf6a404d519655a98fa94776ec6",
+  "main_push_confirmed_utc": "2026-10-06T03:47:05Z",
+  "pages_run": 37410610389,
+  "pages_run_url": "https://github.com/Evaisawesome2025/joinermill/actions/runs/37410610389",
+  "pages_deploy_completed_utc": "2026-10-06T03:48:05Z",
+  "rollback_branch": "rollback/live-readability-20261006",
+  "receipt_branch": "release/live-readability-20261006",
+  "changed_production_files": [
+    "index.html",
+    "preview/preview.css",
+    ".github/workflows/pages.yml"
+  ],
+  "local_validation": {
+    "functional_groups": 6,
+    "layout_checks": 32,
+    "widths": [
+      320,
+      390,
+      768,
+      1440
+    ],
+    "root_text_sizes_px": [
+      16,
+      32
+    ],
+    "axe_scans": 8,
+    "axe_violations": 0,
+    "page_errors": 0,
+    "unexpected_requests": 0,
+    "desktop_mobile_screenshots_inspected": true
+  },
+  "packaging": {
+    "independent_review_passed": true,
+    "staged_files_byte_identical": 37,
+    "checked_in_workflow_stays_disabled": true,
+    "pages_configuration_unchanged": true,
+    "ci_artifact_download_blocked_http": 403,
+    "download_retry_attempted": false
+  },
+  "live_file_verification": {
+    "utc_start": "2026-10-06T03:49:18.597544+00:00",
+    "utc_finish": "2026-10-06T03:49:20.468941+00:00",
+    "matched_files": 9,
+    "all_http_200": true,
+    "all_tls_verify_result_zero": true,
+    "redirects_followed": false,
+    "authentication_supplied": false
+  },
+  "remaining_verification_gap": "Direct Chromium desktop/mobile live navigation is blocked by ERR_CERT_AUTHORITY_INVALID before document load. The current environment CA is present in both system and existing NSS stores; exact browser validation cause is undetermined. No TLS bypass or trust configuration change attempted. Local renders are from files proven byte-identical to public live assets, but are not claimed as successful live-browser navigation.",
+  "held_scope": {
+    "backend_deployed": false,
+    "worker_requests": 0,
+    "backend_main": "c15db296c5a7dbf2cb5df40ba8fbe9443e578570",
+    "pulse_writes": false,
+    "full_candidate_published": false,
+    "full_candidate_held": "7d443073b718e71a3a771c5c073e7a3b53889394",
+    "pr15_merged": false,
+    "pr32_merged": false,
+    "support_submission": "pending user approval; not submitted"
+  },
+  "credentials_or_security_settings_changed": false,
+  "publication_auth_note": "Git had no configured credential helper; push used existing gh credential helper for that command only. No credential created or persistent auth configuration changed."
+}

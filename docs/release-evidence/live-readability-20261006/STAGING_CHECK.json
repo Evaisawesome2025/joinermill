@@ -1,0 +1,42 @@
+{
+  "recorded_utc": "2026-10-06T03:46:09.639499+00:00",
+  "status": "pass",
+  "base": "4123538bf18c4eb322c20247e23656625df40169",
+  "candidate": "0bb01ed52c2284f61d40cb53cc95faf9913d56f5",
+  "candidate_plus_uncommitted_packaging_patch": true,
+  "changed_paths_from_base": [
+    ".github/workflows/pages.yml",
+    "index.html",
+    "preview/preview.css"
+  ],
+  "packaging_patch_only_adds_preview_and_comment": true,
+  "workflow_control_fields_unchanged": true,
+  "csp_unchanged": true,
+  "script_and_stylesheet_references_unchanged": true,
+  "all_staged_files_match_source": true,
+  "staged_file_count": 37,
+  "preview_file_count": 4,
+  "preview_files": [
+    "preview/roster.js",
+    "preview/preview.js",
+    "preview/preview.css",
+    "preview/index.html"
+  ],
+  "verified_entrypoint_assets": [
+    "favicon.svg",
+    "preview/preview.css",
+    "preview/roster.js",
+    "preview/preview.js",
+    "fonts/fraunces-latin-600-normal.woff2",
+    "fonts/source-sans-3-latin-400-normal.woff2",
+    "fonts/source-sans-3-latin-600-normal.woff2"
+  ],
+  "workflow_sha256": "e48833c64d59820a4c7e8bf45294b0cff2d8eae9bfd7208bc7850766536af95b",
+  "index_sha256": "342536e609eb0897e605fee09cdb2c7435fe31f2bb8e11daf7adc8051b3f6072",
+  "css_sha256": "3f27a96b7ab75a15e54031f9d65c82c52992240ab32d27a2b3588761b06d4e79",
+  "network_requests": 0,
+  "worker_requests": 0,
+  "source_edits": 0,
+  "temporary_stage_removed": true,
+  "pages_configuration": "Coordinator reports legacy main:/ and disabled checked-in workflow; no control-plane calls made by reviewer."
+}

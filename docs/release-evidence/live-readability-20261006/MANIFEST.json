@@ -1,0 +1,99 @@
+{
+  "files": [
+    {
+      "path": "BROWSER_TRUST_DIAGNOSIS.json",
+      "bytes": 687,
+      "sha256": "c1c68d3d30b865ee7e85ad6567c7b78d50122c399da296252611fd7c7aefb1ec"
+    },
+    {
+      "path": "DEPLOYMENT_RECEIPT.json",
+      "bytes": 2873,
+      "sha256": "5e5c728d3df55f5db9b3e36b3ee9a4241fa6d18b90fb1f6afca51fe9a7bec9d3"
+    },
+    {
+      "path": "INDEPENDENT_REVIEW.md",
+      "bytes": 3074,
+      "sha256": "3992be0320e216debcea8fb0f835a45ef74b0f37bf4ea51bfce7015929540748"
+    },
+    {
+      "path": "LIVE_BROWSER_BLOCK.json",
+      "bytes": 979,
+      "sha256": "b858b9ee31fc2ba9e37ff6c851f6797b91fb1ecc5cd84c9866edcc06256b1def"
+    },
+    {
+      "path": "LIVE_HASHES.json",
+      "bytes": 4851,
+      "sha256": "635c91b50729403d3a7375fc034f2b503e02b5de4dd573258c7350fa2ba22785"
+    },
+    {
+      "path": "LOCAL_VERIFICATION.json",
+      "bytes": 8037,
+      "sha256": "8dc22f1ec935653cac0303ade98be54b01cd382de49db23d7c68dbe62bf71f06"
+    },
+    {
+      "path": "LOCAL_workspace-1440-enlarged.png",
+      "bytes": 379617,
+      "sha256": "4e255e09c52aa6b93fdfdde01e94e5a98ba83dd92e35a6f64a15b2db016a175e"
+    },
+    {
+      "path": "LOCAL_workspace-1440.png",
+      "bytes": 190674,
+      "sha256": "2c2b7b1291a69e1a3471a0eb68e4abd0e46f9cb5dd92e0d51ce8e331da50d039"
+    },
+    {
+      "path": "LOCAL_workspace-390-enlarged.png",
+      "bytes": 335516,
+      "sha256": "f4cb63099127b4130dba6190ea32b465ef552e7bde5fdc1dbe378749068046a2"
+    },
+    {
+      "path": "LOCAL_workspace-390.png",
+      "bytes": 142275,
+      "sha256": "8b7b32647c1e367e3a946c74614471b58922df26347845e2cf4fb9c4d191631f"
+    },
+    {
+      "path": "PAGES_ARTIFACT_CHECK.json",
+      "bytes": 618,
+      "sha256": "11c335b48df44f4b8ca25fc96707d8ed82f2853bcf4f3ab76be3130134340ec2"
+    },
+    {
+      "path": "PAGES_BUILD.json",
+      "bytes": 168,
+      "sha256": "4bfc56ee447e43d5e4fb27b3157cf70a8ed98168df950b9b615d01d7f81c720f"
+    },
+    {
+      "path": "PAGES_CONFIG.json",
+      "bytes": 141,
+      "sha256": "2cd73df200bcb4203c3097284c8d4b0c0c6893c0de4202d02b2adad7334a2bd7"
+    },
+    {
+      "path": "PAGES_JOBS.json",
+      "bytes": 485,
+      "sha256": "35451d3da01a3b86d8c9ede7526ea6d4011b0b422fe252abd442a890e8c28321"
+    },
+    {
+      "path": "PAGES_RUN.json",
+      "bytes": 350,
+      "sha256": "4a5fecda81d45033afbf0890dec800cf6d732b2cf9a413ad32d313e1f61eae4b"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4558,
+      "sha256": "6924a94a1d751e38701964d8823dbc69cd7ad88237f763eb356cefe2e7e9bceb"
+    },
+    {
+      "path": "STAGING_CHECK.json",
+      "bytes": 1545,
+      "sha256": "b7ea75c21ef2429ff6e45b5d9049ca46b82f78064abce3324da5aabee167cff1"
+    },
+    {
+      "path": "WORKFLOWS.json",
+      "bytes": 239,
+      "sha256": "bc7c127841eb06f2cdba031899e066dc0a4ce73d52cb3835c3cff2116fca0631"
+    },
+    {
+      "path": "verify.cjs",
+      "bytes": 8964,
+      "sha256": "74e51e05eab7636c2c700d04c8b52c402ab17d78952557c9db91cf1d27e44a80"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+{"workflows":[{"id":371574905,"name":"Deploy GitHub Pages","path":".github/workflows/pages.yml","state":"disabled_manually"},{"id":371584959,"name":"pages-build-deployment","path":"dynamic/pages/pages-build-deployment","state":"active"}]}

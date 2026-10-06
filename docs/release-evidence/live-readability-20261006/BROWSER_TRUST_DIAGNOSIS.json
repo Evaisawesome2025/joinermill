@@ -1,0 +1,24 @@
+{
+  "public_certificate_metadata_only": true,
+  "current_environment_ca_sha256": "c71b4d1e9d7775c538c688ab10cea9ce417d7312e89838f9d15ff73256cd7fc3",
+  "existing_nss_entries": [
+    {
+      "nickname": "OpenAI-chaussette",
+      "matches_current_environment_ca": false
+    },
+    {
+      "nickname": "OpenAI-mitmproxy-ca-cert",
+      "matches_current_environment_ca": false
+    },
+    {
+      "nickname": "OpenAI-nebula-dns",
+      "matches_current_environment_ca": true
+    },
+    {
+      "nickname": "OpenAI-nebula-mitmproxy",
+      "matches_current_environment_ca": false
+    }
+  ],
+  "current_environment_ca_present_in_existing_nss": true,
+  "certificate_or_trust_mutations": false
+}

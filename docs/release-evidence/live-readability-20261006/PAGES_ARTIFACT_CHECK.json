@@ -1,0 +1,15 @@
+{
+  "recorded_utc": "2026-10-06T03:48:09.517971+00:00",
+  "run_id": 37410610389,
+  "artifact_id": 11388832775,
+  "artifact_name": "github-pages",
+  "artifact_size_bytes": 148429,
+  "ci_upload_status": "success",
+  "download_attempts": 1,
+  "download_status": "blocked",
+  "http_status": 403,
+  "destination_host": "productionresultssa0.blob.core.windows.net",
+  "signed_download_url_retained": false,
+  "alternate_download_attempted": false,
+  "verification_substitute": "Independent exact staging command: all 37 files match source; live entrypoint, preview assets, and font hashes to be checked after deployment."
+}
