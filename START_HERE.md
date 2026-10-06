@@ -1,10 +1,12 @@
-# Start here — local result and owner review
+# Start here — reliable local confirmations
 
 ## Checkpoint
 
-2026-10-06: **new feature branches only; no main merge or deployment.** Frontend `next/result-review-20261006` extends reviewed command-center commit `a30ccbe885a1fd5523d7450c593638dab8ee2d8c`. Backend `next/result-review-contract-20261006` extends `3f47c08e82191d8fe34b45e3c0950c639e17a9cb` in [evaos-v05](https://github.com/Evaisawesome2025/evaos-v05). Its changes are documentation only; the stateless six-field endpoint is unchanged.
+2026-10-06: **new feature branches only; no main merge or deployment.** Frontend `next/confirmation-readiness-20261006` extends reviewed result-review commit `633d4afd1bf5e2586fbf0deda7dab6ec9f09432d`. Backend `next/confirmation-readiness-contract-20261006` extends `70099ca9802e2928075b20c721d07d289fafb794` in [evaos-v05](https://github.com/Evaisawesome2025/evaos-v05). Backend changes remain documentation only.
 
-Prior command-center branches and frozen release branches remain untouched. Frozen first-release commits are frontend `7f78c54097d70dc46d2d51b45f5e3d513f88fe67` and backend `d39936927821ce80087194eec948c7d94857037b`. The last verified published frontend source in this work trail is `4123538bf18c4eb322c20247e23656625df40169`. These reviewed increments have not been deployed by this task.
+A complete-path audit reproduced a delayed-import race that could apply an old acceptance confirmation to a different result. This increment fixes confirmation ownership: opening reset/restore/accept cancels a pending import, confirmations are exclusive, acceptance is bound to its exact result, and obsolete controls cannot act on replaced work. Read [READINESS.md](READINESS.md) for the reproduction, complete audit, candidate ancestry, historical public-verification blocker and first-real-user prerequisites. No additional feature was added.
+
+Prior result-review, command-center and frozen release branches remain untouched. Frozen first-release commits are frontend `7f78c54097d70dc46d2d51b45f5e3d513f88fe67` and backend `d39936927821ce80087194eec948c7d94857037b`. The last verified published frontend source in this work trail is `4123538bf18c4eb322c20247e23656625df40169`. These reviewed increments have not been deployed by this task.
 
 ## Use the vertical slice
 
@@ -25,4 +27,4 @@ Stop at reviewed feature-branch publication. A later authorized release session 
 
 ## Preserved boundaries
 
-The 13-role directory, separate fixed examples and legacy `/app/` routes remain unchanged. Held [Joinermill PR15](https://github.com/Evaisawesome2025/joinermill/pull/15) and [EVAOS PR32](https://github.com/Evaisawesome2025/evaos-v05/pull/32) remain untouched and unmerged. Pulse stays a separate completed **UNSCORED** prototype, absent from this checkout and undeployed. There are no models, new services/accounts/auth, server customer-data writes, execution, spending, outreach or synthetic delivery claims.
+The 13-role directory, separate fixed examples and legacy `/app/` routes remain unchanged. Held [Joinermill PR15](https://github.com/Evaisawesome2025/joinermill/pull/15) and [EVAOS PR32](https://github.com/Evaisawesome2025/evaos-v05/pull/32) remain untouched and unmerged. Pulse belongs to a separate task; this increment neither inspects nor changes its paths, branches or deployment. No Pulse integration is introduced or tested. There are no models, new services/accounts/auth, server customer-data writes, execution, spending, outreach or synthetic delivery claims.

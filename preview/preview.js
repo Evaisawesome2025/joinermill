@@ -6,7 +6,7 @@ const ENDPOINT = 'https://evaos-v05-ask.joinermill-ask.workers.dev/brief/validat
 const $ = id => document.getElementById(id);
 const make = (tag, cls, text) => { const n = document.createElement(tag); n.className = cls || ''; n.textContent = text; return n; };
 const announce = text => { $('announcement').textContent = text; };
-let prepared = null, pending = null, resultRecord = emptyResult();
+let prepared = null, pending = null, resultRecord = emptyResult(), acceptanceTarget = null;
 let resultOrigin = 'Entered in this tab. Browser-clock timestamps and owner identity are not authenticated.';
 function cancelCheck() {
   if (pending) { pending.abort(); pending = null; $('check-status').textContent = 'Check cancelled. You can try again.'; }
@@ -150,10 +150,10 @@ dialog.append(make('h2', '', 'Clear this draft?')); dialog.firstChild.id = 'rese
 dialog.append(make('p', '', 'This clears the brief, planning notes, result and owner review from this tab. The saved browser copy and downloaded files remain. Use Remove saved copy to delete the browser snapshot.'));
 const actions = make('div', 'dialog-actions', ''); const keep = make('button', 'secondary', 'Keep editing'); const reset = make('button', 'primary', 'Clear draft'); actions.append(keep, reset); dialog.append(actions); document.body.append(dialog);
 let resetTrigger;
-document.querySelectorAll('[data-reset]').forEach(button => button.addEventListener('click', () => { resetTrigger = button; dialog.showModal(); keep.focus(); }));
+document.querySelectorAll('[data-reset]').forEach(button => button.addEventListener('click', () => { resetTrigger = button; showConfirmation(dialog, keep); }));
 keep.addEventListener('click', () => dialog.close());
-dialog.addEventListener('close', () => resetTrigger?.focus());
-reset.addEventListener('click', () => { invalidate(); clearResult(); cancelImport(); $('brief-form').reset(); $('objective-form').reset(); $('nextAction').value = ''; $('unresolvedInputs').value = ''; updatePlanNotes(); clearErrors(); updateCount(); $('review-content').replaceChildren(); for (const key of ['desk-objective', 'desk-deliverable', 'desk-stop']) $(key).textContent = ''; dialog.close(); location.hash = 'workspace'; announce('Draft cleared from this tab.'); });
+dialog.addEventListener('close', () => returnFocus(dialog, resetTrigger));
+reset.addEventListener('click', () => { if (!dialog.open) return; closeConfirmations(); invalidate(); clearResult(); cancelImport(); $('brief-form').reset(); $('objective-form').reset(); $('nextAction').value = ''; $('unresolvedInputs').value = ''; updatePlanNotes(); clearErrors(); updateCount(); $('review-content').replaceChildren(); for (const key of ['desk-objective', 'desk-deliverable', 'desk-stop']) $(key).textContent = ''; dialog.close(); location.hash = 'workspace'; announce('Draft cleared from this tab.'); });
 function readPlan() { return { nextAction: $('nextAction').value, unresolvedInputs: $('unresolvedInputs').value }; }
 function storageStatus(text) { if ($('storage-status').textContent !== text) $('storage-status').textContent = text; }
 function markUnsaved() { storageStatus('Changes in this tab are not saved automatically. Save a browser copy or download your work plan.'); }
@@ -209,7 +209,7 @@ restoreDialog.append(restoreTitle, make('p', '', 'Restoring replaces the current
 const restoreActions = make('div', 'dialog-actions', ''); const cancelRestore = make('button', 'secondary', 'Keep current draft'); const confirmRestore = make('button', 'primary', 'Restore copy');
 restoreActions.append(cancelRestore, confirmRestore); restoreDialog.append(restoreActions); document.body.append(restoreDialog);
 function applyCopy(saved, source) {
-  invalidate();
+  closeConfirmations(); invalidate();
   for (const [key, value] of Object.entries(saved.draft)) $('edit-' + key).value = value;
   $('objective').value = saved.draft.objective;
   for (const [key, value] of Object.entries(saved.plan)) $(key).value = value;
@@ -225,12 +225,12 @@ function applyCopy(saved, source) {
 function restoreCurrentSaved() { const saved = refreshSaved(); if (saved) { cancelImport(); applyCopy(saved, 'Restored the browser copy into this tab.'); } }
 $('restore-draft').addEventListener('click', () => {
   if (!refreshSaved()) return;
-  if (Object.values(readDraft()).some(Boolean) || Object.values(readPlan()).some(Boolean) || resultRecord.baseline || [resultRecord.text, resultRecord.provenance, resultRecord.feedback].some(Boolean)) { restoreDialog.showModal(); cancelRestore.focus(); }
+  if (Object.values(readDraft()).some(Boolean) || Object.values(readPlan()).some(Boolean) || resultRecord.baseline || [resultRecord.text, resultRecord.provenance, resultRecord.feedback].some(Boolean)) { showConfirmation(restoreDialog, cancelRestore); }
   else restoreCurrentSaved();
 });
 cancelRestore.addEventListener('click', () => restoreDialog.close());
-restoreDialog.addEventListener('close', () => $('restore-draft').focus());
-confirmRestore.addEventListener('click', () => { restoreDialog.close(); restoreCurrentSaved(); });
+restoreDialog.addEventListener('close', () => returnFocus(restoreDialog, $('restore-draft')));
+confirmRestore.addEventListener('click', () => { if (!restoreDialog.open) return; restoreDialog.close(); restoreCurrentSaved(); });
 $('remove-saved').addEventListener('click', () => {
   try { removeSaved(window.localStorage); refreshSaved(); storageStatus('Saved browser copy removed. The draft open in this tab and downloads are unchanged.'); $('main').focus({ preventScroll: true }); }
   catch { storageStatus('The browser copy could not be removed. Your current draft is unchanged; try again or use browser site-data controls.'); }
@@ -276,44 +276,82 @@ acceptDialog.append(acceptTitle, make('p', '', 'You are recording your own accep
 const acceptActions = make('div', 'dialog-actions', ''); const keepReviewing = make('button', 'secondary', 'Keep reviewing'); const confirmAccept = make('button', 'primary', 'Record owner acceptance');
 acceptActions.append(keepReviewing, confirmAccept); acceptDialog.append(acceptActions); document.body.append(acceptDialog);
 $('accept-result').addEventListener('click', () => {
-  try { reviewResult(resultRecord, 'accepted'); resultError(); if (!acceptDialog.open) acceptDialog.showModal(); keepReviewing.focus(); }
+  try { reviewResult(resultRecord, 'accepted'); resultError(); showConfirmation(acceptDialog, keepReviewing); acceptanceTarget = resultRecord; }
   catch (error) { resultError(error.message); }
 });
 keepReviewing.addEventListener('click', () => acceptDialog.close());
-acceptDialog.addEventListener('close', () => $('result-feedback').focus());
-confirmAccept.addEventListener('click', () => { if (decideResult('accepted')) acceptDialog.close(); });
+acceptDialog.addEventListener('close', () => {
+  if (acceptDialog.open) return;
+  acceptanceTarget = null;
+  returnFocus(acceptDialog, $('result-feedback'), $('accept-result'));
+});
+confirmAccept.addEventListener('click', () => {
+  if (!acceptDialog.open) return;
+  if (!acceptanceTarget || acceptanceTarget !== resultRecord) {
+    acceptDialog.close(); acceptanceTarget = null;
+    resultError('The result changed while confirmation was open. Review it again before accepting.'); return;
+  }
+  if (decideResult('accepted')) { acceptanceTarget = null; acceptDialog.close(); }
+});
 $('download-backup').addEventListener('click', () => {
   if (!briefAndPlanOK()) return;
   try { download(encodeSnapshot(readDraft(), readPlan(), new Date().toISOString(), resultRecord), 'joinermill-local-backup.json', $('download-backup'), $('import-status'), 'application/json'); }
   catch { $('import-status').textContent = 'Backup could not be created. Check the field limits; your current draft remains here.'; }
 });
-let importGeneration = 0, importCandidate = null;
+let importGeneration = 0, importCandidate = null, importReading = false;
 const importDialog = document.createElement('dialog'); importDialog.setAttribute('aria-labelledby', 'import-title');
 const importTitle = make('h2', '', 'Replace this tab with the backup?'); importTitle.id = 'import-title';
 importDialog.append(importTitle, make('p', '', 'The file passed format checks only. Import replaces the open brief, notes, result and owner review. Decisions in it are not authenticated approval. Your saved browser copy stays unchanged until you explicitly Save.'));
 const importActions = make('div', 'dialog-actions', ''); const cancelImportButton = make('button', 'secondary', 'Keep current work'); const confirmImport = make('button', 'primary', 'Import into this tab');
 importActions.append(cancelImportButton, confirmImport); importDialog.append(importActions); document.body.append(importDialog);
-function cancelImport() { importGeneration++; importCandidate = null; $('import-backup').value = ''; $('import-status').textContent = ''; if (importDialog.open) importDialog.close(); }
+function cancelImport(message = '') {
+  const interrupted = importReading || !!importCandidate;
+  importGeneration++; importReading = false; importCandidate = null; $('import-backup').value = '';
+  $('import-status').textContent = interrupted ? message : '';
+  if (importDialog.open) importDialog.close();
+}
+// Queued close events must not steal focus after the person has selected another field.
+function returnFocus(modal, target, opener = target) {
+  if (modal.open || document.querySelector('dialog[open]')) return;
+  const active = document.activeElement;
+  if (active === document.body || active === opener || modal.contains(active)) target?.focus();
+}
+// A confirmation must not outlive the work it describes, or stack over a different action.
+function closeConfirmations() {
+  acceptanceTarget = null;
+  document.querySelectorAll('dialog[open]').forEach(modal => modal.close());
+}
+function showConfirmation(modal, cancelButton) {
+  if (modal !== importDialog) cancelImport('Import cancelled because another confirmation was opened. Select the backup again to import it.');
+  document.querySelectorAll('dialog[open]').forEach(other => {
+    if (other === modal) return;
+    if (other === acceptDialog) acceptanceTarget = null;
+    other.close();
+  });
+  if (!modal.open) modal.showModal();
+  cancelButton.focus();
+}
 $('import-backup').addEventListener('change', async () => {
   const file = $('import-backup').files[0]; if (!file) return;
-  cancelImport(); const generation = importGeneration;
+  cancelImport(); const generation = importGeneration; importReading = true;
   $('import-status').textContent = 'Reading a local backup; nothing is uploaded…';
   try {
     if (file.size > MAX_SNAPSHOT_BYTES) throw new Error('size');
     const raw = await file.text(); if (generation !== importGeneration) return;
+    importReading = false;
     importCandidate = decodeSnapshot(raw);
     $('import-status').textContent = 'Backup format checked. Confirm before replacing this tab.';
-    importDialog.showModal(); cancelImportButton.focus();
-  } catch { if (generation === importGeneration) { importCandidate = null; $('import-status').textContent = 'Cannot import: invalid, unsupported or oversized backup. The current draft and saved copy are unchanged.'; } }
+    showConfirmation(importDialog, cancelImportButton);
+  } catch { if (generation === importGeneration) { importReading = false; importCandidate = null; $('import-status').textContent = 'Cannot import: invalid, unsupported or oversized backup. The current draft and saved copy are unchanged.'; } }
 });
 cancelImportButton.addEventListener('click', () => importDialog.close());
 importDialog.addEventListener('close', () => {
   if (importDialog.open) return;
   if (importCandidate) $('import-status').textContent = 'Import cancelled. Current work and the saved browser copy are unchanged.';
-  importCandidate = null; $('import-backup').focus();
+  importCandidate = null; returnFocus(importDialog, $('import-backup'));
 });
 confirmImport.addEventListener('click', () => {
-  if (!importCandidate) return;
+  if (!importDialog.open || !importCandidate) return;
   const copy = importCandidate; cancelImport(); applyCopy(copy, 'Imported a local file into this tab.');
   $('import-status').textContent = 'Imported into this tab only. Use Save to replace the browser copy, or download to keep a file.';
 });

@@ -1,6 +1,10 @@
-# Local result review — 2026-10-06
+# Confirmation reliability — 2026-10-06
 
-**Feature-branch publication only; no main merge or deployment.** This increment extends `a30ccbe885a1fd5523d7450c593638dab8ee2d8c` on `next/result-review-20261006`. The matching backend branch is documentation-only on `3f47c08e82191d8fe34b45e3c0950c639e17a9cb`. Both prior increments remain preserved and undeployed in this work trail.
+**Feature-branch publication only; no main merge or deployment.** This increment extends frontend `633d4afd1bf5e2586fbf0deda7dab6ec9f09432d` on `next/confirmation-readiness-20261006`; matching backend documentation extends `70099ca9802e2928075b20c721d07d289fafb794` on `next/confirmation-readiness-contract-20261006`. Prior branches are preserved.
+
+## Reliability correction
+
+A delayed local backup read could open import over an acceptance dialog and leave that old confirmation able to accept a newly imported result. Opening reset/restore/accept now cancels the pending import with a visible explanation; only one confirmation stays open. Acceptance is pinned to the exact result object reviewed, and replacing/clearing work closes stale dialogs. Closed confirmation controls cannot act again, and queued close events cannot steal focus from a newly selected field. Select the backup again after an interrupted import. The result/snapshot/backend schemas and privacy boundaries below are unchanged. See [READINESS.md](READINESS.md) for the audit, candidate ancestry and release gates.
 
 ## Result, provenance and owner decision
 
@@ -23,9 +27,9 @@ The optional EVAOS format check still serializes exactly six current brief field
 - `npm ci && npm test` — 18 unit tests, including strict result transitions, original-target retention, import schema/types, version 1 migration, literal text and exact exports.
 - Clone the matching backend alongside this checkout; run `cd worker && npm test` there — 70 tests. The shared frontend/backend brief model must remain byte-identical.
 - Serve this checkout with `python3 -m http.server 8765 --bind 127.0.0.1` in a separate terminal.
-- Install Chromium (`npx playwright install chromium`) or set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to an existing Chromium. Run `npm run test:browser` — the original 13 groups, command-center 12 groups, and result-review 16 groups (41 total).
+- Install Chromium (`npx playwright install chromium`) or set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to an existing Chromium. Run `npm run test:browser` — the original 13 groups, command-center 12 groups, result-review 16 groups, and confirmation reliability 8 groups (49 total).
 - `BRIEF_TEST_OUTPUT` selects the artifact directory. Tests intercept the Worker URL and invoke the real handler locally with synthetic data. They do not call live customer routes. Coverage includes decision/reset/back/reload/repeated clicks, exact readable and JSON exports, confirmed/cancelled/legacy/malicious/oversized imports, file-read errors/races, blocked/corrupt/quota storage, request isolation and stale checks.
-- Twenty-two axe scans cover six desktop/mobile views, desk/result widths 1440/390/320px, and reset/restore/import/accept dialogs. Inspect the desktop/mobile screenshots too; automated accessibility scans do not replace human testing.
+- Twenty-seven axe scans cover six desktop/mobile views, desk/result widths 1440/390/320px, and reset/restore/import/accept dialogs, including interrupted confirmation states. Inspect the desktop/mobile screenshots too; automated accessibility scans do not replace human testing.
 
 ## Future release and rollback
 
