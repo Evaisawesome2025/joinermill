@@ -1,6 +1,6 @@
 # Latest cloud release checkpoint
 
-2026-10-06: candidates passed fresh local tests and independent offline review, but no production deployment occurred. Authenticated Cloudflare verification returned HTTP 401; current production/rollback capture is blocked. See [CLOUD_RELEASE_HANDOFF.md](CLOUD_RELEASE_HANDOFF.md) and [CLOUD_RELEASE_STATUS.json](CLOUD_RELEASE_STATUS.json). Earlier branch-only checkpoints below remain historical.
+2026-10-06: account-token authentication, current production capture and reviewed version-only backend recovery integration pass. No production writes occurred: the first pre-deploy public health probe returned HTTP 403, and frontend publication is separately on hold for the parent-reviewed phone-readability patch. See [CLOUD_RELEASE_HANDOFF.md](CLOUD_RELEASE_HANDOFF.md) and [CLOUD_RELEASE_STATUS.json](CLOUD_RELEASE_STATUS.json). Earlier checkpoints below remain historical.
 
 ---
 
