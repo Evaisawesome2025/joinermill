@@ -7,8 +7,8 @@
     },
     {
       "path": "DEPLOYMENT_RECEIPT.json",
-      "bytes": 2873,
-      "sha256": "5e5c728d3df55f5db9b3e36b3ee9a4241fa6d18b90fb1f6afca51fe9a7bec9d3"
+      "bytes": 2933,
+      "sha256": "41c17f4dfad954d9c19164a54710773a2d5de770b3e13bebcefce842b8c5ed67"
     },
     {
       "path": "INDEPENDENT_REVIEW.md",
@@ -77,8 +77,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4558,
-      "sha256": "6924a94a1d751e38701964d8823dbc69cd7ad88237f763eb356cefe2e7e9bceb"
+      "bytes": 4569,
+      "sha256": "974c595e8adaa1ac8c5cf46828a1436faf18c5bbc4d27e4fdec2350ac5248d56"
     },
     {
       "path": "STAGING_CHECK.json",

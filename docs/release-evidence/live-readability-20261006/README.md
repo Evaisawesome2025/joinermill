@@ -28,6 +28,6 @@ The provider artifact uploaded successfully, but its storage download endpoint r
 
 ## Held scope
 
-No Worker request, upload, activation, rollback, Pulse write, held PR15/PR32 merge, credential change, or security configuration change occurred in this frontend release. Backend main remains `c15db296c5a7dbf2cb5df40ba8fbe9443e578570`. Full candidate `7d443073b718e71a3a771c5c073e7a3b53889394` remains held. Backend error-1010 support submission remains pending user approval and was not sent.
+No Worker request, upload, activation, rollback, Pulse write, held PR15/PR32 merge, credential change, or security configuration change occurred in this frontend release. Backend main remains `c15db296c5a7dbf2cb5df40ba8fbe9443e578570`. Full candidate `7d443073b718e71a3a771c5c073e7a3b53889394` remains held. Support report not submitted; official support sign-in/eligibility verification remains blocked.
 
 The machine-readable summary is [DEPLOYMENT_RECEIPT.json](DEPLOYMENT_RECEIPT.json). [verify.cjs](verify.cjs) records the browser harness; its dependency paths reflect this execution workspace. Synthetic objectives were used only in page memory and local downloads.
