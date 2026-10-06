@@ -24,7 +24,7 @@ const plan={nextAction:'Ask the owner for draft B before comparing the offers.',
  });
  const results=[];async function check(name,fn){await fn();results.push({name,status:'pass'});console.log('PASS '+name)}
  const show=async view=>{await page.evaluate(v=>location.hash=v,view);await page.waitForSelector('#view-'+view+':visible')};
- const save=async()=>{await page.locator('#view-review [data-save]').click();await page.waitForFunction(()=>document.querySelector('#storage-status').textContent.startsWith('Saved in this browser.'))};
+ const save=async()=>{await page.locator('.keep-card [data-save]').click();await page.waitForFunction(()=>document.querySelector('#storage-status').textContent.startsWith('Saved in this browser.'))};
  await page.goto(BASE);
  await check('partial draft saves explicitly, reload needs restore, removal keeps open draft',async()=>{
   await show('brief');await page.locator('#edit-objective').fill('An unfinished but useful direction.');assert.equal(await page.evaluate(()=>saveWrites),0);
@@ -39,9 +39,9 @@ const plan={nextAction:'Ask the owner for draft B before comparing the offers.',
   await page.locator('#nextAction').fill(plan.nextAction);await page.locator('#unresolvedInputs').fill(plan.unresolvedInputs);assert.match(await page.locator('#missing-note').textContent(),/2 input notes/);assert.equal(requests.length,0);
  });
  await check('full-plan download contains exact planning notes and brief; save repeated click writes once',async()=>{
-  const d=page.waitForEvent('download');await page.locator('#view-review [data-download-plan]').click();const downloaded=await d;assert.equal(await fs.readFile(await downloaded.path(),'utf8'),model.exportPlan(draft,plan));
-  const before=await page.evaluate(()=>saveWrites);await page.locator('#view-review [data-save]').evaluate(b=>{b.click();b.click()});assert.equal(await page.evaluate(()=>saveWrites),before+1);
-  await page.waitForFunction(()=>!document.querySelector('#view-review [data-save]').disabled);
+  const d=page.waitForEvent('download');await page.locator('.keep-card [data-download-plan]').click();const downloaded=await d;assert.equal(await fs.readFile(await downloaded.path(),'utf8'),model.exportPlan(draft,plan));
+  const before=await page.evaluate(()=>saveWrites);await page.locator('.keep-card [data-save]').evaluate(b=>{b.click();b.click()});assert.equal(await page.evaluate(()=>saveWrites),before+1);
+  await page.waitForFunction(()=>!document.querySelector('.keep-card [data-save]').disabled);
  });
  await check('optional backend check sends exactly six fields, never local notes or saved metadata',async()=>{
   await page.locator('#check-brief').click();await page.waitForFunction(()=>document.querySelector('#check-status').textContent.startsWith('Format checked.'));assert.deepEqual(requests.at(-1),draft);
@@ -89,7 +89,7 @@ const plan={nextAction:'Ask the owner for draft B before comparing the offers.',
  });
  await check('quota and removal failures are visible without dropping the current draft',async()=>{
   await page.evaluate(()=>{window.originalSet=Storage.prototype.setItem;window.originalRemove=Storage.prototype.removeItem;Storage.prototype.setItem=()=>{throw new Error('quota')};Storage.prototype.removeItem=()=>{throw new Error('blocked')};});
-  await page.locator('#view-review [data-save]').click();assert.match(await page.locator('#storage-status').textContent(),/could not be confirmed/);await page.locator('#remove-saved').click();assert.match(await page.locator('#storage-status').textContent(),/could not be removed/);assert.ok((await page.locator('#nextAction').inputValue()).length>0);
+  await page.locator('.keep-card [data-save]').click();assert.match(await page.locator('#storage-status').textContent(),/could not be confirmed/);await page.locator('#remove-saved').click();assert.match(await page.locator('#storage-status').textContent(),/could not be removed/);assert.ok((await page.locator('#nextAction').inputValue()).length>0);
   await page.evaluate(()=>{Storage.prototype.setItem=window.originalSet;Storage.prototype.removeItem=window.originalRemove;});
  });
  assert.deepEqual(pageErrors,[]);await fs.writeFile(path.join(OUT,'command-center-results.json'),JSON.stringify({results,pageErrors,requestCount:requests.length},null,2));await browser.close();

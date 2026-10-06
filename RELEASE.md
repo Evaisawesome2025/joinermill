@@ -1,30 +1,34 @@
-# Work desk checkpoint — October 2026
+# Local result review — 2026-10-06
 
-**Branch only; no main merge or deployment in this increment.** Branch `next/command-center-20261005` extends frozen frontend commit `7f78c54097d70dc46d2d51b45f5e3d513f88fe67`. The earlier reviewed six-field release is also not deployed in this work trail.
+**Feature-branch publication only; no main merge or deployment.** This increment extends `a30ccbe885a1fd5523d7450c593638dab8ee2d8c` on `next/result-review-20261006`. The matching backend branch is documentation-only on `3f47c08e82191d8fe34b45e3c0950c639e17a9cb`. Both prior increments remain preserved and undeployed in this work trail.
 
-## Behavior and privacy
+## Result, provenance and owner decision
 
-The review screen is a work desk showing the person's objective, intended deliverable and stop rule. Editable next-action and unresolved-input notes stay local. A note is not a task assignment, readiness score, AI recommendation or evidence of completed work. The unchanged 13-specialist directory and fixed examples remain separate.
+The owner enters a real output (up to 8,000 characters), its source/author/file-version note (1,000), and review feedback (2,000). Recording requires a prepared brief, result and source. First recording captures all six normalized brief fields; later updates retain that target. The owner can mark needs revision or confirm acceptance after adding explanatory feedback. Neither decision is independent verification or authenticated approval; timestamps come from the browser clock. Sources are plain text, and URLs are not fetched.
 
-Drafts stay in the open tab unless the person explicitly saves a browser copy or downloads a text file. Manual browser save stores one versioned snapshot in localStorage on the current origin/profile, including six brief fields, two notes and save time. It does not sync, autosave or automatically restore after reload. Restore warns before replacing a nonempty open draft. Server-check status is never saved. Clearing the draft also clears hidden summary nodes but deliberately leaves the separately saved copy; removal deletes only the application's snapshot key. Shared browser users may access the copy; browser site-data deletion removes it.
+Editing the result/source clears recording and the prior decision. Feedback edits clear the decision only. Changing the current brief preserves the captured original target and shows a mismatch warning. The old decision always applies only to that original target. There is one current result, with no audit-grade signature or revision history. Reset begins a fresh record by clearing current fields, captured target, owner decision, metadata and hidden summary text.
 
-Snapshots are capped at 64 KiB before parsing, require an exact versioned schema and use the existing brief field caps. Next action is capped at 600 characters, unresolved inputs at 1,600. Corrupt/unsupported snapshots cannot restore; storage read/write/quota/removal failures are visible while the current draft remains available. Values render as text. There is no arbitrary-file import or customer-data database.
+## Local storage, exports and import
 
-Download work plan includes exact planning notes plus either the canonical complete brief or explicit incomplete-field labels. Download brief retains the existing canonical six-field export. The optional **Send brief for format check** action sends just the six brief fields, never planning notes or save metadata. The unchanged handler performs deterministic validation and returns a matching export checksum; it stores/logs no body. Infrastructure may retain request metadata. Stale/interrupted checks cannot mark restored work as verified. Availability of the server never blocks local use.
+Saving is explicit, browser-only and replaces one copy on the current site origin/profile. It is not autosave, sync, cloud storage or account authentication. Reload leaves fields empty until explicit restore. Clearing the tab leaves saved copies/downloads; Remove saved copy deletes only the application key. Shared-browser users can access the copy, and browser data can be unavailable or cleared.
 
-## Reproduce validation
+The existing storage key is retained. New snapshots use version 2 with exact keys: version, savedAt, draft, plan and result. Valid version 1 copies restore with an empty result; reading never upgrades/writes them. Only explicit Save writes version 2. Old application versions reject the new schema rather than discarding result data silently. Snapshot and file input caps are 128 KiB, checked before parsing, plus strict field/type/control-character/enum/state/date checks. Text remains literal through rendering and export.
 
-- `npm ci && npm test` runs both unit suites (9 tests).
-- Check out `evaos-v05` alongside this checkout, at frozen `d39936927821ce80087194eec948c7d94857037b` or its documentation-only next branch. From that repository run `cd worker && npm test` (70 tests).
-- From this checkout, start `python3 -m http.server 8765 --bind 127.0.0.1` in a separate terminal.
-- Install Chromium with `npx playwright install chromium`, then run `npm run test:browser`. Alternatively set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to an already installed Chromium.
-- `BRIEF_TEST_OUTPUT` optionally sets the screenshots/JSON output directory. Browser suites run 13 existing groups and 12 desk/storage groups. They invoke the real Worker handler locally with synthetic data, intercept the remote URL, and assert exact exports, six-field request isolation, navigation, repeated clicks, cancelled checks, reset, explicit restore, blocked/corrupt/oversized storage, and keyboard/mobile behavior.
-- Automated axe scans cover six views at desktop/mobile widths, the work desk at 1440/390/320px, and both restore/reset dialogs (17 scans). Automated checks do not replace human accessibility testing. Inspect the saved desktop/mobile screenshots as well.
+Download work plan includes current intent, planning notes, actual result, source, feedback, decision, local timestamps and original review target. Incomplete drafts remain clearly labeled. Download brief only retains the original six-field format. Download backup creates a JSON file for bounded local restoration. Import reads that file in the browser, checks its schema, and requires confirmation before replacing the open tab. It does not save or transmit automatically. Imported/restored decisions remain explicitly unauthenticated user claims. Cancelled, malformed, failed or superseded imports do not replace current work. Reset clears the current tab and cancels a pending file read so stale imported data cannot repopulate it. Blocked storage or quota failures do not prevent local editing or file export/import.
 
-No real records, credentials, paid services or external business actions are involved in these tests. `preview/brief-model.js` must match backend `worker/src/brief-model.js` byte for byte. This increment changes no backend runtime, configuration, deployment helper or preserved production source.
+The optional EVAOS format check still serializes exactly six current brief fields. Result/provenance/feedback/decisions and snapshot metadata are excluded. The unchanged handler stores/logs no body; infrastructure may retain metadata. An obsolete response cannot validate an imported/restored brief. The result flow never triggers a model, job, server-side record write or automatic request.
 
-## Future publication and rollback
+## Validation commands
 
-No publication beyond reviewed feature branches is authorized for this checkpoint. Before any later deployment, inspect concurrent changes and the current Worker version/settings, resolve authorized network access, and use the backend's reviewed preserving helper. Never plain `wrangler deploy`: checked-in configuration lacks part of live setup. Verify backend harmless synthetic requests first, then use existing GitHub Pages publication. Verify exact remote commits, terminal CI/deployment results and actual live behavior; a push alone proves none of those.
+- `npm ci && npm test` — 18 unit tests, including strict result transitions, original-target retention, import schema/types, version 1 migration, literal text and exact exports.
+- Clone the matching backend alongside this checkout; run `cd worker && npm test` there — 70 tests. The shared frontend/backend brief model must remain byte-identical.
+- Serve this checkout with `python3 -m http.server 8765 --bind 127.0.0.1` in a separate terminal.
+- Install Chromium (`npx playwright install chromium`) or set `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH` to an existing Chromium. Run `npm run test:browser` — the original 13 groups, command-center 12 groups, and result-review 16 groups (41 total).
+- `BRIEF_TEST_OUTPUT` selects the artifact directory. Tests intercept the Worker URL and invoke the real handler locally with synthetic data. They do not call live customer routes. Coverage includes decision/reset/back/reload/repeated clicks, exact readable and JSON exports, confirmed/cancelled/legacy/malicious/oversized imports, file-read errors/races, blocked/corrupt/quota storage, request isolation and stale checks.
+- Twenty-two axe scans cover six desktop/mobile views, desk/result widths 1440/390/320px, and reset/restore/import/accept dialogs. Inspect the desktop/mobile screenshots too; automated accessibility scans do not replace human testing.
 
-If a later release needs undoing, inspect later commits and revert only this release's changes, then monitor Pages to completion. Backend rollback must preserve settings and existing live routes using worker/RELEASE.md. Do not force-reset main, touch held PR15/PR32, or deploy Pulse.
+## Future release and rollback
+
+This checkpoint ends at reviewed branch pushes. No live deployment or main merge is part of it. A later authorized release must inspect concurrent work, verify public-host access and current Worker state, preserve all deployed settings/bindings with the existing helper, deploy backend first, then verify harmless synthetic probes before Pages. Never use plain wrangler defaults or older backend main as a rollback. A push alone is not proof of a live release.
+
+To undo this branch increment, inspect later changes and revert its commit. Do not rewrite preserved release branches, main, held PR15/32 or Pulse. For any later live rollback follow the backend's worker/RELEASE.md and monitor Pages to completion. No KV/customer data rollback is introduced.

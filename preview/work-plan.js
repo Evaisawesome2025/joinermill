@@ -1,6 +1,7 @@
 import { FIELDS, normalizeBrief, exportBrief } from './brief-model.js';
+import { emptyResult, validateResult, validTimestamp, exportResult } from './result-review.js';
 export const STORAGE_KEY = 'joinermill.workdesk.v1';
-export const MAX_SNAPSHOT_BYTES = 65536;
+export const MAX_SNAPSHOT_BYTES = 131072;
 export const PLAN_LIMITS = Object.freeze({ nextAction: 600, unresolvedInputs: 1600 });
 const textOK = (text, max) => typeof text === 'string' && text.length <= max && !/[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f]/.test(text);
 const exactKeys = (value, keys) => value && typeof value === 'object' && !Array.isArray(value) && Object.keys(value).length === keys.length && Object.keys(value).every(k => keys.includes(k));
@@ -14,35 +15,38 @@ export function validatePlan(plan) {
   const items = plan.unresolvedInputs.split(/\r\n?|\n/).map(s => s.trim()).filter(Boolean);
   return { ok: true, items };
 }
-export function encodeSnapshot(draft, plan, savedAt = new Date().toISOString()) {
-  if (!validateDraft(draft) || !validatePlan(plan).ok || !/^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\d\.\d{3}Z$/.test(savedAt) || !Number.isFinite(Date.parse(savedAt))) throw new Error('invalid_snapshot');
-  const value = JSON.stringify({ version: 1, savedAt, draft, plan });
+export function encodeSnapshot(draft, plan, savedAt = new Date().toISOString(), result = emptyResult()) {
+  if (!validateDraft(draft) || !validatePlan(plan).ok || !validTimestamp(savedAt) || !validateResult(result)) throw new Error('invalid_snapshot');
+  const value = JSON.stringify({ version: 2, savedAt, draft, plan, result });
   if (new TextEncoder().encode(value).length > MAX_SNAPSHOT_BYTES) throw new Error('snapshot_too_large');
   return value;
 }
 export function decodeSnapshot(raw) {
   if (typeof raw !== 'string' || raw.length > MAX_SNAPSHOT_BYTES || new TextEncoder().encode(raw).length > MAX_SNAPSHOT_BYTES) throw new Error('snapshot_too_large');
   let data; try { data = JSON.parse(raw); } catch { throw new Error('invalid_snapshot'); }
-  if (!exactKeys(data, ['version', 'savedAt', 'draft', 'plan']) || data.version !== 1) throw new Error('unsupported_snapshot');
-  encodeSnapshot(data.draft, data.plan, data.savedAt); // Enforce bounds and schema before using any stored text.
+  if (data?.version === 1 && exactKeys(data, ['version', 'savedAt', 'draft', 'plan'])) {
+    // Reading old copies does not write or overwrite them; upgrade only on explicit Save.
+    data = { ...data, result: emptyResult() };
+  } else if (data?.version !== 2 || !exactKeys(data, ['version', 'savedAt', 'draft', 'plan', 'result'])) throw new Error('unsupported_snapshot');
+  encodeSnapshot(data.draft, data.plan, data.savedAt, data.result);
   return data;
 }
-export function exportPlan(draft, plan) {
+export function exportPlan(draft, plan, result = emptyResult()) {
   if (!validateDraft(draft) || !validatePlan(plan).ok) throw new Error('invalid_plan');
   const normalized = normalizeBrief(draft);
   const brief = normalized.ok ? exportBrief(normalized.brief) : ['JOINERMILL / EVAOS — INCOMPLETE BRIEF', 'Status: draft; required brief fields still need review.', '', ...Object.entries(FIELDS).flatMap(([key, f]) => [f.label.toUpperCase(), draft[key] || '[Not supplied]', ''])].join('\n');
   return ['JOINERMILL / EVAOS — LOCAL WORK PLAN', 'User-entered intent and planning notes. No AI judgment, work execution or verified result.', '',
     'YOUR NEXT ACTION (not executed)', plan.nextAction || '[Not set by you]', '',
     'INPUTS STILL NEEDED (your notes, not an assessment)', plan.unresolvedInputs || '[None listed; readiness has not been established]', '',
-    brief, '', 'Local planning notes are not sent with the optional six-field brief format check.', ''].join('\n');
+    brief, '', exportResult(result, draft), '', 'Local planning notes, results and owner reviews are not sent with the optional six-field brief format check.', ''].join('\n');
 }
 // Access is injected so blocked storage, quota and corrupt records remain testable.
 export function readSaved(storage) {
   const raw = storage.getItem(STORAGE_KEY);
   return raw === null ? null : decodeSnapshot(raw);
 }
-export function saveDraft(storage, draft, plan) {
-  const raw = encodeSnapshot(draft, plan);
+export function saveDraft(storage, draft, plan, result = emptyResult()) {
+  const raw = encodeSnapshot(draft, plan, new Date().toISOString(), result);
   storage.setItem(STORAGE_KEY, raw);
   if (storage.getItem(STORAGE_KEY) !== raw) throw new Error('save_not_confirmed');
   return decodeSnapshot(raw);
